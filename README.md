@@ -1,6 +1,8 @@
 <div align="center">
 
   <h1>LockCent</h1>
+  <h3>Thomas More University</h3>
+  <h3>Electronics ICT Faculty</h3>
 
   <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
   <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
