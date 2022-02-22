@@ -1,10 +1,4 @@
 <div align="center">
-  
-  <a href="">![thomas](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png)</a>
-  
-  <h3>Thomas More University<br>
-  Electronics ICT Faculty<br>
-  Project Enterprise</h3><hr>
 
   <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
   <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
@@ -25,4 +19,15 @@ Application encrypts data locally, the user can store data in the database or we
 
   <h3>Screenshots and a Showcase:</h3>
 
+  <hr>
+</div>
+
+<div align="center">
+  
+  <a href="">![thomas](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png)</a>
+  
+  <h3>Thomas More University<br>
+  Electronics ICT Faculty<br>
+  PE Project</h3><hr>
+  
 </div>
