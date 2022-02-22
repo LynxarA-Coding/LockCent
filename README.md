@@ -6,7 +6,7 @@
   <a href="https://github.com/LynxarA-Coding/LockCent/releases">![version](https://img.shields.io/badge/version-v0.0.1--alpha.1-yellow)</a>
   <p>Download Latest:</p>
   
-  <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent)</a><hr>
+  <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
 
   <h3>LockCent is an Application that keeps your personal information safe. It provides data encryption and local or cloud saving.</h3>
 
