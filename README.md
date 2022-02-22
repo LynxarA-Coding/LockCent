@@ -3,7 +3,7 @@
   <h1>LockCent</h1>
 
   <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
-  <a href="https://github.com/LynxarA-Coding/LockCent/releases">![version](https://img.shields.io/badge/version-v0.0.1--alpha.1-yellow)</a>
+  <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a>
   <p>Download Latest:</p>
   
   <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
