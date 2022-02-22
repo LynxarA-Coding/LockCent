@@ -1,0 +1,6 @@
+
+*.exe
+LockCent/obj/Debug/LockCent.pdb
+LockCent/bin/Debug/LockCent.exe.config
+LockCent/bin/Debug/LockCent.pdb
+LockCent/bin/Debug/System.Diagnostics.DiagnosticSource.xml
