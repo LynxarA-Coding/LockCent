@@ -1,10 +1,10 @@
 <div align="center">
-
-  <h1>LockCent</h1><hr>
-  ![thomasmorelogo](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png)
-  <h3>Thomas More University</h3>
-  <h3>Electronics ICT Faculty</h3>
-  <h3>Project Enterprise</h3><hr>
+  
+  <a href="">![thomas](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png)</a>
+  
+  <h3>Thomas More University<br>
+  Electronics ICT Faculty<br>
+  Project Enterprise</h3><hr>
 
   <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
   <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
@@ -14,6 +14,8 @@
   <p>Download Latest:</p>
   
   <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
+
+  <h1>LockCent</h1>
 
   <h3>LockCent is an Application that keeps your personal information safe. It provides data encryption and local or cloud saving.</h3>
 
