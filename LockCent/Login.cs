@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LockCent
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
-        public Form1()
+        public Login()
         {
             InitializeComponent();
         }
@@ -20,6 +20,11 @@ namespace LockCent
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
