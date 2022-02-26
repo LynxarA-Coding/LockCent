@@ -4,7 +4,8 @@
   <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
   ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
   ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)<br>
+  <a href="https://github.com/LynxarA-Coding/LockCent/wiki"><h3>Visit WIKI</h3></a>
   <p>Download Latest:</p>
   
   <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
