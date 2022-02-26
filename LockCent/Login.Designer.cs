@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pnlBackground = new System.Windows.Forms.Panel();
+            this.lblError = new System.Windows.Forms.Label();
+            this.lblRegister = new System.Windows.Forms.Label();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.btnLogin = new Guna.UI2.WinForms.Guna2Button();
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlDrag = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2PictureBox();
             this.elpsMain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsLoginBtn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsUsername = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsPass = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.lblUser = new System.Windows.Forms.Label();
-            this.lblPass = new System.Windows.Forms.Label();
-            this.lblRegister = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblError = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -73,6 +73,51 @@
             this.pnlBackground.Size = new System.Drawing.Size(730, 512);
             this.pnlBackground.TabIndex = 0;
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.BackColor = System.Drawing.Color.Transparent;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(261, 348);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(70, 21);
+            this.lblError.TabIndex = 8;
+            this.lblError.Text = "An Error";
+            this.lblError.Visible = false;
+            // 
+            // lblRegister
+            // 
+            this.lblRegister.AutoSize = true;
+            this.lblRegister.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegister.ForeColor = System.Drawing.Color.White;
+            this.lblRegister.Location = new System.Drawing.Point(261, 276);
+            this.lblRegister.Name = "lblRegister";
+            this.lblRegister.Size = new System.Drawing.Size(205, 21);
+            this.lblRegister.TabIndex = 7;
+            this.lblRegister.Text = "I don\'t have an account yet";
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.BackColor = System.Drawing.Color.Transparent;
+            this.lblPass.ForeColor = System.Drawing.Color.White;
+            this.lblPass.Location = new System.Drawing.Point(170, 241);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(83, 21);
+            this.lblPass.TabIndex = 6;
+            this.lblPass.Text = "Password:";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(166, 185);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(87, 21);
+            this.lblUser.TabIndex = 5;
+            this.lblUser.Text = "Username:";
+            // 
             // btnLogin
             // 
             this.btnLogin.CheckedState.Parent = this.btnLogin;
@@ -81,7 +126,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(285, 304);
+            this.btnLogin.Location = new System.Drawing.Point(285, 306);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
             this.btnLogin.Size = new System.Drawing.Size(155, 31);
@@ -166,6 +211,16 @@
             this.pnlDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseMove);
             this.pnlDrag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseUp);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(13, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(58, 21);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "LOGIN";
+            // 
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
@@ -198,61 +253,6 @@
             // 
             this.elpsPass.BorderRadius = 15;
             this.elpsPass.TargetControl = this.txtPassword;
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(166, 185);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(87, 21);
-            this.lblUser.TabIndex = 5;
-            this.lblUser.Text = "Username:";
-            // 
-            // lblPass
-            // 
-            this.lblPass.AutoSize = true;
-            this.lblPass.BackColor = System.Drawing.Color.Transparent;
-            this.lblPass.ForeColor = System.Drawing.Color.White;
-            this.lblPass.Location = new System.Drawing.Point(170, 241);
-            this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(83, 21);
-            this.lblPass.TabIndex = 6;
-            this.lblPass.Text = "Password:";
-            // 
-            // lblRegister
-            // 
-            this.lblRegister.AutoSize = true;
-            this.lblRegister.BackColor = System.Drawing.Color.Transparent;
-            this.lblRegister.ForeColor = System.Drawing.Color.White;
-            this.lblRegister.Location = new System.Drawing.Point(261, 276);
-            this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(205, 21);
-            this.lblRegister.TabIndex = 7;
-            this.lblRegister.Text = "I don\'t have an account yet";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(13, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(58, 21);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "LOGIN";
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(261, 348);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(70, 21);
-            this.lblError.TabIndex = 8;
-            this.lblError.Text = "An Error";
-            this.lblError.Visible = false;
             // 
             // Login
             // 
