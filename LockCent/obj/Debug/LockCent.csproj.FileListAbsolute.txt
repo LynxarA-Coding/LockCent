@@ -12,3 +12,12 @@ C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.exe
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.pdb
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Login.resources
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\Google.Protobuf.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\MySql.Data.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Buffers.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Memory.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
