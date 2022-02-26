@@ -17,13 +17,22 @@ namespace LockCent
             InitializeComponent();
         }
 
+        private void DesignCorrector()
+        {
+            txtUser.Location = new Point(this.Width / 2 - txtUser.Width / 2, txtUser.Location.Y);
+            txtPassword.Location = new Point(this.Width / 2 - txtPassword.Width / 2, txtPassword.Location.Y);
+
+            btnLogin.Location = new Point(this.Width / 2 - btnLogin.Width / 2, btnLogin.Location.Y);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            DesignCorrector();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            btnLogin.Enabled = false;
             string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
@@ -53,21 +62,17 @@ namespace LockCent
 
             if (password == txtPassword.Text)
             {
-                MessageBox.Show(
-                "YES",
-                "PASSWORD",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                lblError.Visible = true;
+                lblError.ForeColor = Color.Green;
+                lblError.Text = "User found in the DB!";
             }
             else
             {
-                MessageBox.Show(
-                "NO",
-                "PASSWORD",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                lblError.Visible = true;
+                lblError.ForeColor = Color.Red;
+                lblError.Text = "No such user in the DB!";
             }
-            
+            btnLogin.Enabled = true;
         }
 
         private void btnClose_Click(object sender, EventArgs e)

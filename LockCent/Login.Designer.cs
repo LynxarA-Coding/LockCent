@@ -38,6 +38,14 @@
             this.pnlDrag = new Guna.UI2.WinForms.Guna2Panel();
             this.btnClose = new Guna.UI2.WinForms.Guna2PictureBox();
             this.elpsMain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.elpsLoginBtn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.elpsUsername = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.elpsPass = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblRegister = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.Label();
             this.pnlBackground.SuspendLayout();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -48,12 +56,17 @@
             this.pnlBackground.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlBackground.BackgroundImage")));
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pnlBackground.Controls.Add(this.lblError);
+            this.pnlBackground.Controls.Add(this.lblRegister);
+            this.pnlBackground.Controls.Add(this.lblPass);
+            this.pnlBackground.Controls.Add(this.lblUser);
             this.pnlBackground.Controls.Add(this.btnLogin);
             this.pnlBackground.Controls.Add(this.txtUser);
             this.pnlBackground.Controls.Add(this.txtPassword);
             this.pnlBackground.Controls.Add(this.label1);
             this.pnlBackground.Controls.Add(this.pnlDrag);
             this.pnlBackground.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBackground.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlBackground.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlBackground.Location = new System.Drawing.Point(0, 0);
             this.pnlBackground.Name = "pnlBackground";
@@ -64,13 +77,14 @@
             // 
             this.btnLogin.CheckedState.Parent = this.btnLogin;
             this.btnLogin.CustomImages.Parent = this.btnLogin;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(171)))), ((int)(((byte)(204)))));
+            this.btnLogin.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Black;
             this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(265, 299);
+            this.btnLogin.Location = new System.Drawing.Point(285, 304);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(200, 45);
+            this.btnLogin.Size = new System.Drawing.Size(155, 31);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "LOGIN";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -140,6 +154,7 @@
             // pnlDrag
             // 
             this.pnlDrag.BackColor = System.Drawing.Color.Transparent;
+            this.pnlDrag.Controls.Add(this.lblTitle);
             this.pnlDrag.Controls.Add(this.btnClose);
             this.pnlDrag.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlDrag.Location = new System.Drawing.Point(0, 0);
@@ -169,6 +184,76 @@
             this.elpsMain.BorderRadius = 25;
             this.elpsMain.TargetControl = this;
             // 
+            // elpsLoginBtn
+            // 
+            this.elpsLoginBtn.BorderRadius = 15;
+            this.elpsLoginBtn.TargetControl = this.btnLogin;
+            // 
+            // elpsUsername
+            // 
+            this.elpsUsername.BorderRadius = 15;
+            this.elpsUsername.TargetControl = this.txtUser;
+            // 
+            // elpsPass
+            // 
+            this.elpsPass.BorderRadius = 15;
+            this.elpsPass.TargetControl = this.txtPassword;
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(166, 185);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(87, 21);
+            this.lblUser.TabIndex = 5;
+            this.lblUser.Text = "Username:";
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.BackColor = System.Drawing.Color.Transparent;
+            this.lblPass.ForeColor = System.Drawing.Color.White;
+            this.lblPass.Location = new System.Drawing.Point(170, 241);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(83, 21);
+            this.lblPass.TabIndex = 6;
+            this.lblPass.Text = "Password:";
+            // 
+            // lblRegister
+            // 
+            this.lblRegister.AutoSize = true;
+            this.lblRegister.BackColor = System.Drawing.Color.Transparent;
+            this.lblRegister.ForeColor = System.Drawing.Color.White;
+            this.lblRegister.Location = new System.Drawing.Point(261, 276);
+            this.lblRegister.Name = "lblRegister";
+            this.lblRegister.Size = new System.Drawing.Size(205, 21);
+            this.lblRegister.TabIndex = 7;
+            this.lblRegister.Text = "I don\'t have an account yet";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(13, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(58, 21);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "LOGIN";
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.BackColor = System.Drawing.Color.Transparent;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(261, 348);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(70, 21);
+            this.lblError.TabIndex = 8;
+            this.lblError.Text = "An Error";
+            this.lblError.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +269,7 @@
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
             this.pnlDrag.ResumeLayout(false);
+            this.pnlDrag.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
 
@@ -199,6 +285,14 @@
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtUser;
         private Guna.UI2.WinForms.Guna2Button btnLogin;
+        private Guna.UI2.WinForms.Guna2Elipse elpsLoginBtn;
+        private Guna.UI2.WinForms.Guna2Elipse elpsUsername;
+        private Guna.UI2.WinForms.Guna2Elipse elpsPass;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblPass;
+        private System.Windows.Forms.Label lblRegister;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblError;
     }
 }
 
