@@ -8,7 +8,7 @@
   <a href="https://github.com/LynxarA-Coding/LockCent/wiki"><h3>Visit WIKI</h3></a>
   <p>Download Latest:</p>
   
-  <a gref="">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
+  <a href="https://github.com/LynxarA-Coding/LockCent/releases">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
 
   
   <h1>LockCent</h1>
