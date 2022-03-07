@@ -43,6 +43,9 @@
             this.btnRegister = new Guna.UI2.WinForms.Guna2Button();
             this.elpsReg = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.lblError = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.lblPass = new System.Windows.Forms.Label();
+            this.lblPass1 = new System.Windows.Forms.Label();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -216,6 +219,42 @@
             this.lblError.Visible = false;
             this.lblError.TextChanged += new System.EventHandler(this.lblError_TextChanged);
             // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(156, 172);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(87, 21);
+            this.lblUser.TabIndex = 10;
+            this.lblUser.Text = "Username:";
+            // 
+            // lblPass
+            // 
+            this.lblPass.AutoSize = true;
+            this.lblPass.BackColor = System.Drawing.Color.Transparent;
+            this.lblPass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPass.ForeColor = System.Drawing.Color.White;
+            this.lblPass.Location = new System.Drawing.Point(160, 231);
+            this.lblPass.Name = "lblPass";
+            this.lblPass.Size = new System.Drawing.Size(83, 21);
+            this.lblPass.TabIndex = 11;
+            this.lblPass.Text = "Password:";
+            // 
+            // lblPass1
+            // 
+            this.lblPass1.AutoSize = true;
+            this.lblPass1.BackColor = System.Drawing.Color.Transparent;
+            this.lblPass1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPass1.ForeColor = System.Drawing.Color.White;
+            this.lblPass1.Location = new System.Drawing.Point(104, 286);
+            this.lblPass1.Name = "lblPass1";
+            this.lblPass1.Size = new System.Drawing.Size(139, 21);
+            this.lblPass1.TabIndex = 11;
+            this.lblPass1.Text = "Repeat Password:";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +263,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(730, 512);
+            this.Controls.Add(this.lblPass1);
+            this.Controls.Add(this.lblPass);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtPass2);
@@ -259,5 +301,8 @@
         private Guna.UI2.WinForms.Guna2Button btnRegister;
         private Guna.UI2.WinForms.Guna2Elipse elpsReg;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Label lblPass;
+        private System.Windows.Forms.Label lblPass1;
     }
 }
