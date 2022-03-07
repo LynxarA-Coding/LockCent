@@ -72,6 +72,7 @@
             this.pnlBackground.Name = "pnlBackground";
             this.pnlBackground.Size = new System.Drawing.Size(730, 512);
             this.pnlBackground.TabIndex = 0;
+            this.pnlBackground.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBackground_Paint);
             // 
             // lblError
             // 
@@ -84,6 +85,7 @@
             this.lblError.TabIndex = 8;
             this.lblError.Text = "An Error";
             this.lblError.Visible = false;
+            this.lblError.TextChanged += new System.EventHandler(this.lblError_TextChanged);
             // 
             // lblRegister
             // 

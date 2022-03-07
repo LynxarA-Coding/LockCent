@@ -32,7 +32,12 @@ namespace LockCent
 
         private bool TextControl(string text)
         {
-            foreach(char a in text)
+            if (text.Length == 0)
+            {
+                return false;
+            }
+
+            foreach (char a in text)
             {
                 if (a < '0' || (a > '9' && a < 'A') || (a > 'Z' && a < 'a') || a > 'z')
                 {
@@ -58,18 +63,15 @@ namespace LockCent
                 MySqlCommand command = new MySqlCommand(sql, conn);
                 MySqlDataReader reader = command.ExecuteReader();
 
-
-                string stat = "";
                 string username = "";
                 string password = "";
                 string ekey = "";
 
                 while (reader.Read())
                 {
-                    stat = reader[0].ToString();
-                    username = reader[1].ToString();
-                    password = reader[2].ToString();
-                    ekey = reader[3].ToString();
+                    username = reader[0].ToString();
+                    password = reader[1].ToString();
+                    ekey = reader[2].ToString();
                 }
 
                 reader.Close();
@@ -86,7 +88,7 @@ namespace LockCent
                 {
                     lblError.Visible = true;
                     lblError.ForeColor = Color.Red;
-                    lblError.Text = "No such user in the DB!";
+                    lblError.Text = "Username or password are incorrect!";
                 }
 
                 btnLogin.Enabled = true;
@@ -96,7 +98,7 @@ namespace LockCent
                 lblError.Visible = true;
                 lblError.ForeColor = Color.Red;
                 lblError.Text = "Login or Password include incorrect symbols!";
-                lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
+                
 
                 btnLogin.Enabled = true;
             }
@@ -134,6 +136,16 @@ namespace LockCent
         private void pnlDrag_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void pnlBackground_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblError_TextChanged(object sender, EventArgs e)
+        {
+            lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
         }
     }
 }
