@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using LockCent.Encryption;
+using LockCent.Pages;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -80,9 +80,9 @@ namespace LockCent
 
                 if (password == txtPassword.Text)
                 {
-                    lblError.Visible = true;
-                    lblError.ForeColor = Color.Green;
-                    lblError.Text = "User found in the DB!";
+                    Main mn = new Main();
+                    mn.Show();
+                    this.Hide();
                 }
                 else
                 {

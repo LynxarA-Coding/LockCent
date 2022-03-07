@@ -37,8 +37,8 @@
             this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.elpsUser = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsPass1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.elpsPass2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.txtPass1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.elpsPass2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.txtPass2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnRegister = new Guna.UI2.WinForms.Guna2Button();
             this.elpsReg = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -108,7 +108,6 @@
             this.txtUser.HoverState.Parent = this.txtUser;
             this.txtUser.Location = new System.Drawing.Point(251, 166);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtUser.MaxLength = 20;
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
             this.txtUser.PlaceholderText = "";
@@ -127,11 +126,6 @@
             this.elpsPass1.BorderRadius = 15;
             this.elpsPass1.TargetControl = this.txtPass1;
             // 
-            // elpsPass2
-            // 
-            this.elpsPass2.BorderRadius = 15;
-            this.elpsPass2.TargetControl = this.txtPass2;
-            // 
             // txtPass1
             // 
             this.txtPass1.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -149,7 +143,6 @@
             this.txtPass1.HoverState.Parent = this.txtPass1;
             this.txtPass1.Location = new System.Drawing.Point(251, 224);
             this.txtPass1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass1.MaxLength = 20;
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '*';
             this.txtPass1.PlaceholderText = "";
@@ -157,6 +150,11 @@
             this.txtPass1.ShadowDecoration.Parent = this.txtPass1;
             this.txtPass1.Size = new System.Drawing.Size(200, 36);
             this.txtPass1.TabIndex = 4;
+            // 
+            // elpsPass2
+            // 
+            this.elpsPass2.BorderRadius = 15;
+            this.elpsPass2.TargetControl = this.txtPass2;
             // 
             // txtPass2
             // 
@@ -175,7 +173,6 @@
             this.txtPass2.HoverState.Parent = this.txtPass2;
             this.txtPass2.Location = new System.Drawing.Point(251, 280);
             this.txtPass2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass2.MaxLength = 20;
             this.txtPass2.Name = "txtPass2";
             this.txtPass2.PasswordChar = '*';
             this.txtPass2.PlaceholderText = "";
@@ -225,7 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(730, 512);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnRegister);

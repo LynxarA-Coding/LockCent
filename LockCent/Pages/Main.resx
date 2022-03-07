@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="elpsMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pnlBackground.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAtsAAAIBCAIAAAAXt+S2AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAA/7JJREFUeF7s/XvDJLW15I3On3Ou77mfM9t3A75sYAMGbHAD3U03Np7Ze965ff/P
+        EQAACxEBf2RfkQAA/7JJREFUeF7s/XvDJLW15I3On3Ou77mfM9t3A75sYAMGbHAD3U03Np7Ze965ff/P
         cmKtCEUuLSmz6nm6G7A3QXShVErKrCpp6VfKrHr+w39M/R9S/8dH6f90ov9z6v9S9H99uP63/+1/c2LV
         /63o/77T/+NR+n+e6P819P8u+v+c6P87xPT/r+g/7fRP9+knqZ8O/WzWz4eQon/+i9m//MXPf/nzX/zq
         l/Qv4V//qvlXv/519a/fWvzrt+W33nnr7d9s/fY73e/85rfVv/nN7+Tf/r76t7/7Z/p3vz/8+39+F/7n
@@ -4929,16 +4932,4 @@
         9zLRxc5JsOUXtwuFHAz4KjhNKA8N0PdGZ/cwhjE0GMaN+z8qc79iQm9grgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="elpsMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="elpsLoginBtn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>118, 17</value>
-  </metadata>
-  <metadata name="elpsUsername.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>240, 17</value>
-  </metadata>
-  <metadata name="elpsPass.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>368, 17</value>
-  </metadata>
 </root>
