@@ -21,3 +21,4 @@ C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.B
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Memory.xml
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Register.resources

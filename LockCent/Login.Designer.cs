@@ -95,6 +95,7 @@
             this.lblRegister.Size = new System.Drawing.Size(205, 21);
             this.lblRegister.TabIndex = 7;
             this.lblRegister.Text = "I don\'t have an account yet";
+            this.lblRegister.Click += new System.EventHandler(this.lblRegister_Click);
             // 
             // lblPass
             // 
@@ -264,6 +265,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlBackground.ResumeLayout(false);
