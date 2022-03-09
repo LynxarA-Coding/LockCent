@@ -9,7 +9,6 @@
   <p>Download Latest:</p>
   
   <a href="https://github.com/LynxarA-Coding/LockCent/releases">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
-
   
   <h1>LockCent</h1>
 
