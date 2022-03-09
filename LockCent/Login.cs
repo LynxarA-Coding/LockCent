@@ -80,8 +80,11 @@ namespace LockCent
 
                 if (password == txtPassword.Text)
                 {
-                    Main mn = new Main();
+                    Main mn = new Main(){ Owner = this };
                     mn.Show();
+
+                    txtUser.Text = "";
+                    txtPassword.Text = "";
                     this.Hide();
                 }
                 else
@@ -107,8 +110,12 @@ namespace LockCent
 
         private void lblRegister_Click(object sender, EventArgs e)
         {
-            Register rgstr = new Register();
+            Register rgstr = new Register() { Owner = this };
             rgstr.Show();
+
+            txtUser.Text = "";
+            txtPassword.Text = "";
+
             this.Hide();
         }
 

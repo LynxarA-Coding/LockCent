@@ -44,5 +44,13 @@ namespace LockCent.Pages
         {
             mouseDown = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Login lgn = this.Owner as Login;
+            lgn.Show();
+            this.Close();
+            
+        }
     }
 }

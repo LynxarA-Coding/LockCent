@@ -46,6 +46,8 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblPass1 = new System.Windows.Forms.Label();
+            this.lblLogin = new System.Windows.Forms.Label();
+            this.lblCopyright = new System.Windows.Forms.Label();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -152,7 +154,7 @@
             this.txtPass1.SelectedText = "";
             this.txtPass1.ShadowDecoration.Parent = this.txtPass1;
             this.txtPass1.Size = new System.Drawing.Size(200, 36);
-            this.txtPass1.TabIndex = 4;
+            this.txtPass1.TabIndex = 5;
             // 
             // elpsPass2
             // 
@@ -182,7 +184,7 @@
             this.txtPass2.SelectedText = "";
             this.txtPass2.ShadowDecoration.Parent = this.txtPass2;
             this.txtPass2.Size = new System.Drawing.Size(200, 36);
-            this.txtPass2.TabIndex = 4;
+            this.txtPass2.TabIndex = 6;
             // 
             // btnRegister
             // 
@@ -192,7 +194,7 @@
             this.btnRegister.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.Black;
             this.btnRegister.HoverState.Parent = this.btnRegister;
-            this.btnRegister.Location = new System.Drawing.Point(272, 343);
+            this.btnRegister.Location = new System.Drawing.Point(272, 330);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.ShadowDecoration.Parent = this.btnRegister;
             this.btnRegister.Size = new System.Drawing.Size(155, 31);
@@ -211,7 +213,7 @@
             this.lblError.BackColor = System.Drawing.Color.Transparent;
             this.lblError.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(268, 385);
+            this.lblError.Location = new System.Drawing.Point(268, 375);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(70, 21);
             this.lblError.TabIndex = 9;
@@ -255,6 +257,31 @@
             this.lblPass1.TabIndex = 11;
             this.lblPass1.Text = "Repeat Password:";
             // 
+            // lblLogin
+            // 
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.BackColor = System.Drawing.Color.Transparent;
+            this.lblLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.lblLogin.ForeColor = System.Drawing.Color.White;
+            this.lblLogin.Location = new System.Drawing.Point(13, 482);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(193, 21);
+            this.lblLogin.TabIndex = 12;
+            this.lblLogin.Text = "I already have an account";
+            this.lblLogin.Click += new System.EventHandler(this.lblLogin_Click);
+            // 
+            // lblCopyright
+            // 
+            this.lblCopyright.AutoSize = true;
+            this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
+            this.lblCopyright.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCopyright.ForeColor = System.Drawing.Color.White;
+            this.lblCopyright.Location = new System.Drawing.Point(607, 483);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(116, 19);
+            this.lblCopyright.TabIndex = 13;
+            this.lblCopyright.Text = "LockCent @2022";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +290,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(730, 512);
+            this.Controls.Add(this.lblCopyright);
+            this.Controls.Add(this.lblLogin);
             this.Controls.Add(this.lblPass1);
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblUser);
@@ -304,5 +333,7 @@
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblPass1;
+        private System.Windows.Forms.Label lblLogin;
+        private System.Windows.Forms.Label lblCopyright;
     }
 }

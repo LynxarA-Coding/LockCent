@@ -25,6 +25,13 @@ namespace LockCent
             lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
         }
 
+        private void lblLogin_Click(object sender, EventArgs e)
+        {
+            Login lgn = this.Owner as Login;
+            lgn.Show();
+            this.Close();
+        }
+
         private bool TextControl(string text)
         {
             if (text.Length == 0)
@@ -116,8 +123,13 @@ namespace LockCent
                     int result = command.ExecuteNonQuery();
                     conn.Close();
 
-                    Main mn = new Main();
+                    Main mn = new Main() { Owner = this };
                     mn.Show();
+
+                    txtUser.Text = "";
+                    txtPass1.Text = "";
+                    txtPass2.Text = "";
+
                     this.Close();
                 }
                 else
@@ -171,5 +183,7 @@ namespace LockCent
         {
             lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
         }
+
+        
     }
 }
