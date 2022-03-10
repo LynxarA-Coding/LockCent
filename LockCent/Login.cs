@@ -92,6 +92,7 @@ namespace LockCent
                     lblError.Visible = true;
                     lblError.ForeColor = Color.Red;
                     lblError.Text = "Username or password are incorrect!";
+                    lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
                 }
 
                 btnLogin.Enabled = true;
@@ -101,7 +102,7 @@ namespace LockCent
                 lblError.Visible = true;
                 lblError.ForeColor = Color.Red;
                 lblError.Text = "Login or Password include incorrect symbols!";
-                
+                lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
 
                 btnLogin.Enabled = true;
             }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiscordRPC;
+using DiscordRPC.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,10 @@ namespace LockCent.Pages
     {
         bool mouseDown;
         private Point offset;
+
+        public DiscordRpcClient client;
+        bool discordInitialized = false;
+
         public Main()
         {
             InitializeComponent();
@@ -51,6 +57,40 @@ namespace LockCent.Pages
             lgn.Show();
             this.Close();
             
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            discordInitialized = true;
+            client = new DiscordRpcClient("951572520681738311");
+            client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
+            client.Initialize();
+
+            while(!discordInitialized)
+            {
+
+            }
+
+            if (discordInitialized)
+            {
+                client.SetPresence(new DiscordRPC.RichPresence()
+                {
+                    Details = "",
+                    State = "securing passwords...",
+                    Timestamps = Timestamps.Now,
+                    Assets = new Assets()
+                    {
+                        LargeImageKey = "lockcent_w512",
+                        LargeImageText = "",
+                        SmallImageKey = ""
+                    }
+                });
+            }
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            client.Dispose();
         }
     }
 }

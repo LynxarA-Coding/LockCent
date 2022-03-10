@@ -23,3 +23,5 @@ C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.N
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Register.resources
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.Main.resources
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\DiscordRPC.xml
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\Newtonsoft.Json.xml
