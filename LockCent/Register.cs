@@ -2,9 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using LockCent.Pages;
-using MySql.Data.MySqlClient;
 
+using MySql.Data.MySqlClient;
 using LockCent.Encryption;
+using System.Media;
 
 namespace LockCent
 {
@@ -16,6 +17,8 @@ namespace LockCent
     {
         bool mouseDown;
         private Point offset;
+
+        private int textLength = 20;
         public Register()
         {
             InitializeComponent();
@@ -198,6 +201,40 @@ namespace LockCent
             lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
         }
 
-        
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUser.Text.Length > textLength)
+            {
+                txtUser.Text = txtUser.Text.Substring(0, textLength);
+                txtUser.SelectionStart = txtUser.Text.Length;
+                txtUser.SelectionLength = 0;
+
+                SystemSounds.Exclamation.Play();
+            }
+        }
+
+        private void txtPass1_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPass1.Text.Length > textLength)
+            {
+                txtPass1.Text = txtPass1.Text.Substring(0, textLength);
+                txtPass1.SelectionStart = txtPass1.Text.Length;
+                txtPass1.SelectionLength = 0;
+
+                SystemSounds.Exclamation.Play();
+            }
+        }
+
+        private void txtPass2_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPass2.Text.Length > textLength)
+            {
+                txtPass2.Text = txtPass2.Text.Substring(0, textLength);
+                txtPass2.SelectionStart = txtPass2.Text.Length;
+                txtPass2.SelectionLength = 0;
+
+                SystemSounds.Exclamation.Play();
+            }
+        }
     }
 }

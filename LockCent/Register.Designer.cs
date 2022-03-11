@@ -113,7 +113,6 @@
             this.txtUser.HoverState.Parent = this.txtUser;
             this.txtUser.Location = new System.Drawing.Point(251, 166);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtUser.MaxLength = 20;
             this.txtUser.Name = "txtUser";
             this.txtUser.PasswordChar = '\0';
             this.txtUser.PlaceholderText = "";
@@ -121,6 +120,7 @@
             this.txtUser.ShadowDecoration.Parent = this.txtUser;
             this.txtUser.Size = new System.Drawing.Size(200, 36);
             this.txtUser.TabIndex = 4;
+            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
             // 
             // elpsUser
             // 
@@ -149,7 +149,6 @@
             this.txtPass1.HoverState.Parent = this.txtPass1;
             this.txtPass1.Location = new System.Drawing.Point(251, 224);
             this.txtPass1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass1.MaxLength = 20;
             this.txtPass1.Name = "txtPass1";
             this.txtPass1.PasswordChar = '*';
             this.txtPass1.PlaceholderText = "";
@@ -157,6 +156,7 @@
             this.txtPass1.ShadowDecoration.Parent = this.txtPass1;
             this.txtPass1.Size = new System.Drawing.Size(200, 36);
             this.txtPass1.TabIndex = 5;
+            this.txtPass1.TextChanged += new System.EventHandler(this.txtPass1_TextChanged);
             // 
             // elpsPass2
             // 
@@ -180,7 +180,6 @@
             this.txtPass2.HoverState.Parent = this.txtPass2;
             this.txtPass2.Location = new System.Drawing.Point(251, 280);
             this.txtPass2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass2.MaxLength = 20;
             this.txtPass2.Name = "txtPass2";
             this.txtPass2.PasswordChar = '*';
             this.txtPass2.PlaceholderText = "";
@@ -188,6 +187,7 @@
             this.txtPass2.ShadowDecoration.Parent = this.txtPass2;
             this.txtPass2.Size = new System.Drawing.Size(200, 36);
             this.txtPass2.TabIndex = 6;
+            this.txtPass2.TextChanged += new System.EventHandler(this.txtPass2_TextChanged);
             // 
             // btnRegister
             // 

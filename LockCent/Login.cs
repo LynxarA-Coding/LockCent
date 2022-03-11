@@ -2,9 +2,10 @@
 using System.Drawing;
 using LockCent.Pages;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
+using MySql.Data.MySqlClient;
 using LockCent.Encryption;
+using System.Media;
 
 
 namespace LockCent
@@ -17,6 +18,8 @@ namespace LockCent
     {
         bool mouseDown;
         private Point offset;
+
+        private int textLength = 20;
 
         public Login()
         {
@@ -159,14 +162,33 @@ namespace LockCent
             mouseDown = false;
         }
 
-        private void pnlBackground_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void lblError_TextChanged(object sender, EventArgs e)
         {
             lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
+        }
+
+        private void txtUser_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUser.Text.Length > textLength)
+            {
+                txtUser.Text = txtUser.Text.Substring(0, textLength);
+                txtUser.SelectionStart = txtUser.Text.Length;
+                txtUser.SelectionLength = 0;
+
+                SystemSounds.Exclamation.Play();
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text.Length > textLength)
+            {
+                txtPassword.Text = txtPassword.Text.Substring(0, textLength);
+                txtPassword.SelectionStart = txtPassword.Text.Length;
+                txtPassword.SelectionLength = 0;
+
+                SystemSounds.Exclamation.Play();
+            }
         }
     }
 }
