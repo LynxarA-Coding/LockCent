@@ -99,6 +99,9 @@ namespace LockCent.Pages
             }
 
             FileChecker();
+
+            loadPage(new HomePage());
+            lblHeader.Text = "LockCent | Home";
         }
 
         // Form Opener
@@ -114,11 +117,31 @@ namespace LockCent.Pages
             f.Show();
         }
 
+        // Home
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            loadPage(new HomePage());
+            lblHeader.Text = "LockCent | Home";
+        }
+
+        // Passwords
+        private void btnPasswords_Click(object sender, EventArgs e)
+        {
+            loadPage(new PasswordsPage());
+            lblHeader.Text = "LockCent | Passwords";
+        }
+
+        // Notes
+        private void btnNotes_Click(object sender, EventArgs e)
+        {
+            loadPage(new NotesPage());
+            lblHeader.Text = "LockCent | Notes";
+        }
+
         // Settings 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             loadPage(new SettingsPage());
-
             lblHeader.Text = "LockCent | Settings";
         }
 

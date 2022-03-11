@@ -40,11 +40,20 @@
             this.btnSettings = new System.Windows.Forms.PictureBox();
             this.lblSettings = new System.Windows.Forms.Label();
             this.pnlPage = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.PictureBox();
+            this.lblHome = new System.Windows.Forms.Label();
+            this.btnPasswords = new System.Windows.Forms.PictureBox();
+            this.lblPasswords = new System.Windows.Forms.Label();
+            this.btnNotes = new System.Windows.Forms.PictureBox();
+            this.lblNotes = new System.Windows.Forms.Label();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPasswords)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNotes)).BeginInit();
             this.SuspendLayout();
             // 
             // elpsMain
@@ -94,8 +103,14 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMenu.Controls.Add(this.lblNotes);
+            this.pnlMenu.Controls.Add(this.lblPasswords);
+            this.pnlMenu.Controls.Add(this.lblHome);
             this.pnlMenu.Controls.Add(this.lblSettings);
             this.pnlMenu.Controls.Add(this.lblLogOut);
+            this.pnlMenu.Controls.Add(this.btnNotes);
+            this.pnlMenu.Controls.Add(this.btnPasswords);
+            this.pnlMenu.Controls.Add(this.btnHome);
             this.pnlMenu.Controls.Add(this.btnSettings);
             this.pnlMenu.Controls.Add(this.btnLogOut);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -156,6 +171,72 @@
             this.pnlPage.Size = new System.Drawing.Size(628, 459);
             this.pnlPage.TabIndex = 4;
             // 
+            // btnHome
+            // 
+            this.btnHome.Image = ((System.Drawing.Image)(resources.GetObject("btnHome.Image")));
+            this.btnHome.Location = new System.Drawing.Point(27, 21);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(40, 40);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.TabStop = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // lblHome
+            // 
+            this.lblHome.AutoSize = true;
+            this.lblHome.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHome.ForeColor = System.Drawing.Color.White;
+            this.lblHome.Location = new System.Drawing.Point(22, 64);
+            this.lblHome.Name = "lblHome";
+            this.lblHome.Size = new System.Drawing.Size(50, 20);
+            this.lblHome.TabIndex = 1;
+            this.lblHome.Text = "Home";
+            this.lblHome.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnPasswords
+            // 
+            this.btnPasswords.Image = ((System.Drawing.Image)(resources.GetObject("btnPasswords.Image")));
+            this.btnPasswords.Location = new System.Drawing.Point(26, 94);
+            this.btnPasswords.Name = "btnPasswords";
+            this.btnPasswords.Size = new System.Drawing.Size(40, 40);
+            this.btnPasswords.TabIndex = 0;
+            this.btnPasswords.TabStop = false;
+            this.btnPasswords.Click += new System.EventHandler(this.btnPasswords_Click);
+            // 
+            // lblPasswords
+            // 
+            this.lblPasswords.AutoSize = true;
+            this.lblPasswords.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPasswords.ForeColor = System.Drawing.Color.White;
+            this.lblPasswords.Location = new System.Drawing.Point(7, 137);
+            this.lblPasswords.Name = "lblPasswords";
+            this.lblPasswords.Size = new System.Drawing.Size(79, 20);
+            this.lblPasswords.TabIndex = 1;
+            this.lblPasswords.Text = "Passwords";
+            this.lblPasswords.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnNotes
+            // 
+            this.btnNotes.Image = ((System.Drawing.Image)(resources.GetObject("btnNotes.Image")));
+            this.btnNotes.Location = new System.Drawing.Point(26, 167);
+            this.btnNotes.Name = "btnNotes";
+            this.btnNotes.Size = new System.Drawing.Size(40, 40);
+            this.btnNotes.TabIndex = 0;
+            this.btnNotes.TabStop = false;
+            this.btnNotes.Click += new System.EventHandler(this.btnNotes_Click);
+            // 
+            // lblNotes
+            // 
+            this.lblNotes.AutoSize = true;
+            this.lblNotes.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotes.ForeColor = System.Drawing.Color.White;
+            this.lblNotes.Location = new System.Drawing.Point(21, 210);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(49, 20);
+            this.lblNotes.TabIndex = 1;
+            this.lblNotes.Text = "Notes";
+            this.lblNotes.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +263,9 @@
             this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogOut)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPasswords)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNotes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -198,5 +282,11 @@
         private System.Windows.Forms.Label lblSettings;
         private System.Windows.Forms.PictureBox btnSettings;
         private System.Windows.Forms.Panel pnlPage;
+        private System.Windows.Forms.Label lblHome;
+        private System.Windows.Forms.PictureBox btnHome;
+        private System.Windows.Forms.Label lblPasswords;
+        private System.Windows.Forms.PictureBox btnPasswords;
+        private System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.PictureBox btnNotes;
     }
 }

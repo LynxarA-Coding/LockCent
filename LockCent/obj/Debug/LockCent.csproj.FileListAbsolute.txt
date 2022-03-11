@@ -26,3 +26,6 @@ C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\DiscordRPC.xml
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\bin\Debug\Newtonsoft.Json.xml
 C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.SettingsPage.resources
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.HomePage.resources
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.NotesPage.resources
+C:\Users\ASUS\Documents\repo\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.PasswordsPage.resources
