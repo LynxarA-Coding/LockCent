@@ -4,9 +4,15 @@ using LockCent.Pages;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+using LockCent.Encryption;
+
 
 namespace LockCent
 {
+    /*
+     LockCent @2022
+     by LynxarA
+    */
     public partial class Login : Form
     {
         bool mouseDown;
@@ -80,7 +86,14 @@ namespace LockCent
 
                 if (password == txtPassword.Text)
                 {
+                    password = EFunctions.Encrypt(password, ekey);
+
                     Main mn = new Main(){ Owner = this };
+
+                    mn.username = username;
+                    mn.password = password;
+                    mn.ekey = ekey;
+
                     mn.Show();
 
                     txtUser.Text = "";

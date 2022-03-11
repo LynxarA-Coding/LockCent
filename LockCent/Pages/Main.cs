@@ -1,21 +1,27 @@
-﻿using DiscordRPC;
-using DiscordRPC.Logging;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
+using System.IO;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using LockCent.Encryption;
+using DiscordRPC;
+using DiscordRPC.Logging;
 
 namespace LockCent.Pages
 {
+    /*
+     LockCent @2022
+     by LynxarA
+    */
     public partial class Main : Form
     {
         bool mouseDown;
         private Point offset;
+
+        public string username;
+        public string password;
+        public string ekey;
+
 
         public DiscordRpcClient client;
         bool discordInitialized = false;
@@ -51,14 +57,19 @@ namespace LockCent.Pages
             mouseDown = false;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FileChecker()
         {
-            Login lgn = this.Owner as Login;
-            lgn.Show();
-            this.Close();
-            
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+
+            if (!File.Exists(path + "/pass.txt"))
+            {
+                Directory.CreateDirectory(path);
+                StreamWriter sw = new StreamWriter(path + "/pass.txt");
+                sw.Close();
+            }
         }
 
+        // Loaded
         private void Main_Load(object sender, EventArgs e)
         {
             discordInitialized = true;
@@ -66,7 +77,7 @@ namespace LockCent.Pages
             client.Logger = new ConsoleLogger() { Level = LogLevel.Warning };
             client.Initialize();
 
-            while(!discordInitialized)
+            while (!discordInitialized)
             {
 
             }
@@ -86,6 +97,41 @@ namespace LockCent.Pages
                     }
                 });
             }
+
+            FileChecker();
+        }
+
+        // Form Opener
+        public void loadPage(object Form)
+        {
+            if (this.pnlPage.Controls.Count > 0)
+                this.pnlPage.Controls.RemoveAt(0);
+            Form f = Form as Form;
+            f.TopLevel = false;
+            f.Dock = DockStyle.Fill;
+            this.pnlPage.Controls.Add(f);
+            this.pnlPage.Tag = f;
+            f.Show();
+        }
+
+        // Settings 
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            loadPage(new SettingsPage());
+
+            lblHeader.Text = "LockCent | Settings";
+        }
+
+        // LogOut
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            username = "";
+            password = "";
+            ekey = "";
+
+            Login lgn = this.Owner as Login;
+            lgn.Show();
+            this.Close();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
