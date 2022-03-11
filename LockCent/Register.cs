@@ -23,6 +23,7 @@ namespace LockCent
 
             btnRegister.Location = new Point(this.Width / 2 - btnRegister.Width / 2, btnRegister.Location.Y);
             lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
+
         }
 
         private void lblLogin_Click(object sender, EventArgs e)
