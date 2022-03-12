@@ -123,6 +123,7 @@
             this.Controls.Add(this.txtMain);
             this.Controls.Add(this.pnlDrag);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Notificator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notificator";
