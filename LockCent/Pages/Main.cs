@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using LockCent.Encryption;
+using LockCent.Properties;
 using DiscordRPC;
 using DiscordRPC.Logging;
 
@@ -64,18 +65,30 @@ namespace LockCent.Pages
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
+
+                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                Settings.Default["Username"] = userEnc;
+                Settings.Default.Save();
             }
 
             if (!File.Exists(path + "/pass.txt"))
             {
-                StreamWriter sw = new StreamWriter(path + "/pass.txt");
-                sw.Close();
+                StreamWriter sw1 = new StreamWriter(path + "/pass.txt");
+                sw1.Close();
+
+                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                Settings.Default["Username"] = userEnc;
+                Settings.Default.Save();
             }
 
             if (!File.Exists(path + "/notes.txt"))
             {
-                StreamWriter sw1 = new StreamWriter(path + "/notes.txt");
-                sw1.Close();
+                StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
+                sw2.Close();
+
+                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                Settings.Default["Username"] = userEnc;
+                Settings.Default.Save();
             }
         }
 
@@ -130,7 +143,10 @@ namespace LockCent.Pages
         // Home
         private void btnHome_Click(object sender, EventArgs e)
         {
-            loadPage(new HomePage());
+            HomePage hp = new HomePage();
+            hp.label1.Text = EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername");
+            loadPage(hp);
+            
             lblHeader.Text = "LockCent | Home";
         }
 
@@ -146,6 +162,7 @@ namespace LockCent.Pages
         {
             NotesPage page = new NotesPage();
             page.ekey = ekey;
+            page.username = username;
             loadPage(page);
 
             lblHeader.Text = "LockCent | Notes";

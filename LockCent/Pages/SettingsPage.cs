@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 using LockCent.Properties;
@@ -77,6 +78,14 @@ namespace LockCent.Pages
         private void FolderSelector_Scroll(object sender, ScrollEventArgs e)
         {
 
+        }
+
+        private void btnErase_Click(object sender, EventArgs e)
+        {
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+
+            File.Delete(path + "/notes.txt");
+            File.Delete(path + "/pass.txt");
         }
     }
 }

@@ -16,5 +16,10 @@ namespace LockCent.Pages
         {
             InitializeComponent();
         }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

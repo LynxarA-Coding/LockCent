@@ -39,8 +39,15 @@
             this.pnlNotes = new System.Windows.Forms.Panel();
             this.cbNotes = new Guna.UI2.WinForms.Guna2CheckBox();
             this.lblNotes = new System.Windows.Forms.Label();
+            this.pnlErase = new System.Windows.Forms.Panel();
+            this.lblErase = new System.Windows.Forms.Label();
+            this.elpsNotes = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.elpsErase = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnErase = new Guna.UI2.WinForms.Guna2Button();
+            this.elpsErBtn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlData.SuspendLayout();
             this.pnlNotes.SuspendLayout();
+            this.pnlErase.SuspendLayout();
             this.SuspendLayout();
             // 
             // elpsPage
@@ -119,7 +126,7 @@
             this.pnlNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.pnlNotes.Controls.Add(this.cbNotes);
             this.pnlNotes.Controls.Add(this.lblNotes);
-            this.pnlNotes.Location = new System.Drawing.Point(22, 213);
+            this.pnlNotes.Location = new System.Drawing.Point(22, 211);
             this.pnlNotes.Name = "pnlNotes";
             this.pnlNotes.Size = new System.Drawing.Size(323, 161);
             this.pnlNotes.TabIndex = 2;
@@ -156,12 +163,65 @@
             this.lblNotes.TabIndex = 1;
             this.lblNotes.Text = "Enable Notes";
             // 
+            // pnlErase
+            // 
+            this.pnlErase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.pnlErase.Controls.Add(this.btnErase);
+            this.pnlErase.Controls.Add(this.lblErase);
+            this.pnlErase.Location = new System.Drawing.Point(366, 24);
+            this.pnlErase.Name = "pnlErase";
+            this.pnlErase.Size = new System.Drawing.Size(242, 161);
+            this.pnlErase.TabIndex = 2;
+            // 
+            // lblErase
+            // 
+            this.lblErase.AutoSize = true;
+            this.lblErase.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErase.ForeColor = System.Drawing.Color.White;
+            this.lblErase.Location = new System.Drawing.Point(3, 14);
+            this.lblErase.Name = "lblErase";
+            this.lblErase.Size = new System.Drawing.Size(238, 63);
+            this.lblErase.TabIndex = 1;
+            this.lblErase.Text = "Erase all the Data?\r\n(It will delete all the passwords \r\nand notes!)";
+            // 
+            // elpsNotes
+            // 
+            this.elpsNotes.BorderRadius = 10;
+            this.elpsNotes.TargetControl = this.pnlNotes;
+            // 
+            // elpsErase
+            // 
+            this.elpsErase.BorderRadius = 10;
+            this.elpsErase.TargetControl = this.pnlErase;
+            // 
+            // btnErase
+            // 
+            this.btnErase.CheckedState.Parent = this.btnErase;
+            this.btnErase.CustomImages.Parent = this.btnErase;
+            this.btnErase.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.btnErase.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnErase.ForeColor = System.Drawing.Color.White;
+            this.btnErase.HoverState.Parent = this.btnErase;
+            this.btnErase.Location = new System.Drawing.Point(33, 95);
+            this.btnErase.Name = "btnErase";
+            this.btnErase.ShadowDecoration.Parent = this.btnErase;
+            this.btnErase.Size = new System.Drawing.Size(180, 45);
+            this.btnErase.TabIndex = 2;
+            this.btnErase.Text = "ERASE";
+            this.btnErase.Click += new System.EventHandler(this.btnErase_Click);
+            // 
+            // elpsErBtn
+            // 
+            this.elpsErBtn.BorderRadius = 10;
+            this.elpsErBtn.TargetControl = this.btnErase;
+            // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.ClientSize = new System.Drawing.Size(620, 450);
+            this.Controls.Add(this.pnlErase);
             this.Controls.Add(this.pnlNotes);
             this.Controls.Add(this.pnlData);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -172,6 +232,8 @@
             this.pnlData.PerformLayout();
             this.pnlNotes.ResumeLayout(false);
             this.pnlNotes.PerformLayout();
+            this.pnlErase.ResumeLayout(false);
+            this.pnlErase.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -188,5 +250,11 @@
         private System.Windows.Forms.Panel pnlNotes;
         private Guna.UI2.WinForms.Guna2CheckBox cbNotes;
         private System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.Panel pnlErase;
+        private System.Windows.Forms.Label lblErase;
+        private Guna.UI2.WinForms.Guna2Elipse elpsNotes;
+        private Guna.UI2.WinForms.Guna2Elipse elpsErase;
+        private Guna.UI2.WinForms.Guna2Button btnErase;
+        private Guna.UI2.WinForms.Guna2Elipse elpsErBtn;
     }
 }

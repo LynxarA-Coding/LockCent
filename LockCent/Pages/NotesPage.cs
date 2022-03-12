@@ -8,7 +8,7 @@ namespace LockCent.Pages
 {
     public partial class NotesPage : Form
     {
-
+        public string username { get; set; }
         public string ekey { get; set; }
         public NotesPage()
         {
@@ -22,9 +22,21 @@ namespace LockCent.Pages
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
             File.Delete(path + "/notes.txt");
 
-            StreamWriter sw = new StreamWriter(path + "/notes.txt");
-            sw.WriteLine(eresult);
-            sw.Close();
+            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername");
+
+            if (settingsUsername != username)
+            {
+                Notificator notify = new Notificator();
+                notify.Type = "error";
+                notify.Text = "Wrong user. Delete settings and notes file\nto make a new ones.";
+                notify.Show();
+            }
+            else
+            {
+                StreamWriter sw = new StreamWriter(path + "/notes.txt");
+                sw.WriteLine(eresult);
+                sw.Close();
+            }
         }
 
         private void NotesPage_Load(object sender, EventArgs e)
@@ -48,7 +60,18 @@ namespace LockCent.Pages
                 }
                 sr.Close();
 
-                txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);
+                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername"))
+                {
+                    if (encodedResult != "")
+                    {
+                        txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);
+                    }
+                }
+                else
+                {
+                    txtNotes.PlaceholderText = "Wrong User";
+                }
+                
             }
             else
             {
