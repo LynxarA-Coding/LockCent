@@ -24,6 +24,17 @@ namespace LockCent.Pages
             {
                 FolderSelector.Value = 0;
             }
+
+            bool notestype = Convert.ToBoolean(Settings.Default["Notes"]);
+
+            if (notestype)
+            {
+                cbNotes.Checked = true;
+            }
+            else
+            {
+                cbNotes.Checked = false;
+            }
         }
 
         private void SettingsPage_Load(object sender, EventArgs e)
@@ -43,6 +54,20 @@ namespace LockCent.Pages
                 FolderSelector.Value = 0;
                 MessageBox.Show("DataBase option is Not Done yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cbNotes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbNotes.Checked)
+            {
+                Settings.Default["Notes"] = true;
+            }
+            else
+            {
+                Settings.Default["Notes"] = false;
+            }
+
+            Settings.Default.Save();
         }
     }
 }

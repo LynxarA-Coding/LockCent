@@ -34,5 +34,17 @@ namespace LockCent.Properties {
                 this["SaveType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Notes {
+            get {
+                return ((bool)(this["Notes"]));
+            }
+            set {
+                this["Notes"] = value;
+            }
+        }
     }
 }

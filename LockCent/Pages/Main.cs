@@ -61,11 +61,21 @@ namespace LockCent.Pages
         {
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
 
-            if (!File.Exists(path + "/pass.txt"))
+            if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
+            }
+
+            if (!File.Exists(path + "/pass.txt"))
+            {
                 StreamWriter sw = new StreamWriter(path + "/pass.txt");
                 sw.Close();
+            }
+
+            if (!File.Exists(path + "/notes.txt"))
+            {
+                StreamWriter sw1 = new StreamWriter(path + "/notes.txt");
+                sw1.Close();
             }
         }
 
@@ -134,7 +144,10 @@ namespace LockCent.Pages
         // Notes
         private void btnNotes_Click(object sender, EventArgs e)
         {
-            loadPage(new NotesPage());
+            NotesPage page = new NotesPage();
+            page.ekey = ekey;
+            loadPage(page);
+
             lblHeader.Text = "LockCent | Notes";
         }
 
