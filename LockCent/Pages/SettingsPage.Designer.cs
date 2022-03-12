@@ -37,8 +37,8 @@
             this.pnlData = new System.Windows.Forms.Panel();
             this.elpsData = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlNotes = new System.Windows.Forms.Panel();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.cbNotes = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.lblNotes = new System.Windows.Forms.Label();
             this.pnlData.SuspendLayout();
             this.pnlNotes.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             this.FolderSelector.ThumbColor = System.Drawing.Color.White;
             this.FolderSelector.Value = 0;
             this.FolderSelector.ValueChanged += new System.EventHandler(this.FolderSelector_ValueChanged);
+            this.FolderSelector.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FolderSelector_Scroll);
             // 
             // lblSQL
             // 
@@ -123,17 +124,6 @@
             this.pnlNotes.Size = new System.Drawing.Size(323, 161);
             this.pnlNotes.TabIndex = 2;
             // 
-            // lblNotes
-            // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotes.ForeColor = System.Drawing.Color.White;
-            this.lblNotes.Location = new System.Drawing.Point(106, 47);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(106, 21);
-            this.lblNotes.TabIndex = 1;
-            this.lblNotes.Text = "Enable Notes";
-            // 
             // cbNotes
             // 
             this.cbNotes.AutoSize = true;
@@ -154,6 +144,17 @@
             this.cbNotes.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.cbNotes.UseVisualStyleBackColor = true;
             this.cbNotes.CheckedChanged += new System.EventHandler(this.cbNotes_CheckedChanged);
+            // 
+            // lblNotes
+            // 
+            this.lblNotes.AutoSize = true;
+            this.lblNotes.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotes.ForeColor = System.Drawing.Color.White;
+            this.lblNotes.Location = new System.Drawing.Point(106, 47);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(106, 21);
+            this.lblNotes.TabIndex = 1;
+            this.lblNotes.Text = "Enable Notes";
             // 
             // SettingsPage
             // 

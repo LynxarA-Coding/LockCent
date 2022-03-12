@@ -277,6 +277,12 @@
     <Compile Include="Pages\NotesPage.Designer.cs">
       <DependentUpon>NotesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Notificator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Notificator.Designer.cs">
+      <DependentUpon>Notificator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PasswordsPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\NotesPage.resx">
       <DependentUpon>NotesPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Notificator.resx">
+      <DependentUpon>Notificator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\PasswordsPage.resx">
       <DependentUpon>PasswordsPage.cs</DependentUpon>

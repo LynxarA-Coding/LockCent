@@ -37,6 +37,18 @@ namespace LockCent.Pages
 
                 btnSave.Enabled = true;
                 txtNotes.ReadOnly = false;
+
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/notes.txt";
+                StreamReader sr = new StreamReader(path);
+
+                string encodedResult = "";
+                while(!sr.EndOfStream)
+                {
+                    encodedResult += sr.ReadLine();
+                }
+                sr.Close();
+
+                txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);
             }
             else
             {

@@ -52,7 +52,11 @@ namespace LockCent.Pages
             else
             {
                 FolderSelector.Value = 0;
-                MessageBox.Show("DataBase option is Not Done yet", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                Notificator notify = new Notificator();
+                notify.Text = "DataBase option is not implemented yet!";
+                notify.Type = "error";
+                notify.Show();
             }
         }
 
@@ -68,6 +72,11 @@ namespace LockCent.Pages
             }
 
             Settings.Default.Save();
+        }
+
+        private void FolderSelector_Scroll(object sender, ScrollEventArgs e)
+        {
+
         }
     }
 }
