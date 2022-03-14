@@ -3,11 +3,13 @@ using System.IO;
 using System.Windows.Forms;
 
 using LockCent.Properties;
+using LockCent.Encryption;
 
 namespace LockCent.Pages
 {
     public partial class SettingsPage : Form
     {
+        public string Username { private get; set; }
         public SettingsPage()
         {
             InitializeComponent();
@@ -55,7 +57,7 @@ namespace LockCent.Pages
                 FolderSelector.Value = 0;
 
                 Notificator notify = new Notificator();
-                notify.Text = "DataBase option is not implemented yet!";
+                notify.Description = "DataBase option is not implemented yet!";
                 notify.Type = "error";
                 notify.Show();
             }
@@ -80,12 +82,36 @@ namespace LockCent.Pages
 
         }
 
-        private void btnErase_Click(object sender, EventArgs e)
+        private void btnErasePass_Click(object sender, EventArgs e)
+        {
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+
+            File.Delete(path + "/pass.txt");
+
+            string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
+            Settings.Default["Username"] = userEnc;
+            Settings.Default.Save();
+
+            Notificator notify = new Notificator();
+            notify.Type="error";
+            notify.Description = "Your Passwords were deleted!\nThis action is irreversible!";
+            notify.Show();
+        }
+
+        private void btnEraseNotes_Click(object sender, EventArgs e)
         {
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
 
             File.Delete(path + "/notes.txt");
-            File.Delete(path + "/pass.txt");
+
+            string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
+            Settings.Default["Username"] = userEnc;
+            Settings.Default.Save();
+
+            Notificator notify = new Notificator();
+            notify.Type = "error";
+            notify.Description = "Your Notes were deleted!\nThis action is irreversible!";
+            notify.Show();
         }
     }
 }

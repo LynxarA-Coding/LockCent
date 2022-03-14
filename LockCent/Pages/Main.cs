@@ -125,6 +125,8 @@ namespace LockCent.Pages
 
             loadPage(new HomePage());
             lblHeader.Text = "LockCent | Home";
+
+            
         }
 
         // Form Opener
@@ -144,7 +146,6 @@ namespace LockCent.Pages
         private void btnHome_Click(object sender, EventArgs e)
         {
             HomePage hp = new HomePage();
-            hp.label1.Text = EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername");
             loadPage(hp);
             
             lblHeader.Text = "LockCent | Home";
@@ -153,6 +154,8 @@ namespace LockCent.Pages
         // Passwords
         private void btnPasswords_Click(object sender, EventArgs e)
         {
+            FileChecker();
+
             loadPage(new PasswordsPage());
             lblHeader.Text = "LockCent | Passwords";
         }
@@ -160,6 +163,8 @@ namespace LockCent.Pages
         // Notes
         private void btnNotes_Click(object sender, EventArgs e)
         {
+            FileChecker();
+
             NotesPage page = new NotesPage();
             page.ekey = ekey;
             page.username = username;
@@ -171,7 +176,10 @@ namespace LockCent.Pages
         // Settings 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            loadPage(new SettingsPage());
+            SettingsPage page = new SettingsPage();
+            page.Username = username;
+            loadPage(page);
+
             lblHeader.Text = "LockCent | Settings";
         }
 

@@ -49,7 +49,7 @@ namespace LockCent.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("amogus")]
+        [global::System.Configuration.DefaultSettingValueAttribute("H7n2a3Ok32WxaejzeeUPsgjM6WiQc3b6K/cBIF6NyMs=")]
         public string Username {
             get {
                 return ((string)(this["Username"]));

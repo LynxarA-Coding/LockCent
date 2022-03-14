@@ -28,7 +28,7 @@ namespace LockCent.Pages
             {
                 Notificator notify = new Notificator();
                 notify.Type = "error";
-                notify.Text = "Wrong user. Delete settings and notes file\nto make a new ones.";
+                notify.Text = "Wrong user. Use Erase Data or \nLogin to Data Owner account";
                 notify.Show();
             }
             else

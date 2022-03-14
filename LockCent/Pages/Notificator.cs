@@ -9,7 +9,7 @@ namespace LockCent.Pages
     {
         bool mouseDown;
         private Point offset;
-        public string Text { get; set; }
+        public string Description { get; set; }
         public string Type { get; set; }
         public Notificator()
         {
@@ -38,7 +38,7 @@ namespace LockCent.Pages
                     break;
             }
 
-            txtMain.Text = Text;
+            txtMain.Text = Description;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
