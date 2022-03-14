@@ -89,7 +89,7 @@ namespace LockCent.Pages
             File.Delete(path + "/pass.txt");
 
             string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
-            Settings.Default["Username"] = userEnc;
+            Settings.Default["PassUsername"] = userEnc;
             Settings.Default.Save();
 
             Notificator notify = new Notificator();
@@ -105,7 +105,7 @@ namespace LockCent.Pages
             File.Delete(path + "/notes.txt");
 
             string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
-            Settings.Default["Username"] = userEnc;
+            Settings.Default["NotesUsername"] = userEnc;
             Settings.Default.Save();
 
             Notificator notify = new Notificator();

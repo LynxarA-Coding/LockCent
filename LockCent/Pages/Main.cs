@@ -67,7 +67,8 @@ namespace LockCent.Pages
                 Directory.CreateDirectory(path);
 
                 string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
-                Settings.Default["Username"] = userEnc;
+                Settings.Default["NotesUsername"] = userEnc;
+                Settings.Default["PassUsername"] = userEnc;
                 Settings.Default.Save();
             }
 
@@ -77,7 +78,7 @@ namespace LockCent.Pages
                 sw1.Close();
 
                 string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
-                Settings.Default["Username"] = userEnc;
+                Settings.Default["PassUsername"] = userEnc;
                 Settings.Default.Save();
             }
 
@@ -87,7 +88,7 @@ namespace LockCent.Pages
                 sw2.Close();
 
                 string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
-                Settings.Default["Username"] = userEnc;
+                Settings.Default["NotesUsername"] = userEnc;
                 Settings.Default.Save();
             }
         }
@@ -126,7 +127,7 @@ namespace LockCent.Pages
             loadPage(new HomePage());
             lblHeader.Text = "LockCent | Home";
 
-            
+            lblUsername.Text = username;
         }
 
         // Form Opener

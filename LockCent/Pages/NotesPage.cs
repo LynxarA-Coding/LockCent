@@ -19,7 +19,7 @@ namespace LockCent.Pages
         {
             string eresult = EFunctions.Encrypt(txtNotes.Text, ekey);
 
-            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername");
+            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), "LockCentEncrUsername");
 
             if (settingsUsername != username)
             {
@@ -60,7 +60,7 @@ namespace LockCent.Pages
                 }
                 sr.Close();
 
-                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername"))
+                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), "LockCentEncrUsername"))
                 {
                     if (encodedResult != "")
                     {

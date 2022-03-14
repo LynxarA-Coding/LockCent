@@ -47,6 +47,8 @@
             this.btnLogOut = new System.Windows.Forms.PictureBox();
             this.pnlPage = new System.Windows.Forms.Panel();
             this.elpsPage = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.lblLogged = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -67,6 +69,8 @@
             this.pnlDrag.BackColor = System.Drawing.Color.Transparent;
             this.pnlDrag.Controls.Add(this.lblHeader);
             this.pnlDrag.Controls.Add(this.btnClose);
+            this.pnlDrag.Controls.Add(this.lblLogged);
+            this.pnlDrag.Controls.Add(this.lblUsername);
             this.pnlDrag.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlDrag.Location = new System.Drawing.Point(0, 0);
             this.pnlDrag.Name = "pnlDrag";
@@ -82,7 +86,7 @@
             this.lblHeader.AutoSize = true;
             this.lblHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHeader.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblHeader.Location = new System.Drawing.Point(12, 9);
+            this.lblHeader.Location = new System.Drawing.Point(12, 1);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(97, 24);
             this.lblHeader.TabIndex = 1;
@@ -161,7 +165,7 @@
             this.lblSettings.AutoSize = true;
             this.lblSettings.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSettings.ForeColor = System.Drawing.Color.White;
-            this.lblSettings.Location = new System.Drawing.Point(15, 361);
+            this.lblSettings.Location = new System.Drawing.Point(14, 283);
             this.lblSettings.Name = "lblSettings";
             this.lblSettings.Size = new System.Drawing.Size(63, 20);
             this.lblSettings.TabIndex = 1;
@@ -213,7 +217,7 @@
             // btnSettings
             // 
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
-            this.btnSettings.Location = new System.Drawing.Point(27, 318);
+            this.btnSettings.Location = new System.Drawing.Point(25, 240);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(40, 40);
             this.btnSettings.TabIndex = 0;
@@ -242,6 +246,30 @@
             // 
             this.elpsPage.BorderRadius = 20;
             this.elpsPage.TargetControl = this.pnlPage;
+            // 
+            // lblLogged
+            // 
+            this.lblLogged.AutoSize = true;
+            this.lblLogged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogged.ForeColor = System.Drawing.Color.White;
+            this.lblLogged.Location = new System.Drawing.Point(13, 23);
+            this.lblLogged.Name = "lblLogged";
+            this.lblLogged.Size = new System.Drawing.Size(67, 15);
+            this.lblLogged.TabIndex = 1;
+            this.lblLogged.Text = "Logged As:";
+            this.lblLogged.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(79, 23);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(129, 15);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "PlaceholderUsername";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Main
             // 
@@ -295,5 +323,7 @@
         private System.Windows.Forms.Label lblNotes;
         private System.Windows.Forms.PictureBox btnNotes;
         private Guna.UI2.WinForms.Guna2Elipse elpsPage;
+        private System.Windows.Forms.Label lblLogged;
+        private System.Windows.Forms.Label lblUsername;
     }
 }
