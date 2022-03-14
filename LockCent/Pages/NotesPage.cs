@@ -19,20 +19,20 @@ namespace LockCent.Pages
         {
             string eresult = EFunctions.Encrypt(txtNotes.Text, ekey);
 
-            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-            File.Delete(path + "/notes.txt");
-
             string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["Username"]), "LockCentEncrUsername");
 
             if (settingsUsername != username)
             {
                 Notificator notify = new Notificator();
                 notify.Type = "error";
-                notify.Text = "Wrong user. Use Erase Data or \nLogin to Data Owner account";
+                notify.Description = "Wrong user. Use Erase Data or \nLogin to Data Owner account";
                 notify.Show();
             }
             else
             {
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+                File.Delete(path + "/notes.txt");
+
                 StreamWriter sw = new StreamWriter(path + "/notes.txt");
                 sw.WriteLine(eresult);
                 sw.Close();
@@ -69,7 +69,7 @@ namespace LockCent.Pages
                 }
                 else
                 {
-                    txtNotes.PlaceholderText = "Wrong User";
+                    txtNotes.PlaceholderText = "Wrong User. Switch to the user that owns these Notes...\n Or delete Notes File in Settings.";
                 }
                 
             }
