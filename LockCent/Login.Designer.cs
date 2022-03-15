@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pnlBackground = new System.Windows.Forms.Panel();
-            this.lblError = new System.Windows.Forms.Label();
             this.lblRegister = new System.Windows.Forms.Label();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.pnlBackground.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pnlBackground.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlBackground.BackgroundImage")));
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pnlBackground.Controls.Add(this.lblError);
             this.pnlBackground.Controls.Add(this.lblRegister);
             this.pnlBackground.Controls.Add(this.lblPass);
             this.pnlBackground.Controls.Add(this.lblUser);
@@ -72,19 +70,6 @@
             this.pnlBackground.Name = "pnlBackground";
             this.pnlBackground.Size = new System.Drawing.Size(730, 512);
             this.pnlBackground.TabIndex = 0;
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(261, 332);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(70, 21);
-            this.lblError.TabIndex = 8;
-            this.lblError.Text = "An Error";
-            this.lblError.Visible = false;
-            this.lblError.TextChanged += new System.EventHandler(this.lblError_TextChanged);
             // 
             // lblRegister
             // 
@@ -270,7 +255,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "LockCent | Login";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlBackground.ResumeLayout(false);
             this.pnlBackground.PerformLayout();
@@ -298,7 +283,6 @@
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblRegister;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblError;
     }
 }
 

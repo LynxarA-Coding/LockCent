@@ -7,8 +7,6 @@ namespace LockCent.Pages
 {
     public partial class Notificator : Form
     {
-        bool mouseDown;
-        private Point offset;
         public string Description { get; set; }
         public string Type { get; set; }
         public Notificator()
@@ -28,12 +26,15 @@ namespace LockCent.Pages
             switch(Type)
             {
                 case "error":
+                    this.Text = "LockCent | ERROR";
                     txtHeader.Text = "ERROR";
                     break;
                 case "info":
+                    this.Text = "LockCent | INFO";
                     txtHeader.Text = "INFO";
                     break;
                 default:
+                    this.Text = "LockCent | INVALID";
                     txtHeader.Text = "Error | Invalid Type";
                     break;
             }
@@ -44,27 +45,6 @@ namespace LockCent.Pages
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void pnlDrag_MouseDown(object sender, MouseEventArgs e)
-        {
-            offset.X = e.X;
-            offset.Y = e.Y;
-            mouseDown = true;
-        }
-
-        private void pnlDrag_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown == true)
-            {
-                Point currentScreenPos = PointToScreen(e.Location);
-                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
-            }
-        }
-
-        private void pnlDrag_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
         }
     }
 }

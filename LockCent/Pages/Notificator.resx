@@ -121,7 +121,7 @@
   <data name="btnClose.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAYAAADj79JYAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAADIFJREFUeF7tnQuwVVUZxwFFkyKJCtKQJER7aGkzWo2JxqTpqE2mTYk9fJSZGlaG
+        DgAACw4BQL7hQQAADIFJREFUeF7tnQuwVVUZxwFFkyKJCtKQJER7aGkzWo2JxqTpqE2mTYk9fJSZGlaG
         hj0VTM1yaMwaGbR0asw0yqSaTByn0aSaMTJMxUGoQAiMey+X+75c+n1nvnPZd51v7ffe53Hvf+Y/595z
         vvdeZ+2111p7n3FjGMMY6o09e/ZMgAfCGT09PbN4ndPb23s4nM3fB8GXq+gYkoLiTYfzBwYGbhwaGvoF
         /Pvu3bv74J4IdsEnkV/J65LBwcEzsDNDzY6hCooyheJ8Av6UQr2oxcuTG7F9DzwXXy9Tt6MLJD6ZApxJ
@@ -180,8 +180,11 @@
   <metadata name="elpsButton.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="elpsMain.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="dragPanel.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
+  </metadata>
+  <metadata name="guna2Elipse1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>233, 17</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

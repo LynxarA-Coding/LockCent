@@ -34,6 +34,8 @@
             this.pnlDrag = new Guna.UI2.WinForms.Guna2Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.lblLogged = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.lblNotes = new System.Windows.Forms.Label();
             this.lblPasswords = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.btnLogOut = new System.Windows.Forms.PictureBox();
             this.pnlPage = new System.Windows.Forms.Panel();
             this.elpsPage = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.lblLogged = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -104,6 +104,30 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.TabStop = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // lblLogged
+            // 
+            this.lblLogged.AutoSize = true;
+            this.lblLogged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogged.ForeColor = System.Drawing.Color.White;
+            this.lblLogged.Location = new System.Drawing.Point(13, 23);
+            this.lblLogged.Name = "lblLogged";
+            this.lblLogged.Size = new System.Drawing.Size(67, 15);
+            this.lblLogged.TabIndex = 1;
+            this.lblLogged.Text = "Logged As:";
+            this.lblLogged.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUsername.ForeColor = System.Drawing.Color.White;
+            this.lblUsername.Location = new System.Drawing.Point(79, 23);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(129, 15);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "PlaceholderUsername";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlMenu
             // 
@@ -247,30 +271,6 @@
             this.elpsPage.BorderRadius = 20;
             this.elpsPage.TargetControl = this.pnlPage;
             // 
-            // lblLogged
-            // 
-            this.lblLogged.AutoSize = true;
-            this.lblLogged.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogged.ForeColor = System.Drawing.Color.White;
-            this.lblLogged.Location = new System.Drawing.Point(13, 23);
-            this.lblLogged.Name = "lblLogged";
-            this.lblLogged.Size = new System.Drawing.Size(67, 15);
-            this.lblLogged.TabIndex = 1;
-            this.lblLogged.Text = "Logged As:";
-            this.lblLogged.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUsername.ForeColor = System.Drawing.Color.White;
-            this.lblUsername.Location = new System.Drawing.Point(79, 23);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(129, 15);
-            this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "PlaceholderUsername";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,7 +287,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Main";
+            this.Text = "LockCent | Main";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlDrag.ResumeLayout(false);

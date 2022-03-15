@@ -309,7 +309,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Register";
+            this.Text = "LockCent | Register";
             this.Load += new System.EventHandler(this.Register_Load);
             this.pnlDrag.ResumeLayout(false);
             this.pnlDrag.PerformLayout();

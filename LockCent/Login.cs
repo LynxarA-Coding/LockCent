@@ -91,20 +91,20 @@ namespace LockCent
                 }
                 else
                 {
-                    lblError.Visible = true;
-                    lblError.ForeColor = Color.Red;
-                    lblError.Text = "Username or password are incorrect!";
-                    lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
+                    Notificator notify = new Notificator();
+                    notify.Type = "error";
+                    notify.Description = "Username or password are incorrect!";
+                    notify.Show();
                 }
 
                 btnLogin.Enabled = true;
             }
             else
             {
-                lblError.Visible = true;
-                lblError.ForeColor = Color.Red;
-                lblError.Text = "Login or Password include incorrect symbols!";
-                lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
+                Notificator notify = new Notificator();
+                notify.Type = "error";
+                notify.Description = "Login or Password include incorrect symbols!";
+                notify.Show();
 
                 btnLogin.Enabled = true;
             }
@@ -146,11 +146,6 @@ namespace LockCent
         private void pnlDrag_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
-        }
-
-        private void lblError_TextChanged(object sender, EventArgs e)
-        {
-            lblError.Location = new Point(this.Width / 2 - lblError.Width / 2, lblError.Location.Y);
         }
 
         private void txtUser_TextChanged(object sender, EventArgs e)
