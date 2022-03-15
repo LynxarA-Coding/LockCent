@@ -191,9 +191,21 @@ namespace LockCent.Pages
             password = "";
             ekey = "";
 
-            Login lgn = this.Owner as Login;
-            lgn.Show();
-            this.Close();
+            Register reg = new Register();
+            Login lgn = new Login();
+
+            if (this.Owner.GetType() == reg.GetType())
+            {
+                Register reg2 = this.Owner as Register;
+                reg2.Show();
+                this.Close();
+            }
+            else
+            {
+                Login lgn2 = this.Owner as Login;
+                lgn.Show();
+                this.Close();
+            }
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)

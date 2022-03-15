@@ -4,6 +4,7 @@ using LockCent.Pages;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using LockCent.Scripts;
 using LockCent.Encryption;
 using System.Media;
 
@@ -63,29 +64,14 @@ namespace LockCent
 
             if (TextControl(txtUser.Text) && TextControl(txtPassword.Text))
             {
-                string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                conn.Open();
+                LCMySQL sql = new LCMySQL();
                 string txtCommand = "SELECT * FROM `user_accounts` WHERE `username` = \"" + txtUser.Text + "\"";
-                string sql = txtCommand;
 
-                MySqlCommand command = new MySqlCommand(sql, conn);
-                MySqlDataReader reader = command.ExecuteReader();
+                string[] result = sql.Get(txtCommand);
 
-                string username = "";
-                string password = "";
-                string ekey = "";
-
-                while (reader.Read())
-                {
-                    username = reader[0].ToString();
-                    password = reader[1].ToString();
-                    ekey = reader[2].ToString();
-                }
-
-                reader.Close();
-
-                conn.Close();
+                string username = result[0];
+                string password = result[1];
+                string ekey = result[2];
 
                 if (password == txtPassword.Text)
                 {

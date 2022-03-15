@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
 using LockCent.Pages;
 
-using MySql.Data.MySqlClient;
 using LockCent.Encryption;
+using LockCent.Scripts;
 using System.Media;
 
 namespace LockCent
@@ -77,32 +78,13 @@ namespace LockCent
 
         private bool UserChecker(string username, string password)
         {
+            string command = "SELECT * FROM `user_accounts` WHERE `username` = \"" + username + "\"";
+            
+            LCMySQL sql = new LCMySQL();
 
-            string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            conn.Open();
-            string txtCommand = "SELECT * FROM `user_accounts` WHERE `username` = \"" + username + "\"";
-            string sql = txtCommand;
+            string[] result = sql.Get(command);
 
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            MySqlDataReader reader = command.ExecuteReader();
-
-            string dbusername = "";
-            string dbpassword = "";
-            string dbekey = "";
-
-            while (reader.Read())
-            {
-                dbusername = reader[0].ToString();
-                dbpassword = reader[1].ToString();
-                dbekey = reader[2].ToString();
-            }
-
-            reader.Close();
-
-            conn.Close();
-
-            if (username == dbusername)
+            if (username == result[0])
             {
                 return false;
             }
@@ -124,14 +106,12 @@ namespace LockCent
 
                 if (UserChecker(username, password))
                 {
-                    string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
-                    MySqlConnection conn = new MySqlConnection(connStr);
-                    conn.Open();
 
                     string editedCom = "INSERT INTO `user_accounts`(`username`, `password`, `ekey`) VALUES ('" + username + "','" + password + "','" + key + "')";
-                    MySqlCommand command = new MySqlCommand(editedCom, conn);
-                    int result = command.ExecuteNonQuery();
-                    conn.Close();
+
+                    LCMySQL sql = new LCMySQL();
+
+                    sql.Send(editedCom);
 
                     Main mn = new Main() { Owner = this };
 
@@ -146,8 +126,8 @@ namespace LockCent
                     txtUser.Text = "";
                     txtPass1.Text = "";
                     txtPass2.Text = "";
-
-                    this.Close();
+                    
+                    this.Hide();
                 }
                 else
                 {
