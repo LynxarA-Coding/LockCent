@@ -19,9 +19,10 @@ namespace LockCent.Pages
         bool mouseDown;
         private Point offset;
 
+        public string email;
         public string username;
         public string password;
-        public string ekey;
+        public byte[] ekey;
 
 
         public DiscordRpcClient client;
@@ -61,12 +62,12 @@ namespace LockCent.Pages
         private void FileChecker()
         {
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-
+            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
 
-                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                string userEnc = EFunctions.Encrypt(username, thekey);
                 Settings.Default["NotesUsername"] = userEnc;
                 Settings.Default["PassUsername"] = userEnc;
                 Settings.Default.Save();
@@ -77,7 +78,7 @@ namespace LockCent.Pages
                 StreamWriter sw1 = new StreamWriter(path + "/pass.txt");
                 sw1.Close();
 
-                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                string userEnc = EFunctions.Encrypt(username, thekey);
                 Settings.Default["PassUsername"] = userEnc;
                 Settings.Default.Save();
             }
@@ -87,7 +88,7 @@ namespace LockCent.Pages
                 StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
                 sw2.Close();
 
-                string userEnc = EFunctions.Encrypt(username, "LockCentEncrUsername");
+                string userEnc = EFunctions.Encrypt(username, thekey);
                 Settings.Default["NotesUsername"] = userEnc;
                 Settings.Default.Save();
             }
@@ -146,8 +147,8 @@ namespace LockCent.Pages
         // Home
         private void btnHome_Click(object sender, EventArgs e)
         {
-            HomePage hp = new HomePage();
-            loadPage(hp);
+            HomePage page = new HomePage();
+            loadPage(page);
             
             lblHeader.Text = "LockCent | Home";
         }
@@ -157,7 +158,14 @@ namespace LockCent.Pages
         {
             FileChecker();
 
-            loadPage(new PasswordsPage());
+            PasswordsPage page = new PasswordsPage();
+            string[] passNames = new string[9] { "google.com", "pornhub.com", "digitalstore.com", "thomasmore.be", "vk.com", "google.be", "twitch.tv", "sexy-bitches.be", "poggers.com" };
+            string[] passValues = new string[9] { "amogus", "abobus", "amogus1", "abobus1", "Danilok02", "test", "test1", "test2", "test3" };
+
+            page.GivenPassNames = passNames;
+            page.GivenPassValues = passValues;
+
+            loadPage(page);
             lblHeader.Text = "LockCent | Passwords";
         }
 
@@ -189,7 +197,7 @@ namespace LockCent.Pages
         {
             username = "";
             password = "";
-            ekey = "";
+            ekey = null;
 
             Register reg = new Register();
             Login lgn = new Login();
@@ -211,6 +219,11 @@ namespace LockCent.Pages
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             client.Dispose();
+        }
+
+        private void pnlMenu_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

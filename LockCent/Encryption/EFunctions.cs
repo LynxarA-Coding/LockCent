@@ -10,84 +10,107 @@ namespace LockCent.Encryption
 {
     static class EFunctions
     {
-        public static string Encrypt(this string text, string key)
+        
+        public static string Encrypt(this string plainText, byte[] key)
         {
-            if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have valid value.", nameof(key));
-            if (string.IsNullOrEmpty(text))
-                throw new ArgumentException("The text must have valid value.", nameof(text));
+            byte[] iv = new byte[16] { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
+            // Instantiate a new Aes object to perform string symmetric encryption
+            Aes encryptor = Aes.Create();
 
-            var buffer = Encoding.UTF8.GetBytes(text);
-            var hash = new SHA512CryptoServiceProvider();
-            var aesKey = new byte[24];
-            Buffer.BlockCopy(hash.ComputeHash(Encoding.UTF8.GetBytes(key)), 0, aesKey, 0, 24);
+            encryptor.Mode = CipherMode.CBC;
+            //encryptor.KeySize = 32;
+            //encryptor.BlockSize = 128;
+            //encryptor.Padding = PaddingMode.Zeros;
 
-            using (var aes = Aes.Create())
-            {
-                if (aes == null)
-                    throw new ArgumentException("Parameter must not be null.", nameof(aes));
+            // Set key and IV
+            encryptor.Key = key;
+            encryptor.IV = iv;
 
-                aes.Key = aesKey;
+            // Instantiate a new MemoryStream object to contain the encrypted bytes
+            MemoryStream memoryStream = new MemoryStream();
 
-                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
-                using (var resultStream = new MemoryStream())
-                {
-                    using (var aesStream = new CryptoStream(resultStream, encryptor, CryptoStreamMode.Write))
-                    using (var plainStream = new MemoryStream(buffer))
-                    {
-                        plainStream.CopyTo(aesStream);
-                    }
+            // Instantiate a new encryptor from our Aes object
+            ICryptoTransform aesEncryptor = encryptor.CreateEncryptor();
 
-                    var result = resultStream.ToArray();
-                    var combined = new byte[aes.IV.Length + result.Length];
-                    Array.ConstrainedCopy(aes.IV, 0, combined, 0, aes.IV.Length);
-                    Array.ConstrainedCopy(result, 0, combined, aes.IV.Length, result.Length);
+            // Instantiate a new CryptoStream object to process the data and write it to the 
+            // memory stream
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesEncryptor, CryptoStreamMode.Write);
 
-                    return Convert.ToBase64String(combined);
-                }
-            }
+            // Convert the plainText string into a byte array
+            byte[] plainBytes = Encoding.ASCII.GetBytes(plainText);
+
+            // Encrypt the input plaintext string
+            cryptoStream.Write(plainBytes, 0, plainBytes.Length);
+
+            // Complete the encryption process
+            cryptoStream.FlushFinalBlock();
+
+            // Convert the encrypted data from a MemoryStream to a byte array
+            byte[] cipherBytes = memoryStream.ToArray();
+
+            // Close both the MemoryStream and the CryptoStream
+            memoryStream.Close();
+            cryptoStream.Close();
+
+            // Convert the encrypted byte array to a base64 encoded string
+            string cipherText = Convert.ToBase64String(cipherBytes, 0, cipherBytes.Length);
+
+            // Return the encrypted data as a string
+            return cipherText;
         }
 
-        public static string Decrypt(this string encryptedText, string key)
+        public static string Decrypt(this string cipherText, byte[] key)
         {
-            if (string.IsNullOrEmpty(key))
-                throw new ArgumentException("Key must have valid value.", nameof(key));
-            if (string.IsNullOrEmpty(encryptedText))
-                throw new ArgumentException("The encrypted text must have valid value.", nameof(encryptedText));
+            byte[] iv = new byte[16] { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
+            Aes encryptor = Aes.Create();
 
-            var combined = Convert.FromBase64String(encryptedText);
-            var buffer = new byte[combined.Length];
-            var hash = new SHA512CryptoServiceProvider();
-            var aesKey = new byte[24];
-            Buffer.BlockCopy(hash.ComputeHash(Encoding.UTF8.GetBytes(key)), 0, aesKey, 0, 24);
+            encryptor.Mode = CipherMode.CBC;
+            //encryptor.KeySize = 32;
+            //encryptor.BlockSize = 128;
+            //encryptor.Padding = PaddingMode.Zeros;
+            // Set key and IV
+            encryptor.Key = key;
+            encryptor.IV = iv;
 
-            using (var aes = Aes.Create())
+            // Instantiate a new MemoryStream object to contain the encrypted bytes
+            MemoryStream memoryStream = new MemoryStream();
+
+            // Instantiate a new encryptor from our Aes object
+            ICryptoTransform aesDecryptor = encryptor.CreateDecryptor();
+
+            // Instantiate a new CryptoStream object to process the data and write it to the 
+            // memory stream
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, aesDecryptor, CryptoStreamMode.Write);
+
+            // Will contain decrypted plaintext
+            string plainText = String.Empty;
+
+            try
             {
-                if (aes == null)
-                    throw new ArgumentException("Parameter must not be null.", nameof(aes));
+                // Convert the ciphertext string into a byte array
+                byte[] cipherBytes = Convert.FromBase64String(cipherText);
 
-                aes.Key = aesKey;
+                // Decrypt the input ciphertext string
+                cryptoStream.Write(cipherBytes, 0, cipherBytes.Length);
 
-                var iv = new byte[aes.IV.Length];
-                var ciphertext = new byte[buffer.Length - iv.Length];
+                // Complete the decryption process
+                cryptoStream.FlushFinalBlock();
 
-                Array.ConstrainedCopy(combined, 0, iv, 0, iv.Length);
-                Array.ConstrainedCopy(combined, iv.Length, ciphertext, 0, ciphertext.Length);
+                // Convert the decrypted data from a MemoryStream to a byte array
+                byte[] plainBytes = memoryStream.ToArray();
 
-                aes.IV = iv;
-
-                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
-                using (var resultStream = new MemoryStream())
-                {
-                    using (var aesStream = new CryptoStream(resultStream, decryptor, CryptoStreamMode.Write))
-                    using (var plainStream = new MemoryStream(ciphertext))
-                    {
-                        plainStream.CopyTo(aesStream);
-                    }
-
-                    return Encoding.UTF8.GetString(resultStream.ToArray());
-                }
+                // Convert the decrypted byte array to string
+                plainText = Encoding.ASCII.GetString(plainBytes, 0, plainBytes.Length);
             }
+            finally
+            {
+                // Close both the MemoryStream and the CryptoStream
+                memoryStream.Close();
+                cryptoStream.Close();
+            }
+
+            // Return the decrypted data as a string
+            return plainText;
         }
     }
 }

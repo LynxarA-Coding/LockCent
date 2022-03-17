@@ -87,8 +87,8 @@ namespace LockCent.Pages
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
 
             File.Delete(path + "/pass.txt");
-
-            string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
+            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
+            string userEnc = EFunctions.Encrypt(Username, thekey);
             Settings.Default["PassUsername"] = userEnc;
             Settings.Default.Save();
 
@@ -103,8 +103,8 @@ namespace LockCent.Pages
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
 
             File.Delete(path + "/notes.txt");
-
-            string userEnc = EFunctions.Encrypt(Username, "LockCentEncrUsername");
+            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
+            string userEnc = EFunctions.Encrypt(Username, thekey);
             Settings.Default["NotesUsername"] = userEnc;
             Settings.Default.Save();
 

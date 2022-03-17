@@ -7,9 +7,15 @@ using MySql.Data.MySqlClient;
 
 namespace LockCent.Scripts
 {
+    class User
+    {
+        public string Email { get; set; }
+        public string UserName { get; set; }   
+        public string Password { get; set; }
+        public byte[] Ekey { get; set; }
+    }
     class LCMySQL
     {
-
         private string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
         public void Send(string commandLine)
         {
@@ -21,7 +27,7 @@ namespace LockCent.Scripts
             conn.Close();
         }
 
-        public string[] Get(string commandLine)
+        public User Get(string commandLine)
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
@@ -31,27 +37,22 @@ namespace LockCent.Scripts
             MySqlCommand command = new MySqlCommand(sql, conn);
             MySqlDataReader reader = command.ExecuteReader();
 
-            string dbusername = "";
-            string dbpassword = "";
-            string dbekey = "";
+            User user = new User();
 
             while (reader.Read())
             {
-                dbusername = reader[0].ToString();
-                dbpassword = reader[1].ToString();
-                dbekey = reader[2].ToString();
+                user.Email = reader[0].ToString();
+                user.UserName = reader[1].ToString();
+                user.Password = reader[2].ToString();
+                user.Ekey = (byte[])reader[3];
+
             }
 
             reader.Close();
 
             conn.Close();
 
-            string[] result = new string[3];
-            result[0] = dbusername;
-            result[1] = dbpassword;
-            result[2] = dbekey;
-
-            return result;
+            return user;
         }
     }
 }

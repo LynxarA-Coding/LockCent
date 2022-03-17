@@ -34,20 +34,11 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2PictureBox();
             this.elpsMain = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.txtUser = new Guna.UI2.WinForms.Guna2TextBox();
-            this.elpsUser = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.elpsPass1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.txtPass1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.elpsPass2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.txtPass2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnRegister = new Guna.UI2.WinForms.Guna2Button();
-            this.elpsReg = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.lblError = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.lblPass = new System.Windows.Forms.Label();
-            this.lblPass1 = new System.Windows.Forms.Label();
             this.lblLogin = new System.Windows.Forms.Label();
             this.lblCopyright = new System.Windows.Forms.Label();
+            this.lblText = new System.Windows.Forms.Label();
+            this.btnVisit = new Guna.UI2.WinForms.Guna2Button();
+            this.elpsVisit = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -96,170 +87,6 @@
             this.elpsMain.BorderRadius = 25;
             this.elpsMain.TargetControl = this;
             // 
-            // txtUser
-            // 
-            this.txtUser.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtUser.DefaultText = "";
-            this.txtUser.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUser.DisabledState.Parent = this.txtUser;
-            this.txtUser.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUser.FocusedState.Parent = this.txtUser;
-            this.txtUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.ForeColor = System.Drawing.Color.Black;
-            this.txtUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtUser.HoverState.Parent = this.txtUser;
-            this.txtUser.Location = new System.Drawing.Point(251, 166);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtUser.Name = "txtUser";
-            this.txtUser.PasswordChar = '\0';
-            this.txtUser.PlaceholderText = "";
-            this.txtUser.SelectedText = "";
-            this.txtUser.ShadowDecoration.Parent = this.txtUser;
-            this.txtUser.Size = new System.Drawing.Size(200, 36);
-            this.txtUser.TabIndex = 4;
-            this.txtUser.TextChanged += new System.EventHandler(this.txtUser_TextChanged);
-            // 
-            // elpsUser
-            // 
-            this.elpsUser.BorderRadius = 15;
-            this.elpsUser.TargetControl = this.txtUser;
-            // 
-            // elpsPass1
-            // 
-            this.elpsPass1.BorderRadius = 15;
-            this.elpsPass1.TargetControl = this.txtPass1;
-            // 
-            // txtPass1
-            // 
-            this.txtPass1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPass1.DefaultText = "";
-            this.txtPass1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPass1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPass1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPass1.DisabledState.Parent = this.txtPass1;
-            this.txtPass1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPass1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPass1.FocusedState.Parent = this.txtPass1;
-            this.txtPass1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass1.ForeColor = System.Drawing.Color.Black;
-            this.txtPass1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPass1.HoverState.Parent = this.txtPass1;
-            this.txtPass1.Location = new System.Drawing.Point(251, 224);
-            this.txtPass1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass1.Name = "txtPass1";
-            this.txtPass1.PasswordChar = '*';
-            this.txtPass1.PlaceholderText = "";
-            this.txtPass1.SelectedText = "";
-            this.txtPass1.ShadowDecoration.Parent = this.txtPass1;
-            this.txtPass1.Size = new System.Drawing.Size(200, 36);
-            this.txtPass1.TabIndex = 5;
-            this.txtPass1.TextChanged += new System.EventHandler(this.txtPass1_TextChanged);
-            // 
-            // elpsPass2
-            // 
-            this.elpsPass2.BorderRadius = 15;
-            this.elpsPass2.TargetControl = this.txtPass2;
-            // 
-            // txtPass2
-            // 
-            this.txtPass2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPass2.DefaultText = "";
-            this.txtPass2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPass2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPass2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPass2.DisabledState.Parent = this.txtPass2;
-            this.txtPass2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPass2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPass2.FocusedState.Parent = this.txtPass2;
-            this.txtPass2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass2.ForeColor = System.Drawing.Color.Black;
-            this.txtPass2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPass2.HoverState.Parent = this.txtPass2;
-            this.txtPass2.Location = new System.Drawing.Point(251, 280);
-            this.txtPass2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtPass2.Name = "txtPass2";
-            this.txtPass2.PasswordChar = '*';
-            this.txtPass2.PlaceholderText = "";
-            this.txtPass2.SelectedText = "";
-            this.txtPass2.ShadowDecoration.Parent = this.txtPass2;
-            this.txtPass2.Size = new System.Drawing.Size(200, 36);
-            this.txtPass2.TabIndex = 6;
-            this.txtPass2.TextChanged += new System.EventHandler(this.txtPass2_TextChanged);
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.CheckedState.Parent = this.btnRegister;
-            this.btnRegister.CustomImages.Parent = this.btnRegister;
-            this.btnRegister.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(171)))), ((int)(((byte)(204)))));
-            this.btnRegister.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.Black;
-            this.btnRegister.HoverState.Parent = this.btnRegister;
-            this.btnRegister.Location = new System.Drawing.Point(272, 330);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.ShadowDecoration.Parent = this.btnRegister;
-            this.btnRegister.Size = new System.Drawing.Size(155, 31);
-            this.btnRegister.TabIndex = 5;
-            this.btnRegister.Text = "REGISTER";
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // elpsReg
-            // 
-            this.elpsReg.BorderRadius = 15;
-            this.elpsReg.TargetControl = this.btnRegister;
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.BackColor = System.Drawing.Color.Transparent;
-            this.lblError.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.lblError.ForeColor = System.Drawing.Color.Red;
-            this.lblError.Location = new System.Drawing.Point(268, 375);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(70, 21);
-            this.lblError.TabIndex = 9;
-            this.lblError.Text = "An Error";
-            this.lblError.Visible = false;
-            this.lblError.TextChanged += new System.EventHandler(this.lblError_TextChanged);
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(156, 172);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(87, 21);
-            this.lblUser.TabIndex = 10;
-            this.lblUser.Text = "Username:";
-            // 
-            // lblPass
-            // 
-            this.lblPass.AutoSize = true;
-            this.lblPass.BackColor = System.Drawing.Color.Transparent;
-            this.lblPass.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.lblPass.ForeColor = System.Drawing.Color.White;
-            this.lblPass.Location = new System.Drawing.Point(160, 231);
-            this.lblPass.Name = "lblPass";
-            this.lblPass.Size = new System.Drawing.Size(83, 21);
-            this.lblPass.TabIndex = 11;
-            this.lblPass.Text = "Password:";
-            // 
-            // lblPass1
-            // 
-            this.lblPass1.AutoSize = true;
-            this.lblPass1.BackColor = System.Drawing.Color.Transparent;
-            this.lblPass1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            this.lblPass1.ForeColor = System.Drawing.Color.White;
-            this.lblPass1.Location = new System.Drawing.Point(104, 286);
-            this.lblPass1.Name = "lblPass1";
-            this.lblPass1.Size = new System.Drawing.Size(139, 21);
-            this.lblPass1.TabIndex = 11;
-            this.lblPass1.Text = "Repeat Password:";
-            // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
@@ -285,6 +112,38 @@
             this.lblCopyright.TabIndex = 13;
             this.lblCopyright.Text = "LockCent @2022";
             // 
+            // lblText
+            // 
+            this.lblText.AutoSize = true;
+            this.lblText.BackColor = System.Drawing.Color.Transparent;
+            this.lblText.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Bold);
+            this.lblText.ForeColor = System.Drawing.Color.White;
+            this.lblText.Location = new System.Drawing.Point(153, 189);
+            this.lblText.Name = "lblText";
+            this.lblText.Size = new System.Drawing.Size(445, 37);
+            this.lblText.TabIndex = 14;
+            this.lblText.Text = "Create an Account on our WebSite:";
+            // 
+            // btnVisit
+            // 
+            this.btnVisit.CheckedState.Parent = this.btnVisit;
+            this.btnVisit.CustomImages.Parent = this.btnVisit;
+            this.btnVisit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.btnVisit.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisit.ForeColor = System.Drawing.Color.White;
+            this.btnVisit.HoverState.Parent = this.btnVisit;
+            this.btnVisit.Location = new System.Drawing.Point(156, 247);
+            this.btnVisit.Name = "btnVisit";
+            this.btnVisit.ShadowDecoration.Parent = this.btnVisit;
+            this.btnVisit.Size = new System.Drawing.Size(438, 58);
+            this.btnVisit.TabIndex = 15;
+            this.btnVisit.Text = "VISIT OUR WEBSITE";
+            // 
+            // elpsVisit
+            // 
+            this.elpsVisit.BorderRadius = 15;
+            this.elpsVisit.TargetControl = this.btnVisit;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,16 +152,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(730, 512);
+            this.Controls.Add(this.btnVisit);
+            this.Controls.Add(this.lblText);
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.lblLogin);
-            this.Controls.Add(this.lblPass1);
-            this.Controls.Add(this.lblPass);
-            this.Controls.Add(this.lblUser);
-            this.Controls.Add(this.lblError);
-            this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.txtPass2);
-            this.Controls.Add(this.txtPass1);
-            this.Controls.Add(this.txtUser);
             this.Controls.Add(this.pnlDrag);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -325,19 +178,10 @@
         private System.Windows.Forms.Label lblTitle;
         private Guna.UI2.WinForms.Guna2PictureBox btnClose;
         private Guna.UI2.WinForms.Guna2Elipse elpsMain;
-        private Guna.UI2.WinForms.Guna2TextBox txtUser;
-        private Guna.UI2.WinForms.Guna2Elipse elpsUser;
-        private Guna.UI2.WinForms.Guna2Elipse elpsPass1;
-        private Guna.UI2.WinForms.Guna2Elipse elpsPass2;
-        private Guna.UI2.WinForms.Guna2TextBox txtPass1;
-        private Guna.UI2.WinForms.Guna2TextBox txtPass2;
-        private Guna.UI2.WinForms.Guna2Button btnRegister;
-        private Guna.UI2.WinForms.Guna2Elipse elpsReg;
-        private System.Windows.Forms.Label lblError;
-        private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.Label lblPass;
-        private System.Windows.Forms.Label lblPass1;
         private System.Windows.Forms.Label lblLogin;
         private System.Windows.Forms.Label lblCopyright;
+        private System.Windows.Forms.Label lblText;
+        private Guna.UI2.WinForms.Guna2Button btnVisit;
+        private Guna.UI2.WinForms.Guna2Elipse elpsVisit;
     }
 }

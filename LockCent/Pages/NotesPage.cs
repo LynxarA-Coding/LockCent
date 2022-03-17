@@ -9,7 +9,7 @@ namespace LockCent.Pages
     public partial class NotesPage : Form
     {
         public string username { get; set; }
-        public string ekey { get; set; }
+        public byte[] ekey { get; set; }
         public NotesPage()
         {
             InitializeComponent();
@@ -18,8 +18,8 @@ namespace LockCent.Pages
         private void btnSave_Click(object sender, EventArgs e)
         {
             string eresult = EFunctions.Encrypt(txtNotes.Text, ekey);
-
-            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), "LockCentEncrUsername");
+            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
+            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), thekey);
 
             if (settingsUsername != username)
             {
@@ -60,7 +60,9 @@ namespace LockCent.Pages
                 }
                 sr.Close();
 
-                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), "LockCentEncrUsername"))
+                byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
+
+                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), thekey))
                 {
                     if (encodedResult != "")
                     {

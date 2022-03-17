@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 using LockCent.Scripts;
 using LockCent.Encryption;
 using System.Media;
-
+using System.Text;
 
 namespace LockCent
 {
@@ -65,23 +65,19 @@ namespace LockCent
             if (TextControl(txtUser.Text) && TextControl(txtPassword.Text))
             {
                 LCMySQL sql = new LCMySQL();
-                string txtCommand = "SELECT * FROM `user_accounts` WHERE `username` = \"" + txtUser.Text + "\"";
+                string txtCommand = "SELECT * FROM `useraccounts_test` WHERE `username` = \"" + txtUser.Text + "\"";
 
-                string[] result = sql.Get(txtCommand);
+                User user = sql.Get(txtCommand);
 
-                string username = result[0];
-                string password = result[1];
-                string ekey = result[2];
-
-                if (password == txtPassword.Text)
+                if (user.Ekey != null && user.Password == EFunctions.Encrypt(txtPassword.Text, user.Ekey))
                 {
-                    password = EFunctions.Encrypt(password, ekey);
 
                     Main mn = new Main(){ Owner = this };
 
-                    mn.username = username;
-                    mn.password = password;
-                    mn.ekey = ekey;
+                    mn.email = user.Email;
+                    mn.username = user.UserName;
+                    mn.password = user.Password;
+                    mn.ekey = user.Ekey;
 
                     mn.Show();
 
