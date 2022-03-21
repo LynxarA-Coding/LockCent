@@ -109,6 +109,7 @@
             this.txtDelName.ShadowDecoration.Parent = this.txtDelName;
             this.txtDelName.Size = new System.Drawing.Size(453, 44);
             this.txtDelName.TabIndex = 1;
+            this.txtDelName.Visible = false;
             // 
             // HomePage
             // 
