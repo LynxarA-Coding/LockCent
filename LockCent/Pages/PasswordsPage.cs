@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 using System.Windows.Forms;
 
 namespace LockCent.Pages
 {
     public partial class PasswordsPage : Form
     {
+        // Passed Data
         public string[] GivenPassNames { get; set; }
 
         public string[] GivenPassValues { get; set; }
 
+        // JSON Shit
+
+        string json = "[";
+
+        // Local Passwords
         private List<string> PassName = new List<string>();
         private List<string> PassValue = new List<string>();
 
@@ -101,27 +102,43 @@ namespace LockCent.Pages
 
         private void PasswordsPage_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < GivenPassNames.Length; i++)
+            if (GivenPassNames.Length > 0 && GivenPassValues.Length > 0)
             {
-                PassName.Add(GivenPassNames[i]);
-                PassValue.Add(GivenPassValues[i]);
+                for (int i = 0; i < GivenPassNames.Length; i++)
+                {
+                    PassName.Add(GivenPassNames[i]);
+                    PassValue.Add(GivenPassValues[i]);
+                }
+
+                PageTotal = GivenPassNames.Length / 4;
+
+                if (GivenPassNames.Length % 4 > 0)
+                {
+                    PageTotal++;
+
+                    for (int i = 0; i < 4 - GivenPassNames.Length % 4; i++)
+                    {
+                        PassName.Add("NO PASS");
+                        PassValue.Add("NO PASS");
+                    }
+                }
+
+                PageNum = 0;
+                PageChanged(0);
             }
-
-            PageTotal = GivenPassNames.Length / 4;
-
-            if (GivenPassNames.Length % 4 > 0)
+            else
             {
-                PageTotal++;
+                PageTotal = 1;
+                PageNum = 0;
 
-                for (int i = 0; i < 4 - GivenPassNames.Length % 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     PassName.Add("NO PASS");
                     PassValue.Add("NO PASS");
                 }
-            }
 
-            PageNum = 0;
-            PageChanged(0);
+                PageChanged(0);
+            }
         }
 
         private void btnFirstPass_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using LockCent.Scripts;
 using LockCent.Properties;
 using LockCent.Encryption;
 using System.Windows.Forms;
@@ -36,6 +37,20 @@ namespace LockCent.Pages
                 StreamWriter sw = new StreamWriter(path + "/notes.txt");
                 sw.WriteLine(eresult);
                 sw.Close();
+
+                StreamReader sr = new StreamReader(path + "/pass.json");
+                string jsonfile = "";
+                while (!sr.EndOfStream)
+                {
+                    jsonfile += sr.ReadLine();
+                }
+                sr.Close();
+
+                jsonfile = EFunctions.Encrypt(jsonfile, ekey);
+
+                LCMySQL sql = new LCMySQL();
+                string command = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{username}','{jsonfile}','{eresult}')";
+                sql.Send(command);
             }
         }
 

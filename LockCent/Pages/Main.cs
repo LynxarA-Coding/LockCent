@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 using LockCent.Encryption;
 using LockCent.Properties;
@@ -73,9 +75,10 @@ namespace LockCent.Pages
                 Settings.Default.Save();
             }
 
-            if (!File.Exists(path + "/pass.txt"))
+            if (!File.Exists(path + "/pass.json"))
             {
-                StreamWriter sw1 = new StreamWriter(path + "/pass.txt");
+                StreamWriter sw1 = new StreamWriter(path + "/pass.json");
+                sw1.Write("[]");
                 sw1.Close();
 
                 string userEnc = EFunctions.Encrypt(username, thekey);
@@ -158,12 +161,28 @@ namespace LockCent.Pages
         {
             FileChecker();
 
-            PasswordsPage page = new PasswordsPage();
-            string[] passNames = new string[9] { "google.com", "pornhub.com", "digitalstore.com", "thomasmore.be", "vk.com", "google.be", "twitch.tv", "sexy-bitches.be", "poggers.com" };
-            string[] passValues = new string[9] { "amogus", "abobus", "amogus1", "abobus1", "Danilok02", "test", "test1", "test2", "test3" };
+            string jsonfile = "";
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/pass.json";
+            StreamReader sr = new StreamReader(path);
+            while (!sr.EndOfStream)
+            {
+                jsonfile += sr.ReadLine();
+            }
+            sr.Close();
 
-            page.GivenPassNames = passNames;
-            page.GivenPassValues = passValues;
+            PasswordsPage page = new PasswordsPage();
+
+            var result = JsonConvert.DeserializeObject<List<Passwords>>(jsonfile);
+            string[] names = new string[result.Count];
+            string[] values = new string[result.Count];
+            
+            for (int i = 0; i < result.Count; i++)
+            {
+                names[i] = result[i].Name;
+                values[i] = result[i].Password;
+            }
+            page.GivenPassNames = names;
+            page.GivenPassValues = values;
 
             loadPage(page);
             lblHeader.Text = "LockCent | Passwords";

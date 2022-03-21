@@ -65,7 +65,7 @@ namespace LockCent
             if (TextControl(txtUser.Text) && TextControl(txtPassword.Text))
             {
                 LCMySQL sql = new LCMySQL();
-                string txtCommand = "SELECT * FROM `useraccounts_test` WHERE `username` = \"" + txtUser.Text + "\"";
+                string txtCommand = "SELECT * FROM `user_accounts` WHERE `username` = \"" + txtUser.Text + "\"";
 
                 User user = sql.Get(txtCommand);
 

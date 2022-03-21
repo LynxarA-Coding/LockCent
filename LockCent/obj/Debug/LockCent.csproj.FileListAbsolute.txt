@@ -34,7 +34,6 @@ C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Deb
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.csproj.SuggestedBindingRedirects.cache
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Login.resources
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.HomePage.resources
-C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.Main.resources
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.NotesPage.resources
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.Notificator.resources
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.PasswordsPage.resources
@@ -62,3 +61,4 @@ C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Deb
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.csproj.Fody.CopyLocal.cache
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.csproj.CopyComplete
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.Main.resources

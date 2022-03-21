@@ -100,7 +100,7 @@
             this.txtDelName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDelName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDelName.HoverState.Parent = this.txtDelName;
-            this.txtDelName.Location = new System.Drawing.Point(17, 70);
+            this.txtDelName.Location = new System.Drawing.Point(16, 70);
             this.txtDelName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDelName.Name = "txtDelName";
             this.txtDelName.PasswordChar = '\0';
