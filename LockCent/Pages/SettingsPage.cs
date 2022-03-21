@@ -4,12 +4,14 @@ using System.Windows.Forms;
 
 using LockCent.Properties;
 using LockCent.Encryption;
+using LockCent.Scripts;
 
 namespace LockCent.Pages
 {
     public partial class SettingsPage : Form
     {
         public string Username { private get; set; }
+        public byte[] ekey { private get; set; }
         public SettingsPage()
         {
             InitializeComponent();
@@ -21,11 +23,11 @@ namespace LockCent.Pages
 
             if (svtype == 1)
             {
-                FolderSelector.Value = 1;
+                btnDB.Checked = true;
             }
             else
             {
-                FolderSelector.Value = 0;
+                btnLocal.Checked = true;
             }
 
             bool notestype = Convert.ToBoolean(Settings.Default["Notes"]);
@@ -45,22 +47,141 @@ namespace LockCent.Pages
             RestoreSettings();
         }
 
-        private void FolderSelector_ValueChanged(object sender, EventArgs e)
+
+        private void btnLocal_CheckedChanged(object sender, EventArgs e)
         {
-            if (FolderSelector.Value == 0)
+            btnDB.Enabled = false;
+            btnLocal.Enabled = false;
+
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
+            if (btnLocal.Checked)
             {
                 Settings.Default["SaveType"] = 0;
                 Settings.Default.Save();
-            }
-            else
-            {
-                FolderSelector.Value = 0;
 
-                Notificator notify = new Notificator();
-                notify.Description = "DataBase option is not implemented yet!";
-                notify.Type = "error";
-                notify.Show();
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                LCMySQL sql = new LCMySQL();
+                UserData userData = new UserData();
+
+                userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
+
+                if (userData.UserName != null)
+                {
+                    StreamWriter sw1 = new StreamWriter(path + "/pass.json");
+                    sw1.Write(userData.Passwords);
+                    sw1.Close();
+
+                    StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
+                    sw2.WriteLine(userData.Notes);
+                    sw2.Close();
+
+                    sql.Send($"DELETE FROM `user_data` WHERE `username`='{Username}'");
+                }
             }
+
+            btnDB.Enabled = true;
+            btnLocal.Enabled = true;
+        }
+
+        private void btnDB_CheckedChanged(object sender, EventArgs e)
+        {
+            btnDB.Enabled = false;
+            btnLocal.Enabled = false;
+
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
+            if (btnDB.Checked)
+            {
+                Settings.Default["SaveType"] = 1;
+                Settings.Default.Save();
+
+                if (Directory.Exists(path))
+                {
+                    bool notesE = File.Exists(path + "/notes.txt");
+                    bool passE = File.Exists(path + "/pass.json");
+
+                    if (notesE || passE)
+                    {
+                        string fileNotes = "";
+                        string filePass = "";
+
+                        if (notesE)
+                        {
+                            StreamReader sr = new StreamReader(path + "/notes.txt");
+
+                            while (!sr.EndOfStream)
+                            {
+                                fileNotes += sr.ReadLine();
+                            }
+
+                            sr.Close();
+                        }
+
+                        if (passE)
+                        {
+                            StreamReader sr1 = new StreamReader(path + "/pass.json");
+
+                            while (!sr1.EndOfStream)
+                            {
+                                filePass += sr1.ReadLine();
+                            }
+
+                            sr1.Close();
+                        }
+
+                        if (fileNotes == "")
+                        {
+                            fileNotes = EFunctions.Encrypt(" ", ekey);
+                        }
+
+                        if (filePass == "")
+                        {
+                            filePass = EFunctions.Encrypt("[]", ekey);
+                        }
+
+                        LCMySQL sql = new LCMySQL();
+                        UserData userData = new UserData();
+
+                        userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
+
+                        if (userData.UserName == null)
+                        {
+                            string commandLine = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{filePass}','{fileNotes}')";
+                            sql.Send(commandLine);
+                        }
+                        else
+                        {
+                            string commandLine = $"UPDATE `user_data` SET `username`='{Username}',`passwords`='{filePass}',`notes`='{fileNotes}' WHERE `username`='{Username}'";
+                            sql.Send(commandLine);
+                        }
+                    }
+
+                    File.Delete(path + "/pass.json");
+                    File.Delete(path + "/notes.txt");
+
+                    Directory.Delete(path);
+                }
+                else
+                {
+                    LCMySQL sql = new LCMySQL();
+                    UserData userData = new UserData();
+
+                    userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
+
+                    if (userData.UserName == null)
+                    {
+                        string command = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{EFunctions.Encrypt("[]", ekey)}','{EFunctions.Encrypt(" ", ekey)}')";
+                        sql.Send(command);
+                    }
+                }
+            }
+
+            btnDB.Enabled = true;
+            btnLocal.Enabled = true;
         }
 
         private void cbNotes_CheckedChanged(object sender, EventArgs e)
@@ -77,41 +198,57 @@ namespace LockCent.Pages
             Settings.Default.Save();
         }
 
-        private void FolderSelector_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
         private void btnErasePass_Click(object sender, EventArgs e)
         {
-            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-
-            File.Delete(path + "/pass.txt");
-            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
-            string userEnc = EFunctions.Encrypt(Username, thekey);
-            Settings.Default["PassUsername"] = userEnc;
-            Settings.Default.Save();
-
-            Notificator notify = new Notificator();
-            notify.Type="error";
-            notify.Description = "Your Passwords were deleted!\nThis action is irreversible!";
-            notify.Show();
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
+            if (Directory.Exists(path))
+            {
+                File.Delete(path + "/pass.json");
+                Notificator notify = new Notificator();
+                notify.Type = "info";
+                notify.Description = "Your Passwords were deleted!\nThis action is irreversible!";
+                notify.Show();
+            }
+            else
+            {
+                Notificator notify = new Notificator();
+                notify.Type = "error";
+                notify.Description = "There are no passwords in the chosen account!";
+                notify.Show();
+            }
         }
 
         private void btnEraseNotes_Click(object sender, EventArgs e)
         {
-            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
+            if (Directory.Exists(path))
+            {
+                if (File.Exists(path + "/notes.txt"))
+                {
+                    File.Delete(path + "/notes.txt");
 
-            File.Delete(path + "/notes.txt");
-            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
-            string userEnc = EFunctions.Encrypt(Username, thekey);
-            Settings.Default["NotesUsername"] = userEnc;
-            Settings.Default.Save();
-
-            Notificator notify = new Notificator();
-            notify.Type = "error";
-            notify.Description = "Your Notes were deleted!\nThis action is irreversible!";
-            notify.Show();
+                    Notificator notify = new Notificator();
+                    notify.Type = "info";
+                    notify.Description = "Your Notes were deleted!\nThis action is irreversible!";
+                    notify.Show();
+                }
+                else
+                {
+                    Notificator notify = new Notificator();
+                    notify.Type = "error";
+                    notify.Description = "There are no notes in the chosen account!";
+                    notify.Show();
+                }
+                
+            }
+            else
+            {
+                Notificator notify = new Notificator();
+                notify.Type = "error";
+                notify.Description = "There are no notes in the chosen account!";
+                notify.Show();
+            }
         }
+
     }
 }

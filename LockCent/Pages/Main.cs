@@ -9,6 +9,7 @@ using LockCent.Encryption;
 using LockCent.Properties;
 using DiscordRPC;
 using DiscordRPC.Logging;
+using LockCent.Scripts;
 
 namespace LockCent.Pages
 {
@@ -63,37 +64,31 @@ namespace LockCent.Pages
 
         private void FileChecker()
         {
-            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
-            if (!Directory.Exists(path))
+            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
+            if (saveType == 0)
             {
-                Directory.CreateDirectory(path);
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    Directory.CreateDirectory(path + $"/{username}");
+                }
 
-                string userEnc = EFunctions.Encrypt(username, thekey);
-                Settings.Default["NotesUsername"] = userEnc;
-                Settings.Default["PassUsername"] = userEnc;
-                Settings.Default.Save();
-            }
+                path = path + $"/{username}";
 
-            if (!File.Exists(path + "/pass.json"))
-            {
-                StreamWriter sw1 = new StreamWriter(path + "/pass.json");
-                sw1.Write("[]");
-                sw1.Close();
+                if (!File.Exists(path + "/pass.json"))
+                {
+                    StreamWriter sw1 = new StreamWriter(path + "/pass.json");
+                    string standart = EFunctions.Encrypt("[]", ekey);
+                    sw1.Write(standart);
+                    sw1.Close();
+                }
 
-                string userEnc = EFunctions.Encrypt(username, thekey);
-                Settings.Default["PassUsername"] = userEnc;
-                Settings.Default.Save();
-            }
-
-            if (!File.Exists(path + "/notes.txt"))
-            {
-                StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
-                sw2.Close();
-
-                string userEnc = EFunctions.Encrypt(username, thekey);
-                Settings.Default["NotesUsername"] = userEnc;
-                Settings.Default.Save();
+                if (!File.Exists(path + "/notes.txt"))
+                {
+                    StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
+                    sw2.Close();
+                }
             }
         }
 
@@ -161,30 +156,74 @@ namespace LockCent.Pages
         {
             FileChecker();
 
-            string jsonfile = "";
-            string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/pass.json";
-            StreamReader sr = new StreamReader(path);
-            while (!sr.EndOfStream)
+            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
+
+            if (saveType == 0)
             {
-                jsonfile += sr.ReadLine();
+                string jsonfile = "";
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{username}/pass.json";
+                StreamReader sr = new StreamReader(path);
+                while (!sr.EndOfStream)
+                {
+                    jsonfile += sr.ReadLine();
+                }
+                sr.Close();
+
+                var result = JsonConvert.DeserializeObject<List<Passwords>>(jsonfile);
+                string[] names = new string[result.Count];
+                string[] values = new string[result.Count];
+
+                for (int i = 0; i < result.Count; i++)
+                {
+                    names[i] = result[i].Name;
+                    values[i] = result[i].Password;
+                }
+
+                PasswordsPage page = new PasswordsPage();
+                page.GivenPassNames = names;
+                page.GivenPassValues = values;
+
+                loadPage(page);
             }
-            sr.Close();
-
-            PasswordsPage page = new PasswordsPage();
-
-            var result = JsonConvert.DeserializeObject<List<Passwords>>(jsonfile);
-            string[] names = new string[result.Count];
-            string[] values = new string[result.Count];
-            
-            for (int i = 0; i < result.Count; i++)
+            else
             {
-                names[i] = result[i].Name;
-                values[i] = result[i].Password;
-            }
-            page.GivenPassNames = names;
-            page.GivenPassValues = values;
+                LCMySQL sql = new LCMySQL();
+                UserData userData = new UserData();
+                userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`='{username}'");
 
-            loadPage(page);
+                if (userData.UserName == null)
+                {
+                    string[] names = new string[0];
+                    string[] values = new string[0];
+
+                    PasswordsPage page = new PasswordsPage();
+                    page.GivenPassNames = names;
+                    page.GivenPassValues = values;
+
+                    loadPage(page);
+                }
+                else
+                {
+                    string decPasswords = EFunctions.Decrypt(userData.Passwords, ekey);
+                    var result = JsonConvert.DeserializeObject<List<Passwords>>(decPasswords);
+
+                    string[] names = new string[result.Count];
+                    string[] values = new string[result.Count];
+
+                    for (int i = 0; i < result.Count; i++)
+                    {
+                        names[i] = result[i].Name;
+                        values[i] = result[i].Password;
+                    }
+
+                    PasswordsPage page = new PasswordsPage();
+                    page.GivenPassNames = names;
+                    page.GivenPassValues = values;
+
+                    loadPage(page);
+                }
+            }
+
             lblHeader.Text = "LockCent | Passwords";
         }
 
@@ -206,6 +245,7 @@ namespace LockCent.Pages
         {
             SettingsPage page = new SettingsPage();
             page.Username = username;
+            page.ekey = ekey;
             loadPage(page);
 
             lblHeader.Text = "LockCent | Settings";

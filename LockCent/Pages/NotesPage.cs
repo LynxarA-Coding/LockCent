@@ -19,44 +19,52 @@ namespace LockCent.Pages
         private void btnSave_Click(object sender, EventArgs e)
         {
             string eresult = EFunctions.Encrypt(txtNotes.Text, ekey);
-            byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
-            string settingsUsername = EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), thekey);
+            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
 
-            if (settingsUsername != username)
+            if (saveType == 1)
             {
-                Notificator notify = new Notificator();
-                notify.Type = "error";
-                notify.Description = "Wrong user. Use Erase Data or \nLogin to Data Owner account";
-                notify.Show();
+                LCMySQL sql = new LCMySQL();
+                UserData userData = new UserData();
+                userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`='{username}'");
+                
+                if (userData.UserName == null)
+                {
+                    string commandLine = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{username}','{EFunctions.Encrypt("[]", ekey)}','{EFunctions.Encrypt(txtNotes.Text, ekey)}')";
+                    sql.Send(commandLine);
+                }
+                else
+                {
+                    string commandLine = $"UPDATE `user_data` SET `username`='{username}',`passwords`='{userData.Passwords}',`notes`='{EFunctions.Encrypt(txtNotes.Text, ekey)}' WHERE `username`='{username}'";
+                    sql.Send(commandLine);
+                }
             }
             else
             {
-                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-                File.Delete(path + "/notes.txt");
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{username}";
 
-                StreamWriter sw = new StreamWriter(path + "/notes.txt");
-                sw.WriteLine(eresult);
-                sw.Close();
-
-                StreamReader sr = new StreamReader(path + "/pass.json");
-                string jsonfile = "";
-                while (!sr.EndOfStream)
+                if (!Directory.Exists(path))
                 {
-                    jsonfile += sr.ReadLine();
+                    Notificator notify = new Notificator();
+                    notify.Type = "error";
+                    notify.Description = "Wrong user. Use Erase Data or \nLogin to Data Owner account";
+                    notify.Show();
                 }
-                sr.Close();
+                else
+                {
+                    File.Delete(path + "/notes.txt");
 
-                jsonfile = EFunctions.Encrypt(jsonfile, ekey);
-
-                LCMySQL sql = new LCMySQL();
-                string command = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{username}','{jsonfile}','{eresult}')";
-                sql.Send(command);
+                    StreamWriter sw = new StreamWriter(path + "/notes.txt");
+                    sw.WriteLine(eresult);
+                    sw.Close();
+                }
             }
+            
         }
 
         private void NotesPage_Load(object sender, EventArgs e)
         {
             bool notesSettings = Convert.ToBoolean(Settings.Default["Notes"]);
+            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
 
             if (notesSettings)
             {
@@ -65,28 +73,38 @@ namespace LockCent.Pages
                 btnSave.Enabled = true;
                 txtNotes.ReadOnly = false;
 
-                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/notes.txt";
-                StreamReader sr = new StreamReader(path);
+                if (saveType == 1)
+                { // MySQL
+                    LCMySQL sql = new LCMySQL();
+                    UserData data = new UserData();
+                    data = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`='{username}'");
 
-                string encodedResult = "";
-                while(!sr.EndOfStream)
-                {
-                    encodedResult += sr.ReadLine();
-                }
-                sr.Close();
-
-                byte[] thekey = new byte[32] { 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3, 0x0, 0x3 };
-
-                if (username == EFunctions.Decrypt(Convert.ToString(Settings.Default["NotesUsername"]), thekey))
-                {
-                    if (encodedResult != "")
+                    if (data.UserName != null)
                     {
-                        txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);
+                        txtNotes.Text = EFunctions.Decrypt(data.Notes, ekey);
                     }
                 }
                 else
-                {
-                    txtNotes.PlaceholderText = "Wrong User. Switch to the user that owns these Notes...\n Or delete Notes File in Settings.";
+                { // Raw
+                    string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{username}";
+                    if (Directory.Exists(path))
+                    {
+                        path += "/notes.txt";
+                        StreamReader sr = new StreamReader(path);
+
+                        string encodedResult = "";
+                        while (!sr.EndOfStream)
+                        {
+                            encodedResult += sr.ReadLine();
+                        }
+                        sr.Close();
+
+                        txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);
+                    }
+                    else
+                    {
+                        txtNotes.PlaceholderText = "Wrong User. Switch to the user that owns these Notes...\n Or delete Notes File in Settings.";
+                    }
                 }
                 
             }

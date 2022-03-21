@@ -67,7 +67,7 @@ namespace LockCent
                 LCMySQL sql = new LCMySQL();
                 string txtCommand = "SELECT * FROM `user_accounts` WHERE `username` = \"" + txtUser.Text + "\"";
 
-                User user = sql.Get(txtCommand);
+                User user = sql.UserGet(txtCommand);
 
                 if (user.Ekey != null && user.Password == EFunctions.Encrypt(txtPassword.Text, user.Ekey))
                 {

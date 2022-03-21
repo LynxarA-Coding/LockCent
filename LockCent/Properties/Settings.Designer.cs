@@ -46,29 +46,5 @@ namespace LockCent.Properties {
                 this["Notes"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("H7n2a3Ok32WxaejzeeUPsgjM6WiQc3b6K/cBIF6NyMs=")]
-        public string NotesUsername {
-            get {
-                return ((string)(this["NotesUsername"]));
-            }
-            set {
-                this["NotesUsername"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("H7n2a3Ok32WxaejzeeUPsgjM6WiQc3b6K/cBIF6NyMs=")]
-        public string PassUsername {
-            get {
-                return ((string)(this["PassUsername"]));
-            }
-            set {
-                this["PassUsername"] = value;
-            }
-        }
     }
 }

@@ -8,11 +8,5 @@
     <Setting Name="Notes" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="NotesUsername" Type="System.String" Scope="User">
-      <Value Profile="(Default)">H7n2a3Ok32WxaejzeeUPsgjM6WiQc3b6K/cBIF6NyMs=</Value>
-    </Setting>
-    <Setting Name="PassUsername" Type="System.String" Scope="User">
-      <Value Profile="(Default)">H7n2a3Ok32WxaejzeeUPsgjM6WiQc3b6K/cBIF6NyMs=</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

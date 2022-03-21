@@ -14,6 +14,13 @@ namespace LockCent.Scripts
         public string Password { get; set; }
         public byte[] Ekey { get; set; }
     }
+
+    class UserData
+    {
+        public string UserName { get; set; }
+        public string Passwords { get; set; }
+        public string Notes { get; set; }
+    }
     class LCMySQL
     {
         private string connStr = "server=remotemysql.com;user=BuVg5vx3v6;database=BuVg5vx3v6;password=nlbkpvJADI;";
@@ -27,7 +34,7 @@ namespace LockCent.Scripts
             conn.Close();
         }
 
-        public User Get(string commandLine)
+        public User UserGet(string commandLine)
         {
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
@@ -53,6 +60,32 @@ namespace LockCent.Scripts
             conn.Close();
 
             return user;
+        }
+
+        public UserData DataGet(string commandLine)
+        {
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+
+            string sql = commandLine;
+
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            UserData data = new UserData();
+
+            while (reader.Read())
+            {
+                data.UserName = reader[0].ToString();
+                data.Passwords = reader[1].ToString();
+                data.Notes = reader[2].ToString();
+            }
+
+            reader.Close();
+
+            conn.Close();
+
+            return data;
         }
     }
 }
