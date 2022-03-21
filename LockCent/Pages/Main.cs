@@ -71,6 +71,10 @@ namespace LockCent.Pages
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
+                }
+
+                if (!Directory.Exists(path + $"/{username}"))
+                {
                     Directory.CreateDirectory(path + $"/{username}");
                 }
 
@@ -169,7 +173,7 @@ namespace LockCent.Pages
                 }
                 sr.Close();
 
-                var result = JsonConvert.DeserializeObject<List<Passwords>>(jsonfile);
+                var result = JsonConvert.DeserializeObject<List<Passwords>>(EFunctions.Decrypt(jsonfile, ekey));
                 string[] names = new string[result.Count];
                 string[] values = new string[result.Count];
 
