@@ -19,8 +19,6 @@ namespace LockCent
     {
         bool mouseDown;
         private Point offset;
-
-        private int textLength = 20;
         public Register()
         {
             InitializeComponent();
