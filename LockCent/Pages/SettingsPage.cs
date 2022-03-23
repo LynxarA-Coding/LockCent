@@ -47,6 +47,24 @@ namespace LockCent.Pages
             RestoreSettings();
         }
 
+        private void SettingChanged(string setting)
+        {
+            DiscordLog log = new DiscordLog();
+
+            switch (setting)
+            {
+                case "local":
+                    log.SendLogUserLog("setting", Username, "Data storage type switched to: **'local'**");
+                    break;
+
+                case "sql":
+                    log.SendLogUserLog("setting", Username, "Data storage type switched to: **'in Database'**");
+                    break;
+                default:
+
+                    break;
+            }
+        }
 
         private void btnLocal_CheckedChanged(object sender, EventArgs e)
         {
@@ -56,31 +74,35 @@ namespace LockCent.Pages
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
             if (btnLocal.Checked)
             {
-                Settings.Default["SaveType"] = 0;
-                Settings.Default.Save();
-
-
-                if (!Directory.Exists(path))
+                if (Convert.ToInt32(Settings.Default["SaveType"]) != 0)
                 {
-                    Directory.CreateDirectory(path);
-                }
+                    Settings.Default["SaveType"] = 0;
+                    Settings.Default.Save();
 
-                LCMySQL sql = new LCMySQL();
-                UserData userData = new UserData();
+                    SettingChanged("local");
 
-                userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
 
-                if (userData.UserName != null)
-                {
-                    StreamWriter sw1 = new StreamWriter(path + "/pass.json");
-                    sw1.Write(userData.Passwords);
-                    sw1.Close();
+                    LCMySQL sql = new LCMySQL();
+                    UserData userData = new UserData();
 
-                    StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
-                    sw2.WriteLine(userData.Notes);
-                    sw2.Close();
+                    userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
 
-                    sql.Send($"DELETE FROM `user_data` WHERE `username`='{Username}'");
+                    if (userData.UserName != null)
+                    {
+                        StreamWriter sw1 = new StreamWriter(path + "/pass.json");
+                        sw1.Write(userData.Passwords);
+                        sw1.Close();
+
+                        StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
+                        sw2.WriteLine(userData.Notes);
+                        sw2.Close();
+
+                        sql.Send($"DELETE FROM `user_data` WHERE `username`='{Username}'");
+                    }
                 }
             }
 
@@ -96,53 +118,81 @@ namespace LockCent.Pages
             string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{Username}";
             if (btnDB.Checked)
             {
-                Settings.Default["SaveType"] = 1;
-                Settings.Default.Save();
-
-                if (Directory.Exists(path))
+                if (Convert.ToInt32(Settings.Default["SaveType"]) != 1)
                 {
-                    bool notesE = File.Exists(path + "/notes.txt");
-                    bool passE = File.Exists(path + "/pass.json");
+                    Settings.Default["SaveType"] = 1;
+                    Settings.Default.Save();
 
-                    if (notesE || passE)
+                    SettingChanged("sql");
+
+                    if (Directory.Exists(path))
                     {
-                        string fileNotes = "";
-                        string filePass = "";
+                        bool notesE = File.Exists(path + "/notes.txt");
+                        bool passE = File.Exists(path + "/pass.json");
 
-                        if (notesE)
+                        if (notesE || passE)
                         {
-                            StreamReader sr = new StreamReader(path + "/notes.txt");
+                            string fileNotes = "";
+                            string filePass = "";
 
-                            while (!sr.EndOfStream)
+                            if (notesE)
                             {
-                                fileNotes += sr.ReadLine();
+                                StreamReader sr = new StreamReader(path + "/notes.txt");
+
+                                while (!sr.EndOfStream)
+                                {
+                                    fileNotes += sr.ReadLine();
+                                }
+
+                                sr.Close();
                             }
 
-                            sr.Close();
-                        }
-
-                        if (passE)
-                        {
-                            StreamReader sr1 = new StreamReader(path + "/pass.json");
-
-                            while (!sr1.EndOfStream)
+                            if (passE)
                             {
-                                filePass += sr1.ReadLine();
+                                StreamReader sr1 = new StreamReader(path + "/pass.json");
+
+                                while (!sr1.EndOfStream)
+                                {
+                                    filePass += sr1.ReadLine();
+                                }
+
+                                sr1.Close();
                             }
 
-                            sr1.Close();
+                            if (fileNotes == "")
+                            {
+                                fileNotes = EFunctions.Encrypt(" ", ekey);
+                            }
+
+                            if (filePass == "")
+                            {
+                                filePass = EFunctions.Encrypt("[]", ekey);
+                            }
+
+                            LCMySQL sql = new LCMySQL();
+                            UserData userData = new UserData();
+
+                            userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
+
+                            if (userData.UserName == null)
+                            {
+                                string commandLine = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{filePass}','{fileNotes}')";
+                                sql.Send(commandLine);
+                            }
+                            else
+                            {
+                                string commandLine = $"UPDATE `user_data` SET `username`='{Username}',`passwords`='{filePass}',`notes`='{fileNotes}' WHERE `username`='{Username}'";
+                                sql.Send(commandLine);
+                            }
                         }
 
-                        if (fileNotes == "")
-                        {
-                            fileNotes = EFunctions.Encrypt(" ", ekey);
-                        }
+                        File.Delete(path + "/pass.json");
+                        File.Delete(path + "/notes.txt");
 
-                        if (filePass == "")
-                        {
-                            filePass = EFunctions.Encrypt("[]", ekey);
-                        }
-
+                        Directory.Delete(path);
+                    }
+                    else
+                    {
                         LCMySQL sql = new LCMySQL();
                         UserData userData = new UserData();
 
@@ -150,32 +200,9 @@ namespace LockCent.Pages
 
                         if (userData.UserName == null)
                         {
-                            string commandLine = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{filePass}','{fileNotes}')";
-                            sql.Send(commandLine);
+                            string command = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{EFunctions.Encrypt("[]", ekey)}','{EFunctions.Encrypt(" ", ekey)}')";
+                            sql.Send(command);
                         }
-                        else
-                        {
-                            string commandLine = $"UPDATE `user_data` SET `username`='{Username}',`passwords`='{filePass}',`notes`='{fileNotes}' WHERE `username`='{Username}'";
-                            sql.Send(commandLine);
-                        }
-                    }
-
-                    File.Delete(path + "/pass.json");
-                    File.Delete(path + "/notes.txt");
-
-                    Directory.Delete(path);
-                }
-                else
-                {
-                    LCMySQL sql = new LCMySQL();
-                    UserData userData = new UserData();
-
-                    userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`= '{Username}'");
-
-                    if (userData.UserName == null)
-                    {
-                        string command = $"INSERT INTO `user_data`(`username`, `passwords`, `notes`) VALUES ('{Username}','{EFunctions.Encrypt("[]", ekey)}','{EFunctions.Encrypt(" ", ekey)}')";
-                        sql.Send(command);
                     }
                 }
             }

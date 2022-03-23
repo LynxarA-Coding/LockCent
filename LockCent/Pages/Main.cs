@@ -38,6 +38,9 @@ namespace LockCent.Pages
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            DiscordLog log = new DiscordLog();
+            log.SendLogUserLog("logout", username, "");
+
             Application.Exit();
         }
 
@@ -258,6 +261,9 @@ namespace LockCent.Pages
         // LogOut
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            DiscordLog log = new DiscordLog();
+            log.SendLogUserLog("logout", username, "");
+
             username = "";
             password = "";
             ekey = null;

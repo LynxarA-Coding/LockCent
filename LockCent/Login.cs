@@ -8,6 +8,9 @@ using LockCent.Scripts;
 using LockCent.Encryption;
 using System.Media;
 using System.Text;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace LockCent
 {
@@ -71,6 +74,8 @@ namespace LockCent
 
                 if (user.Ekey != null && user.Password == EFunctions.Encrypt(txtPassword.Text, user.Ekey))
                 {
+                    DiscordLog log = new DiscordLog();
+                    log.SendLogUserLog("login", txtUser.Text, "");
 
                     Main mn = new Main(){ Owner = this };
 

@@ -62,3 +62,17 @@ C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Deb
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.csproj.Fody.CopyLocal.cache
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.csproj.CopyComplete
 C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\obj\Debug\LockCent.Pages.Main.resources
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.Commands.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.Core.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.Interactions.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.Rest.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.Webhook.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Discord.Net.WebSocket.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Collections.Immutable.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Interactive.Async.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Linq.Async.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Reactive.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ASUS\Documents\repo\University\projectEtr\git\LockCent\LockCent\bin\Debug\System.ValueTuple.xml
