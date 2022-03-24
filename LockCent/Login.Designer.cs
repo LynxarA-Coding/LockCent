@@ -45,6 +45,7 @@
             this.elpsLoginBtn = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsUsername = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsPass = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlBackground.SuspendLayout();
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -196,9 +197,6 @@
             this.pnlDrag.ShadowDecoration.Parent = this.pnlDrag;
             this.pnlDrag.Size = new System.Drawing.Size(730, 40);
             this.pnlDrag.TabIndex = 1;
-            this.pnlDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseDown);
-            this.pnlDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseMove);
-            this.pnlDrag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseUp);
             // 
             // lblTitle
             // 
@@ -243,6 +241,10 @@
             this.elpsPass.BorderRadius = 15;
             this.elpsPass.TargetControl = this.txtPassword;
             // 
+            // dragControl
+            // 
+            this.dragControl.TargetControl = this.pnlDrag;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,6 +285,7 @@
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblRegister;
         private System.Windows.Forms.Label lblTitle;
+        private Guna.UI2.WinForms.Guna2DragControl dragControl;
     }
 }
 

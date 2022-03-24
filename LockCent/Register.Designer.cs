@@ -39,6 +39,7 @@
             this.lblText = new System.Windows.Forms.Label();
             this.btnVisit = new Guna.UI2.WinForms.Guna2Button();
             this.elpsVisit = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +55,6 @@
             this.pnlDrag.ShadowDecoration.Parent = this.pnlDrag;
             this.pnlDrag.Size = new System.Drawing.Size(730, 40);
             this.pnlDrag.TabIndex = 2;
-            this.pnlDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseDown);
-            this.pnlDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseMove);
-            this.pnlDrag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseUp);
             // 
             // lblTitle
             // 
@@ -138,11 +136,16 @@
             this.btnVisit.Size = new System.Drawing.Size(438, 58);
             this.btnVisit.TabIndex = 15;
             this.btnVisit.Text = "VISIT OUR WEBSITE";
+            this.btnVisit.Click += new System.EventHandler(this.btnVisit_Click);
             // 
             // elpsVisit
             // 
             this.elpsVisit.BorderRadius = 15;
             this.elpsVisit.TargetControl = this.btnVisit;
+            // 
+            // dragControl
+            // 
+            this.dragControl.TargetControl = this.pnlDrag;
             // 
             // Register
             // 
@@ -183,5 +186,6 @@
         private System.Windows.Forms.Label lblText;
         private Guna.UI2.WinForms.Guna2Button btnVisit;
         private Guna.UI2.WinForms.Guna2Elipse elpsVisit;
+        private Guna.UI2.WinForms.Guna2DragControl dragControl;
     }
 }

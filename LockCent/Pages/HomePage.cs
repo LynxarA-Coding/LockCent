@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace LockCent.Pages
 {
+    /*
+     LockCent @2022
+     by LynxarA
+    */
     public partial class HomePage : Form
     {
         public HomePage()
@@ -17,9 +21,15 @@ namespace LockCent.Pages
             InitializeComponent();
         }
 
+        // When Form loads
         private void HomePage_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtDelName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

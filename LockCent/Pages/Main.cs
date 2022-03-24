@@ -19,15 +19,14 @@ namespace LockCent.Pages
     */
     public partial class Main : Form
     {
-        bool mouseDown;
-        private Point offset;
 
+        // User data variables
         public string email;
         public string username;
         public string password;
         public byte[] ekey;
 
-
+        // Creating discord client for Rich Presence
         public DiscordRpcClient client;
         bool discordInitialized = false;
 
@@ -36,70 +35,7 @@ namespace LockCent.Pages
             InitializeComponent();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            DiscordLog log = new DiscordLog();
-            log.SendLogUserLog("logout", username, "");
-
-            Application.Exit();
-        }
-
-        private void pnlDrag_MouseDown(object sender, MouseEventArgs e)
-        {
-            offset.X = e.X;
-            offset.Y = e.Y;
-            mouseDown = true;
-        }
-
-        private void pnlDrag_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown == true)
-            {
-                Point currentScreenPos = PointToScreen(e.Location);
-                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
-            }
-        }
-
-        private void pnlDrag_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-
-        private void FileChecker()
-        {
-            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
-            if (saveType == 0)
-            {
-                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                if (!Directory.Exists(path + $"/{username}"))
-                {
-                    Directory.CreateDirectory(path + $"/{username}");
-                }
-
-                path = path + $"/{username}";
-
-                if (!File.Exists(path + "/pass.json"))
-                {
-                    StreamWriter sw1 = new StreamWriter(path + "/pass.json");
-                    string standart = EFunctions.Encrypt("[]", ekey);
-                    sw1.Write(standart);
-                    sw1.Close();
-                }
-
-                if (!File.Exists(path + "/notes.txt"))
-                {
-                    StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
-                    sw2.Close();
-                }
-            }
-        }
-
-        // Loaded
+        // When Main Page is loaded
         private void Main_Load(object sender, EventArgs e)
         {
             discordInitialized = true;
@@ -136,11 +72,72 @@ namespace LockCent.Pages
             lblUsername.Text = username;
         }
 
-        // Form Opener
+        // If user clicks on Window Close Button
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            // Sending logout logs
+            DiscordLog log = new DiscordLog();
+            log.SendLogUserLog("logout", username, "");
+
+            // Exiting the app
+            Application.Exit();
+        }
+
+        // Functions for checking Local Storage file existence
+        private void FileChecker()
+        {
+            // Checking user's storage type
+            int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
+
+            // If user saves data locally
+            if (saveType == 0)
+            {
+                string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent";
+
+                // If Directory does not exist
+                if (!Directory.Exists(path))
+                {
+                    // Creating a new directory
+                    Directory.CreateDirectory(path);
+                }
+
+                // If directory of the USER does not exist
+                if (!Directory.Exists(path + $"/{username}"))
+                {
+                    // Creating a new directory
+                    Directory.CreateDirectory(path + $"/{username}");
+                }
+
+                path = path + $"/{username}";
+
+                // If passwords file does not exist
+                if (!File.Exists(path + "/pass.json"))
+                {
+                    // Creating a new empty password file
+                    StreamWriter sw1 = new StreamWriter(path + "/pass.json");
+                    string standart = EFunctions.Encrypt("[]", ekey);
+                    sw1.Write(standart);
+                    sw1.Close();
+                }
+
+                // If notes file does not exist
+                if (!File.Exists(path + "/notes.txt"))
+                {
+                    // Creating a new empty notes file
+                    StreamWriter sw2 = new StreamWriter(path + "/notes.txt");
+                    sw2.Close();
+                }
+            }
+        }
+
+        // Function that opens a new Page (Form) inside a panel 
         public void loadPage(object Form)
         {
+            // Removing previous one
             if (this.pnlPage.Controls.Count > 0)
                 this.pnlPage.Controls.RemoveAt(0);
+
+            // Changing Form properties
             Form f = Form as Form;
             f.TopLevel = false;
             f.Dock = DockStyle.Fill;
@@ -149,26 +146,33 @@ namespace LockCent.Pages
             f.Show();
         }
 
-        // Home
+        // When Home Page button is clicked
         private void btnHome_Click(object sender, EventArgs e)
         {
+            // Creating a new instance of a page
             HomePage page = new HomePage();
             loadPage(page);
             
+            // Changing header to the page name
             lblHeader.Text = "LockCent | Home";
         }
 
-        // Passwords
+        // When Passwords Page button is clicked
         private void btnPasswords_Click(object sender, EventArgs e)
         {
+            // Checking file existence 
             FileChecker();
 
+            // Checking where user stores data
             int saveType = Convert.ToInt32(Settings.Default["SaveType"]);
 
+            // If data is stored locally
             if (saveType == 0)
             {
                 string jsonfile = "";
                 string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/LockCent/{username}/pass.json";
+
+                // Reading a json file
                 StreamReader sr = new StreamReader(path);
                 while (!sr.EndOfStream)
                 {
@@ -176,123 +180,163 @@ namespace LockCent.Pages
                 }
                 sr.Close();
 
+                // Converting result into a List<>
                 var result = JsonConvert.DeserializeObject<List<Passwords>>(EFunctions.Decrypt(jsonfile, ekey));
+
+                // Creating arrays to pass the data
                 string[] names = new string[result.Count];
                 string[] values = new string[result.Count];
 
+                // Dilling arrays with data
                 for (int i = 0; i < result.Count; i++)
                 {
                     names[i] = result[i].Name;
                     values[i] = result[i].Password;
                 }
 
+                // Opening a Passwords Page
                 PasswordsPage page = new PasswordsPage();
+                
+                // Passing Passwords names data to the page
                 page.GivenPassNames = names;
+
+                // Passing Passwords' data (username/password) to the page
                 page.GivenPassValues = values;
 
+                // Opening a configured page
                 loadPage(page);
             }
-            else
+            else // If data is stored in the DB
             {
                 LCMySQL sql = new LCMySQL();
                 UserData userData = new UserData();
+
+                // Checking existing data in the DB
                 userData = sql.DataGet($"SELECT * FROM `user_data` WHERE `username`='{username}'");
 
+                // If data doesn't exist
                 if (userData.UserName == null)
                 {
+                    // Making empty arrays of data
                     string[] names = new string[0];
                     string[] values = new string[0];
 
                     PasswordsPage page = new PasswordsPage();
+
+                    // Passing empty Passwords' names and data to the page
                     page.GivenPassNames = names;
                     page.GivenPassValues = values;
 
+                    // Loading page
                     loadPage(page);
                 }
-                else
+                else // If data exists
                 {
+                    // Decrypting password data
                     string decPasswords = EFunctions.Decrypt(userData.Passwords, ekey);
+
+                    // Converting json-styled data into List<>
                     var result = JsonConvert.DeserializeObject<List<Passwords>>(decPasswords);
 
+                    // Creating arrays for Password Names and Data
                     string[] names = new string[result.Count];
                     string[] values = new string[result.Count];
 
+                    // Filling arrays with data from a List<>
                     for (int i = 0; i < result.Count; i++)
                     {
                         names[i] = result[i].Name;
                         values[i] = result[i].Password;
                     }
 
+                    // Creating a new instance of a page and passing arrays of names and data to it
                     PasswordsPage page = new PasswordsPage();
                     page.GivenPassNames = names;
                     page.GivenPassValues = values;
 
+                    // Loading a configured page
                     loadPage(page);
                 }
             }
 
+            // Changing window header to the opened page
             lblHeader.Text = "LockCent | Passwords";
         }
 
-        // Notes
+        // When Notes page is clicked
         private void btnNotes_Click(object sender, EventArgs e)
         {
+            // Checking file existence
             FileChecker();
 
+            // Creating a new instance of a page
             NotesPage page = new NotesPage();
+
+            // Passing user Ekey to the page
             page.ekey = ekey;
+
+            // Passing user's Username to the page
             page.username = username;
+
+            // Loading configured page
             loadPage(page);
 
+            // Changing window header to the opened page
             lblHeader.Text = "LockCent | Notes";
         }
 
-        // Settings 
+        // When Settings Page button is clicked
         private void btnSettings_Click(object sender, EventArgs e)
         {
+            // Creating a new instance of a page
             SettingsPage page = new SettingsPage();
+            
+            // Passing user's username to the page
             page.Username = username;
+
+            // Passing user's Ekey to the page
             page.ekey = ekey;
+
+            // Loading a configured page
             loadPage(page);
 
+            // Changing window header to the opened page
             lblHeader.Text = "LockCent | Settings";
         }
 
-        // LogOut
+        // When LogOut button is clicked
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            // Logging user's quitting to the discord
             DiscordLog log = new DiscordLog();
             log.SendLogUserLog("logout", username, "");
 
+            // Erasing user data
+            email = "";
             username = "";
             password = "";
             ekey = null;
 
-            Register reg = new Register();
+            // Creating a new instance of a login page
             Login lgn = new Login();
 
-            if (this.Owner.GetType() == reg.GetType())
+            // If this Form was opened from login page
+            if (this.Owner.GetType() == lgn.GetType())
             {
-                Register reg2 = this.Owner as Register;
-                reg2.Show();
-                this.Close();
-            }
-            else
-            {
+                // Opening an existing instance of a login page
                 Login lgn2 = this.Owner as Login;
-                lgn.Show();
+                lgn2.Show();
+
+                // Closing this Form
                 this.Close();
             }
         }
 
+        // When Form is closing
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Shutting down Discord Client
             client.Dispose();
-        }
-
-        private void pnlMenu_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

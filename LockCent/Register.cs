@@ -17,50 +17,38 @@ namespace LockCent
     */
     public partial class Register : Form
     {
-        bool mouseDown;
-        private Point offset;
         public Register()
         {
             InitializeComponent();
         }
 
+        // When Form Loads
         private void Register_Load(object sender, EventArgs e)
         {
             
 
         }
 
+        // When user clicks window close button
         private void btnClose_Click(object sender, EventArgs e)
         {
+            // Closing an application
             Application.Exit();
         }
 
-        private void pnlDrag_MouseDown(object sender, MouseEventArgs e)
-        {
-            offset.X = e.X;
-            offset.Y = e.Y;
-            mouseDown = true;
-        }
-
-        private void pnlDrag_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (mouseDown == true)
-            {
-                Point currentScreenPos = PointToScreen(e.Location);
-                Location = new Point(currentScreenPos.X - offset.X, currentScreenPos.Y - offset.Y);
-            }
-        }
-
-        private void pnlDrag_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseDown = false;
-        }
-
+        // When user clicks "Go To Login" button 
         private void lblLogin_Click(object sender, EventArgs e)
         {
+            // Showing back an instance of the Login Page
             Login login = this.Owner as Login;
             login.Show();
             this.Close();
+        }
+
+        // When user clicks "Visit Website" button
+        private void btnVisit_Click(object sender, EventArgs e)
+        {
+            // Code for URL
         }
     }
 }

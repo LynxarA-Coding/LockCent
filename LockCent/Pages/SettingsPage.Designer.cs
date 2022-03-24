@@ -32,6 +32,8 @@
             this.elpsPage = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.lblDataText = new System.Windows.Forms.Label();
             this.pnlData = new System.Windows.Forms.Panel();
+            this.btnDB = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.btnLocal = new Guna.UI2.WinForms.Guna2RadioButton();
             this.elpsData = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.pnlNotes = new System.Windows.Forms.Panel();
             this.cbNotes = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -45,8 +47,7 @@
             this.elpsErase = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsErBtnNotes = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.elpsErBtnPass = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnLocal = new Guna.UI2.WinForms.Guna2RadioButton();
-            this.btnDB = new Guna.UI2.WinForms.Guna2RadioButton();
+            this.timerConfirm = new System.Windows.Forms.Timer(this.components);
             this.pnlData.SuspendLayout();
             this.pnlNotes.SuspendLayout();
             this.pnlErase.SuspendLayout();
@@ -78,6 +79,52 @@
             this.pnlData.Name = "pnlData";
             this.pnlData.Size = new System.Drawing.Size(323, 161);
             this.pnlData.TabIndex = 2;
+            // 
+            // btnDB
+            // 
+            this.btnDB.AutoSize = true;
+            this.btnDB.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.btnDB.CheckedState.BorderThickness = 0;
+            this.btnDB.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnDB.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.btnDB.CheckedState.InnerOffset = -4;
+            this.btnDB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDB.ForeColor = System.Drawing.Color.White;
+            this.btnDB.Location = new System.Drawing.Point(23, 91);
+            this.btnDB.Name = "btnDB";
+            this.btnDB.Size = new System.Drawing.Size(147, 25);
+            this.btnDB.TabIndex = 2;
+            this.btnDB.Text = "In the DataBase";
+            this.btnDB.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.btnDB.UncheckedState.BorderThickness = 2;
+            this.btnDB.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.btnDB.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.btnDB.UseVisualStyleBackColor = true;
+            this.btnDB.CheckedChanged += new System.EventHandler(this.btnDB_CheckedChanged);
+            // 
+            // btnLocal
+            // 
+            this.btnLocal.AutoSize = true;
+            this.btnLocal.Checked = true;
+            this.btnLocal.CheckedState.BorderColor = System.Drawing.Color.White;
+            this.btnLocal.CheckedState.BorderThickness = 0;
+            this.btnLocal.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnLocal.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.btnLocal.CheckedState.InnerOffset = -4;
+            this.btnLocal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLocal.ForeColor = System.Drawing.Color.White;
+            this.btnLocal.Location = new System.Drawing.Point(23, 62);
+            this.btnLocal.Name = "btnLocal";
+            this.btnLocal.Size = new System.Drawing.Size(82, 25);
+            this.btnLocal.TabIndex = 1;
+            this.btnLocal.TabStop = true;
+            this.btnLocal.Text = "Locally";
+            this.btnLocal.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.btnLocal.UncheckedState.BorderThickness = 2;
+            this.btnLocal.UncheckedState.FillColor = System.Drawing.Color.Transparent;
+            this.btnLocal.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
+            this.btnLocal.UseVisualStyleBackColor = true;
+            this.btnLocal.CheckedChanged += new System.EventHandler(this.btnLocal_CheckedChanged);
             // 
             // elpsData
             // 
@@ -146,7 +193,7 @@
             this.btnErasePass.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnErasePass.ForeColor = System.Drawing.Color.White;
             this.btnErasePass.HoverState.Parent = this.btnErasePass;
-            this.btnErasePass.Location = new System.Drawing.Point(5, 193);
+            this.btnErasePass.Location = new System.Drawing.Point(5, 196);
             this.btnErasePass.Name = "btnErasePass";
             this.btnErasePass.ShadowDecoration.Parent = this.btnErasePass;
             this.btnErasePass.Size = new System.Drawing.Size(232, 40);
@@ -162,7 +209,7 @@
             this.btnEraseNotes.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEraseNotes.ForeColor = System.Drawing.Color.White;
             this.btnEraseNotes.HoverState.Parent = this.btnEraseNotes;
-            this.btnEraseNotes.Location = new System.Drawing.Point(5, 74);
+            this.btnEraseNotes.Location = new System.Drawing.Point(5, 78);
             this.btnEraseNotes.Name = "btnEraseNotes";
             this.btnEraseNotes.ShadowDecoration.Parent = this.btnEraseNotes;
             this.btnEraseNotes.Size = new System.Drawing.Size(232, 40);
@@ -212,51 +259,9 @@
             this.elpsErBtnPass.BorderRadius = 10;
             this.elpsErBtnPass.TargetControl = this.btnErasePass;
             // 
-            // btnLocal
+            // timerConfirm
             // 
-            this.btnLocal.AutoSize = true;
-            this.btnLocal.Checked = true;
-            this.btnLocal.CheckedState.BorderColor = System.Drawing.Color.White;
-            this.btnLocal.CheckedState.BorderThickness = 0;
-            this.btnLocal.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnLocal.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.btnLocal.CheckedState.InnerOffset = -4;
-            this.btnLocal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLocal.ForeColor = System.Drawing.Color.White;
-            this.btnLocal.Location = new System.Drawing.Point(23, 62);
-            this.btnLocal.Name = "btnLocal";
-            this.btnLocal.Size = new System.Drawing.Size(82, 25);
-            this.btnLocal.TabIndex = 1;
-            this.btnLocal.TabStop = true;
-            this.btnLocal.Text = "Locally";
-            this.btnLocal.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.btnLocal.UncheckedState.BorderThickness = 2;
-            this.btnLocal.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.btnLocal.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.btnLocal.UseVisualStyleBackColor = true;
-            this.btnLocal.CheckedChanged += new System.EventHandler(this.btnLocal_CheckedChanged);
-            // 
-            // btnDB
-            // 
-            this.btnDB.AutoSize = true;
-            this.btnDB.CheckedState.BorderColor = System.Drawing.Color.White;
-            this.btnDB.CheckedState.BorderThickness = 0;
-            this.btnDB.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnDB.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.btnDB.CheckedState.InnerOffset = -4;
-            this.btnDB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDB.ForeColor = System.Drawing.Color.White;
-            this.btnDB.Location = new System.Drawing.Point(23, 91);
-            this.btnDB.Name = "btnDB";
-            this.btnDB.Size = new System.Drawing.Size(147, 25);
-            this.btnDB.TabIndex = 2;
-            this.btnDB.Text = "In the DataBase";
-            this.btnDB.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.btnDB.UncheckedState.BorderThickness = 2;
-            this.btnDB.UncheckedState.FillColor = System.Drawing.Color.Transparent;
-            this.btnDB.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
-            this.btnDB.UseVisualStyleBackColor = true;
-            this.btnDB.CheckedChanged += new System.EventHandler(this.btnDB_CheckedChanged);
+            this.timerConfirm.Tick += new System.EventHandler(this.timerConfirm_Tick);
             // 
             // SettingsPage
             // 
@@ -301,5 +306,6 @@
         private Guna.UI2.WinForms.Guna2Elipse elpsErBtnPass;
         private Guna.UI2.WinForms.Guna2RadioButton btnLocal;
         private Guna.UI2.WinForms.Guna2RadioButton btnDB;
+        private System.Windows.Forms.Timer timerConfirm;
     }
 }

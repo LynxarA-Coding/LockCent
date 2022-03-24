@@ -49,6 +49,7 @@
             this.btnLogOut = new System.Windows.Forms.PictureBox();
             this.pnlPage = new System.Windows.Forms.Panel();
             this.elpsPage = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.dragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnlDrag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.pnlMenu.SuspendLayout();
@@ -77,9 +78,6 @@
             this.pnlDrag.ShadowDecoration.Parent = this.pnlDrag;
             this.pnlDrag.Size = new System.Drawing.Size(730, 40);
             this.pnlDrag.TabIndex = 2;
-            this.pnlDrag.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseDown);
-            this.pnlDrag.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseMove);
-            this.pnlDrag.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pnlDrag_MouseUp);
             // 
             // lblHeader
             // 
@@ -147,7 +145,6 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(91, 472);
             this.pnlMenu.TabIndex = 3;
-            this.pnlMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMenu_Paint);
             // 
             // lblNotes
             // 
@@ -272,6 +269,10 @@
             this.elpsPage.BorderRadius = 20;
             this.elpsPage.TargetControl = this.pnlPage;
             // 
+            // dragControl
+            // 
+            this.dragControl.TargetControl = this.pnlDrag;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -326,5 +327,6 @@
         private Guna.UI2.WinForms.Guna2Elipse elpsPage;
         private System.Windows.Forms.Label lblLogged;
         private System.Windows.Forms.Label lblUsername;
+        private Guna.UI2.WinForms.Guna2DragControl dragControl;
     }
 }

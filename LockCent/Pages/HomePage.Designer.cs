@@ -110,6 +110,7 @@
             this.txtDelName.Size = new System.Drawing.Size(453, 44);
             this.txtDelName.TabIndex = 1;
             this.txtDelName.Visible = false;
+            this.txtDelName.TextChanged += new System.EventHandler(this.txtDelName_TextChanged);
             // 
             // HomePage
             // 
