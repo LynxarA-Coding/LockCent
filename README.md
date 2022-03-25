@@ -25,9 +25,10 @@ Application encrypts data locally, the user can store data in the database or we
   ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
   ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
   ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)<br>
-  <h3>Codefactor Rating:</h3>
+  <h3>Code Ratings:</h3>
   
   [![CodeFactor](https://www.codefactor.io/repository/github/lynxara-coding/lockcent/badge)](https://www.codefactor.io/repository/github/lynxara-coding/lockcent)
+  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/da752f41d0ff483090c3df3d590a18c3)](https://www.codacy.com/gh/LynxarA-Coding/LockCent/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LynxarA-Coding/LockCent&amp;utm_campaign=Badge_Grade)
   <hr>
   
 </div>
