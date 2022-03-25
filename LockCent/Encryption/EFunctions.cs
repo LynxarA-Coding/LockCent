@@ -17,15 +17,12 @@ namespace LockCent.Encryption
         public static string Encrypt(this string plainText, byte[] key)
         {
             byte[] iv = new byte[16] { 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0 };
-            // Instantiated a new Aes object to perform string symmetric encryption
             Aes encryptor = Aes.Create();
 
+            // Changed encryptor mode
             encryptor.Mode = CipherMode.CBC;
-            //encryptor.KeySize = 32;
-            //encryptor.BlockSize = 128;
-            //encryptor.Padding = PaddingMode.Zeros;
 
-            // Set key and IV
+            // Setted key and IV
             encryptor.Key = key;
             encryptor.IV = iv;
 
@@ -68,9 +65,7 @@ namespace LockCent.Encryption
             Aes encryptor = Aes.Create();
 
             encryptor.Mode = CipherMode.CBC;
-            //encryptor.KeySize = 32;
-            //encryptor.BlockSize = 128;
-            //encryptor.Padding = PaddingMode.Zeros;
+
             // Setted key and IV
             encryptor.Key = key;
             encryptor.IV = iv;

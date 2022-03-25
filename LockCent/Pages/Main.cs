@@ -64,7 +64,11 @@ namespace LockCent.Pages
 
             FileChecker();
 
-            loadPage(new HomePage());
+            HomePage page = new HomePage();
+            page.username = username;
+            page.ekey = ekey;
+            loadPage(page);
+
             lblHeader.Text = "LockCent | Home";
 
             lblUsername.Text = username;
@@ -149,6 +153,8 @@ namespace LockCent.Pages
         {
             // Creating a new instance of a page
             HomePage page = new HomePage();
+            page.username = username;
+            page.ekey = ekey;
             loadPage(page);
             
             // Changing header to the page name
