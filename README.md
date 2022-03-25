@@ -1,10 +1,5 @@
 <div align="center">
 
-  <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
-  <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
-  ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
-  ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)<br>
   <a href="https://github.com/LynxarA-Coding/LockCent/wiki"><h3>Visit WIKI</h3></a>
   <p>Download Latest:</p>
   
@@ -21,6 +16,20 @@ Application encrypts data locally, the user can store data in the database or we
   <h3>Screenshots and a Showcase:</h3>
 
   <hr>
+</div>
+
+<div align="center">
+  
+  <a href="https://github.com/LynxarA-Coding/LockCent/blob/master/LICENSE">![GNU3](https://img.shields.io/github/license/LynxarA-Coding/LockCent)</a>
+  <a href="">![lastcommit](https://img.shields.io/github/last-commit/LynxarA-CodinG/LockCent?color=yellow)</a><br>
+  ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
+  ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)<br>
+  <h3>Codefactor Rating:</h3>
+  
+  [![CodeFactor](https://www.codefactor.io/repository/github/lynxara-coding/lockcent/badge)](https://www.codefactor.io/repository/github/lynxara-coding/lockcent)
+  <hr>
+  
 </div>
 
 <div align="center">
