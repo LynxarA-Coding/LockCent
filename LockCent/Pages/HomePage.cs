@@ -61,7 +61,7 @@ namespace LockCent.Pages
                 StreamReader sr = new StreamReader(path + "/pass.json");
                 while (!sr.EndOfStream)
                 {
-                    jsonfile += sr.ReadLine();
+                    jsonfile = jsonfile + sr.ReadLine();
                 }
                 sr.Close();
 
