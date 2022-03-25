@@ -25,7 +25,7 @@ Application encrypts data locally, the user can store data in the database or we
 
 <div align="center">
   
-  <a href="https://www.thomasmore.be/en/welcome">![thomas](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png) </a>
+  <a href="https://www.thomasmore.be/en/welcome">![thomas](https://raw.githubusercontent.com/LynxarA-Coding/LockCent/master/readmesrc/thomas.png)</a>
   
   <h3>Thomas More University<br>
   Electronics ICT Faculty<br>
