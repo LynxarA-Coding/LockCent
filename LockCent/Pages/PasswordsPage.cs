@@ -67,7 +67,7 @@ namespace LockCent.Pages
                     PageTotal++;
 
                     // Changing names for non-existing passwords on the page (when there are less than 4 on the last page)
-                    for (int i = 0; i < 4 - GivenPassNames.Length % 4; i++)
+                    for (int i = 0; i < 4 - (GivenPassNames.Length % 4); i++)
                     {
                         PassName.Add("NO PASS");
                         PassValue.Add("NO PASS");
@@ -154,16 +154,16 @@ namespace LockCent.Pages
             BValues[0] = PassValue[page * 4];
 
             // Putting values for the second button
-            BNames[1] = PassName[page * 4 + 1];
-            BValues[1] = PassValue[page * 4 + 1];
+            BNames[1] = PassName[(page * 4) + 1];
+            BValues[1] = PassValue[(page * 4) + 1];
 
             // Putting values for the third button
-            BNames[2] = PassName[page * 4 + 2];
-            BValues[2] = PassValue[page * 4 + 2];
+            BNames[2] = PassName[(page * 4) + 2];
+            BValues[2] = PassValue[(page * 4) + 2];
 
             // Putting values for the fourth button
-            BNames[3] = PassName[page * 4 + 3];
-            BValues[3] = PassValue[page * 4 + 3];
+            BNames[3] = PassName[(page * 4) + 3];
+            BValues[3] = PassValue[(page * 4) + 3];
 
             // Updating buttons' visuals and data
             UpdateButtonVisual();
