@@ -84,7 +84,6 @@ namespace LockCent.Pages
                         txtNotes.PlaceholderText = "Wrong User. Switch to the user that owns these Notes...\n Or delete Notes File in Settings.";
                     }
                 }
-
             }
             else // If notes are not enabled
             { 

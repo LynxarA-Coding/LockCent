@@ -57,7 +57,6 @@ namespace LockCent.Scripts
                 user.UserName = reader[1].ToString();
                 user.Password = reader[2].ToString();
                 user.Ekey = (byte[])reader[3];
-
             }
 
             reader.Close();

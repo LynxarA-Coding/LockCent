@@ -19,7 +19,6 @@ namespace LockCent.Pages
     */
     public partial class Main : Form
     {
-
         // User data variables
         public string email;
         public string username;
@@ -45,7 +44,6 @@ namespace LockCent.Pages
 
             while (!discordInitialized)
             {
-
             }
 
             if (discordInitialized)

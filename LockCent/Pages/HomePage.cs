@@ -24,12 +24,10 @@ namespace LockCent.Pages
         // When Form loads
         private void HomePage_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void txtDelName_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

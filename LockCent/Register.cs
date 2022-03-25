@@ -25,8 +25,6 @@ namespace LockCent
         // When Form Loads
         private void Register_Load(object sender, EventArgs e)
         {
-            
-
         }
 
         // When user clicks window close button
