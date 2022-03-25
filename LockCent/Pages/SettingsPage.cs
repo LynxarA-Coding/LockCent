@@ -74,9 +74,6 @@ namespace LockCent.Pages
                 case "erasePasswords":
                     log.SendLogUserLog("setting", Username, "Data Deletion: **Passwords**");
                     break;
-                default:
-
-                    break;
             }
         }
 

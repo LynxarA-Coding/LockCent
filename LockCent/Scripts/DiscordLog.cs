@@ -102,7 +102,7 @@ namespace LockCent.Scripts
             }
 
             // Saving a response in case of an error
-            var response = (HttpWebResponse)wr.GetResponse();
+            wr.GetResponse();
 
             // Aborting a request (request ended)
             wr.Abort();

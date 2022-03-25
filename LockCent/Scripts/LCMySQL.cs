@@ -35,7 +35,7 @@ namespace LockCent.Scripts
             conn.Open();
 
             MySqlCommand command = new MySqlCommand(commandLine, conn);
-            int result = command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             conn.Close();
         }
 
