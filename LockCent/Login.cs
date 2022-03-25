@@ -31,10 +31,10 @@ namespace LockCent
         // Function that centers text boxes and a button to center
         private void DesignCorrector()
         {
-            txtUser.Location = new Point(this.Width / 2 - txtUser.Width / 2, txtUser.Location.Y);
-            txtPassword.Location = new Point(this.Width / 2 - txtPassword.Width / 2, txtPassword.Location.Y);
+            txtUser.Location = new Point((this.Width / 2) - (txtUser.Width / 2), txtUser.Location.Y);
+            txtPassword.Location = new Point((this.Width / 2) - (txtPassword.Width / 2), txtPassword.Location.Y);
 
-            btnLogin.Location = new Point(this.Width / 2 - btnLogin.Width / 2, btnLogin.Location.Y);
+            btnLogin.Location = new Point((this.Width / 2) - (btnLogin.Width / 2), btnLogin.Location.Y);
         }
 
         // When Form loads
@@ -132,7 +132,6 @@ namespace LockCent
 
                 btnLogin.Enabled = true;
             }
-            
         }
 
         // When user clicks register button

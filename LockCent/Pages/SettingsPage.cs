@@ -161,7 +161,6 @@ namespace LockCent.Pages
                         // If any local data exists
                         if (notesExist || passExist)
                         {
-
                             // If notes exist
                             if (notesExist)
                             {
@@ -381,7 +380,6 @@ namespace LockCent.Pages
                         notify.Description = "There are no notes in the chosen account!";
                         notify.Show();
                     }
-
                 }
                 else
                 {
