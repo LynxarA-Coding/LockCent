@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LockCent.Encryption;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
@@ -15,17 +12,20 @@ namespace LockCent.Scripts
     */
     class DiscordLog
     {
+        // Token stored for Discord Webhook
+        private string token = "QqF8qfS4xHu2cEBLyg+HJVz/gJZAjGwF9qpwR5QbKDqH6WdJSCt+3XUwnJ1NTp2+812JZlDf2y+cmGLZXc04YnYHo2DYnaeIcN8APSsx6lMUND1wEd31Vw1u+D0KisBmHbvX+aqmkeSoF5L5QuTbqgNS1HRM3aY6ikMV8/nVk3E=";
+
+        // The key
+        private byte[] key = new byte[16] { 0x12, 0x56, 0x14, 0x71, 0x0, 0x21, 0x9, 0x17, 0x66, 0x33, 0x56, 0x34, 0x10, 0x13, 0x11, 0x71 };
+
         // Function that sends Discord Logs about an App
         public void SendLogUserLog(string type, string data_username, string data)
         {
-            // Token stored for Discord Webhook
-            string token = "https://discord.com/api/webhooks/956218527688327208/yKrxzSymFaVPYWphGCKzpfrBj34bIoYDVaD__F24LG24I6ZbODrYynkKFe_b4Ndbm7Mq";
-
             // Discord Bot Username (sender name)
             string _bot_username = "LockCent Logger";
 
             // Creating a new HTTP Request
-            WebRequest wr = (HttpWebRequest)WebRequest.Create(token);
+            WebRequest wr = (HttpWebRequest)WebRequest.Create(EFunctions.Decrypt(token, key));
 
             // Request content type
             wr.ContentType = "application/json";
