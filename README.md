@@ -1,11 +1,22 @@
-<div align="center">
+<div>
+  
+  <hr>
+  <h3>Code Ratings:</h3>
+  
+  **Codefactor:** [![CodeFactor](https://www.codefactor.io/repository/github/lynxara-coding/lockcent/badge)](https://www.codefactor.io/repository/github/lynxara-coding/lockcent) <br>
+  **Codacy:** [![Codacy Badge](https://app.codacy.com/project/badge/Grade/da752f41d0ff483090c3df3d590a18c3)](https://www.codacy.com/gh/LynxarA-Coding/LockCent/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LynxarA-Coding/LockCent&amp;utm_campaign=Badge_Grade)
+  <hr>
+  
+</div>
+
+<div>
 
   <a href="https://github.com/LynxarA-Coding/LockCent/wiki"><h3>Visit WIKI</h3></a>
   <p>Download Latest:</p>
   
   <a href="https://github.com/LynxarA-Coding/LockCent/releases">![download](https://img.shields.io/github/v/release/LynxarA-CodinG/LockCent?color=g&include_prereleases)</a><hr>
   
-  <h1>LockCent</h1>
+  <h1 align="center">LockCent</h1>
 
   <h3>LockCent is an Application that keeps your personal information safe. It provides data encryption and local or cloud saving.</h3>
 
@@ -13,7 +24,7 @@
 Application encrypts data locally, the user can store data in the database or web server (the decision is up to user)
 </p><hr>
 
-  <h3>Screenshots and a Showcase:</h3>
+  <h3 align="center">Screenshots and a Showcase:</h3>
 
   <hr>
 </div>
@@ -25,11 +36,6 @@ Application encrypts data locally, the user can store data in the database or we
   ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
   ![.Net](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
   ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)<br>
-  <h3>Code Ratings:</h3>
-  
-  [![CodeFactor](https://www.codefactor.io/repository/github/lynxara-coding/lockcent/badge)](https://www.codefactor.io/repository/github/lynxara-coding/lockcent)
-  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/da752f41d0ff483090c3df3d590a18c3)](https://www.codacy.com/gh/LynxarA-Coding/LockCent/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=LynxarA-Coding/LockCent&amp;utm_campaign=Badge_Grade)
-  <hr>
   
 </div>
 
