@@ -13,10 +13,10 @@ namespace LockCent.Scripts
     class DiscordLog
     {
         // Token stored for Discord Webhook
-        private string token = "QqF8qfS4xHu2cEBLyg+HJVz/gJZAjGwF9qpwR5QbKDqH6WdJSCt+3XUwnJ1NTp2+812JZlDf2y+cmGLZXc04YnYHo2DYnaeIcN8APSsx6lMUND1wEd31Vw1u+D0KisBmHbvX+aqmkeSoF5L5QuTbqgNS1HRM3aY6ikMV8/nVk3E=";
+        private readonly string token = "QqF8qfS4xHu2cEBLyg+HJVz/gJZAjGwF9qpwR5QbKDqH6WdJSCt+3XUwnJ1NTp2+812JZlDf2y+cmGLZXc04YnYHo2DYnaeIcN8APSsx6lMUND1wEd31Vw1u+D0KisBmHbvX+aqmkeSoF5L5QuTbqgNS1HRM3aY6ikMV8/nVk3E=";
 
         // The key
-        private byte[] key = new byte[16] { 0x12, 0x56, 0x14, 0x71, 0x0, 0x21, 0x9, 0x17, 0x66, 0x33, 0x56, 0x34, 0x10, 0x13, 0x11, 0x71 };
+        private readonly byte[] key = { 0x12, 0x56, 0x14, 0x71, 0x0, 0x21, 0x9, 0x17, 0x66, 0x33, 0x56, 0x34, 0x10, 0x13, 0x11, 0x71 };
 
         // Function that sends Discord Logs about an App
         public void SendLogUserLog(string type, string data_username, string data)
@@ -32,6 +32,9 @@ namespace LockCent.Scripts
 
             // Request Method
             wr.Method = "POST";
+
+            string postDescription = $"Username: **{data_username}** \nTime Stamp: **{DateTime.Now.ToString()}**";
+            string dataPostDescription = $"Username: **{data_username}** \n{data}\nTime Stamp: **{DateTime.Now.ToString()}**";
 
             // Creating an empty json
             string json;
@@ -49,7 +52,7 @@ namespace LockCent.Scripts
                         {
                             new
                             {
-                                description = $"Username: **{data_username}** \nTime Stamp: **{DateTime.Now.ToString()}**",
+                                description = postDescription,
                                 title = "New Login",
                                 color = "9424384"
                             }
@@ -68,7 +71,7 @@ namespace LockCent.Scripts
                         {
                             new
                             {
-                                description = $"Username: **{data_username}** \nTime Stamp: **{DateTime.Now.ToString()}**",
+                                description = postDescription,
                                 title = "User Logged Out",
                                 color = "16711680"
                             }
@@ -87,7 +90,7 @@ namespace LockCent.Scripts
                         {
                             new
                             {
-                                description = $"Username: **{data_username}** \n{data}\nTime Stamp: **{DateTime.Now.ToString()}**",
+                                description = dataPostDescription,
                                 title = "Setting changed",
                                 color = "16763904"
                             }

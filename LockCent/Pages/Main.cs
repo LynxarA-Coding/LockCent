@@ -20,14 +20,14 @@ namespace LockCent.Pages
     public partial class Main : Form
     {
         // User data variables
-        public string email;
-        public string username;
-        public string password;
-        public byte[] ekey;
+        public string email { private get; set; }
+        public string username { private get; set; }
+        public string password { private get; set; }
+        public byte[] ekey { private get; set; }
 
         // Creating discord client for Rich Presence
-        public DiscordRpcClient client;
-        bool discordInitialized = false;
+        private DiscordRpcClient client;
+        bool discordInitialized;
 
         public Main()
         {
@@ -137,7 +137,9 @@ namespace LockCent.Pages
         {
             // Removing previous one
             if (this.pnlPage.Controls.Count > 0)
+            {
                 this.pnlPage.Controls.RemoveAt(0);
+            }
 
             // Changing Form properties
             Form f = Form as Form;
@@ -180,7 +182,7 @@ namespace LockCent.Pages
                 StreamReader sr = new StreamReader(path);
                 while (!sr.EndOfStream)
                 {
-                    jsonfile += sr.ReadLine();
+                    jsonfile = jsonfile + sr.ReadLine();
                 }
                 sr.Close();
 

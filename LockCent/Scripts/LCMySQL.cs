@@ -25,10 +25,10 @@ namespace LockCent.Scripts
     class LCMySQL
     {
         // The key
-        private byte[] _key = new byte[16] { 0x12, 0x56, 0x14, 0x71, 0x0, 0x21, 0x9, 0x17, 0x66, 0x33, 0x56, 0x34, 0x10, 0x13, 0x11, 0x71 };
+        private readonly byte[] _key = { 0x12, 0x56, 0x14, 0x71, 0x0, 0x21, 0x9, 0x17, 0x66, 0x33, 0x56, 0x34, 0x10, 0x13, 0x11, 0x71 };
         
         // DB connection string
-        private string connStr = "zHeXUI0/LKpGgeb00H+XT7YmYx6/w8OQuMRPJ7j3VLcD+q9pwU6rDx3psONJQU5MTtTimZBkj6LRBWDY4LzQt1Sfpg/ZKbd3s92SahEnx7g=";
+        private readonly string connStr = "zHeXUI0/LKpGgeb00H+XT7YmYx6/w8OQuMRPJ7j3VLcD+q9pwU6rDx3psONJQU5MTtTimZBkj6LRBWDY4LzQt1Sfpg/ZKbd3s92SahEnx7g=";
         public void Send(string commandLine)
         {
             MySqlConnection conn = new MySqlConnection(EFunctions.Decrypt(connStr, _key));

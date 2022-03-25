@@ -20,8 +20,8 @@ namespace LockCent.Pages
         string json = "[";
 
         // Local variables for Lists of Passwords' names and values
-        private List<string> PassName = new List<string>();
-        private List<string> PassValue = new List<string>();
+        private List<string> PassName { get; set; }
+        private List<string> PassValue { get; set; }
 
         // Current page number
         private int PageNum = 0;
@@ -34,10 +34,10 @@ namespace LockCent.Pages
         */
 
         // Button Names for a page
-        private string[] BNames = new string[4] { "", "", "", "" };
+        private string[] BNames = { "", "", "", "" };
 
         // Button Values for a page
-        private string[] BValues = new string[4] {"", "", "" , ""};
+        private string[] BValues = {"", "", "" , ""};
 
         public PasswordsPage()
         {

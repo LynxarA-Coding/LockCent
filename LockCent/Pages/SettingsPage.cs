@@ -170,7 +170,7 @@ namespace LockCent.Pages
                                 // Reading existing data into fileNotes
                                 while (!sr.EndOfStream)
                                 {
-                                    fileNotes += sr.ReadLine();
+                                    fileNotes = fileNotes + sr.ReadLine();
                                 }
 
                                 sr.Close();

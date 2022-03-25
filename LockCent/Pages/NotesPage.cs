@@ -71,7 +71,7 @@ namespace LockCent.Pages
                         // Copying saved data
                         while (!sr.EndOfStream)
                         {
-                            encodedResult += sr.ReadLine();
+                            encodedResult = encodedResult + sr.ReadLine();
                         }
                         sr.Close();
 

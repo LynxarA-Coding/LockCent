@@ -21,7 +21,7 @@ namespace LockCent
     public partial class Login : Form
     {
         // Text Length Value (maximum)
-        private int textLength = 20;
+        private readonly int textLength = 20;
 
         public Login()
         {
