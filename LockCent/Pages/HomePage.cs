@@ -26,6 +26,10 @@ namespace LockCent.Pages
         // Local list of Passwords
         private List<Passwords> passwords { get; set; }
 
+        // Timer
+        private int timerCounter;
+        private int timerType;
+
         public HomePage()
         {
             InitializeComponent();
@@ -215,7 +219,7 @@ namespace LockCent.Pages
                 foreach (Passwords pass in passwords)
                 {
                     // If name or value matches
-                    if (pass.Name.ToLower() == txtCreateName.Text.ToLower() || pass.Password.ToLower() == txtCreateName.Text.ToLower())
+                    if (pass.Name.ToLower() == txtCreateName.Text.ToLower())
                     {
                         // Password exists
                         isPasswordExist = true;
@@ -238,6 +242,20 @@ namespace LockCent.Pages
 
                     // Save data
                     PasswordSaver();
+
+                    txtCreateName.Text = "";
+                    txtCreateName.PlaceholderText = "Password was successfully created";
+                    txtCreateValue.Text = "";
+                    txtCreateValue.PlaceholderText = "";
+
+                    // Start norification timer
+                    timerCounter = 3;
+                    timerType = 1;
+                    txtCreateName.Enabled = false;
+                    txtCreateValue.Enabled = false;
+                    btnCreate.Enabled = false;
+                    btnCreate.Visible = false;
+                    timerNotify.Start();
                 }
             }
             else // If text does not meet the criteria
@@ -258,12 +276,54 @@ namespace LockCent.Pages
             // Anti double-click
             btnDelete.Enabled = false;
 
+            // Creating a new instance of password
+            Passwords tempPass = new Passwords();
+
             if (TextChecker(txtDelName.Text))
             {
-                Notificator notify = new Notificator();
-                notify.Type = "error";
-                notify.Description = "This feature is not implemented yet";
-                notify.Show();
+                bool isPasswordExist = false;
+
+                foreach (Passwords pass in passwords)
+                {
+                    // If name matches
+                    if (pass.Name.ToLower() == txtDelName.Text.ToLower())
+                    {
+                        // Password exists
+                        isPasswordExist = true;
+
+                        // Make a copy of it
+                        tempPass = pass;
+                    }
+                }
+
+                // If password exists
+                if (isPasswordExist)
+                {
+                    // Remove found password
+                    passwords.Remove(tempPass);
+
+                    // Save data
+                    PasswordSaver();
+
+                    txtDelName.Text = "";
+                    txtDelName.PlaceholderText = "Password was successfully deleted";
+
+                    // Start norification timer
+                    timerCounter = 3;
+                    timerType = 2;
+                    txtDelName.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnDelete.Visible = false;
+                    timerNotify.Start();
+                }
+                else // If password does not exist
+                {
+                    // Notify the user of their mistake
+                    Notificator notify = new Notificator();
+                    notify.Type = "error";
+                    notify.Description = "The pasword does not exist!\n(maybe name was typed incorrectly)";
+                    notify.Show();
+                }
             }
             else // If text does not meet the criteria
             {
@@ -304,6 +364,33 @@ namespace LockCent.Pages
             {
                 // Delete last symbol(s)
                 txtDelName.Text = txtDelName.Text.Substring(0, stringLength);
+            }
+        }
+
+        private void timerNotify_Tick(object sender, EventArgs e)
+        {
+            timerCounter = timerCounter - 1;
+
+            if (timerCounter == 0)
+            {
+                if (timerType == 1)
+                {
+                    txtCreateName.PlaceholderText = "Website";
+                    txtCreateValue.PlaceholderText = "Data (username, password and etc)";
+                    txtCreateName.Enabled = true;
+                    txtCreateValue.Enabled = true;
+
+                    btnCreate.Enabled = true;
+                    btnCreate.Visible = true;
+                }
+                else
+                {
+                    txtDelName.PlaceholderText = "Website";
+                    txtDelName.Enabled = true;
+
+                    btnDelete.Enabled = true;
+                    btnDelete.Visible = true;
+                }
             }
         }
     }

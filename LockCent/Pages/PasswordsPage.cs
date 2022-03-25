@@ -199,7 +199,7 @@ namespace LockCent.Pages
             // Reveal password data to user
             Notificator notify = new Notificator();
             notify.Type = "info";
-            notify.Description = $"{BNames[0]} password is: \n{BValues[0]}";
+            notify.Description = $"{BNames[0]} data is: \n{BValues[0]}";
             notify.Show();
         }
 
@@ -209,7 +209,7 @@ namespace LockCent.Pages
             // Reveal password data to user
             Notificator notify = new Notificator();
             notify.Type = "info";
-            notify.Description = $"{BNames[1]} password is: \n{BValues[1]}";
+            notify.Description = $"{BNames[1]} data is: \n{BValues[1]}";
             notify.Show();
         }
 
@@ -219,7 +219,7 @@ namespace LockCent.Pages
             // Reveal password data to user
             Notificator notify = new Notificator();
             notify.Type = "info";
-            notify.Description = $"{BNames[2]} password is: \n{BValues[2]}";
+            notify.Description = $"{BNames[2]} data is: \n{BValues[2]}";
             notify.Show();
         }
 
@@ -229,7 +229,7 @@ namespace LockCent.Pages
             // Reveal password data to user
             Notificator notify = new Notificator();
             notify.Type = "info";
-            notify.Description = $"{BNames[3]} password is: \n{BValues[3]}";
+            notify.Description = $"{BNames[3]} data is: \n{BValues[3]}";
             notify.Show();
         }
     }

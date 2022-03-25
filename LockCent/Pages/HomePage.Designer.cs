@@ -33,12 +33,13 @@
             this.lblNewPass = new System.Windows.Forms.Label();
             this.lblDeltePass = new System.Windows.Forms.Label();
             this.pnlNewPass = new System.Windows.Forms.Panel();
-            this.pnlDelPass = new System.Windows.Forms.Panel();
-            this.txtDelName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtCreateName = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtCreateValue = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnCreate = new Guna.UI2.WinForms.Guna2Button();
+            this.txtCreateValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtCreateName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pnlDelPass = new System.Windows.Forms.Panel();
             this.btnDelete = new Guna.UI2.WinForms.Guna2Button();
+            this.txtDelName = new Guna.UI2.WinForms.Guna2TextBox();
+            this.timerNotify = new System.Windows.Forms.Timer(this.components);
             this.pnlNewPass.SuspendLayout();
             this.pnlDelPass.SuspendLayout();
             this.SuspendLayout();
@@ -81,73 +82,24 @@
             this.pnlNewPass.Size = new System.Drawing.Size(485, 215);
             this.pnlNewPass.TabIndex = 1;
             // 
-            // pnlDelPass
+            // btnCreate
             // 
-            this.pnlDelPass.Controls.Add(this.btnDelete);
-            this.pnlDelPass.Controls.Add(this.txtDelName);
-            this.pnlDelPass.Controls.Add(this.lblDeltePass);
-            this.pnlDelPass.Location = new System.Drawing.Point(28, 247);
-            this.pnlDelPass.Name = "pnlDelPass";
-            this.pnlDelPass.Size = new System.Drawing.Size(485, 184);
-            this.pnlDelPass.TabIndex = 2;
-            // 
-            // txtDelName
-            // 
-            this.txtDelName.BorderRadius = 6;
-            this.txtDelName.BorderThickness = 2;
-            this.txtDelName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDelName.DefaultText = "";
-            this.txtDelName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtDelName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtDelName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDelName.DisabledState.Parent = this.txtDelName;
-            this.txtDelName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtDelName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtDelName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDelName.FocusedState.Parent = this.txtDelName;
-            this.txtDelName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDelName.ForeColor = System.Drawing.Color.White;
-            this.txtDelName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDelName.HoverState.Parent = this.txtDelName;
-            this.txtDelName.Location = new System.Drawing.Point(16, 56);
-            this.txtDelName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDelName.Name = "txtDelName";
-            this.txtDelName.PasswordChar = '\0';
-            this.txtDelName.PlaceholderText = "Website";
-            this.txtDelName.SelectedText = "";
-            this.txtDelName.ShadowDecoration.Parent = this.txtDelName;
-            this.txtDelName.Size = new System.Drawing.Size(453, 44);
-            this.txtDelName.TabIndex = 4;
-            this.txtDelName.TextChanged += new System.EventHandler(this.txtDelName_TextChanged);
-            // 
-            // txtCreateName
-            // 
-            this.txtCreateName.BorderRadius = 6;
-            this.txtCreateName.BorderThickness = 2;
-            this.txtCreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCreateName.DefaultText = "";
-            this.txtCreateName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCreateName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCreateName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCreateName.DisabledState.Parent = this.txtCreateName;
-            this.txtCreateName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCreateName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtCreateName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCreateName.FocusedState.Parent = this.txtCreateName;
-            this.txtCreateName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCreateName.ForeColor = System.Drawing.Color.White;
-            this.txtCreateName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCreateName.HoverState.Parent = this.txtCreateName;
-            this.txtCreateName.Location = new System.Drawing.Point(16, 44);
-            this.txtCreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCreateName.Name = "txtCreateName";
-            this.txtCreateName.PasswordChar = '\0';
-            this.txtCreateName.PlaceholderText = "Website";
-            this.txtCreateName.SelectedText = "";
-            this.txtCreateName.ShadowDecoration.Parent = this.txtCreateName;
-            this.txtCreateName.Size = new System.Drawing.Size(453, 44);
-            this.txtCreateName.TabIndex = 1;
-            this.txtCreateName.TextChanged += new System.EventHandler(this.txtCreateName_TextChanged);
+            this.btnCreate.BorderColor = System.Drawing.Color.White;
+            this.btnCreate.BorderRadius = 6;
+            this.btnCreate.BorderThickness = 2;
+            this.btnCreate.CheckedState.Parent = this.btnCreate;
+            this.btnCreate.CustomImages.Parent = this.btnCreate;
+            this.btnCreate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.btnCreate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.HoverState.Parent = this.btnCreate;
+            this.btnCreate.Location = new System.Drawing.Point(17, 159);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.ShadowDecoration.Parent = this.btnCreate;
+            this.btnCreate.Size = new System.Drawing.Size(452, 45);
+            this.btnCreate.TabIndex = 3;
+            this.btnCreate.Text = "CREATE";
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // txtCreateValue
             // 
@@ -178,24 +130,44 @@
             this.txtCreateValue.TabIndex = 2;
             this.txtCreateValue.TextChanged += new System.EventHandler(this.txtCreateValue_TextChanged);
             // 
-            // btnCreate
+            // txtCreateName
             // 
-            this.btnCreate.BorderColor = System.Drawing.Color.White;
-            this.btnCreate.BorderRadius = 6;
-            this.btnCreate.BorderThickness = 2;
-            this.btnCreate.CheckedState.Parent = this.btnCreate;
-            this.btnCreate.CustomImages.Parent = this.btnCreate;
-            this.btnCreate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.btnCreate.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.HoverState.Parent = this.btnCreate;
-            this.btnCreate.Location = new System.Drawing.Point(17, 159);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.ShadowDecoration.Parent = this.btnCreate;
-            this.btnCreate.Size = new System.Drawing.Size(452, 45);
-            this.btnCreate.TabIndex = 3;
-            this.btnCreate.Text = "CREATE";
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.txtCreateName.BorderRadius = 6;
+            this.txtCreateName.BorderThickness = 2;
+            this.txtCreateName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCreateName.DefaultText = "";
+            this.txtCreateName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtCreateName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtCreateName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCreateName.DisabledState.Parent = this.txtCreateName;
+            this.txtCreateName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtCreateName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txtCreateName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCreateName.FocusedState.Parent = this.txtCreateName;
+            this.txtCreateName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCreateName.ForeColor = System.Drawing.Color.White;
+            this.txtCreateName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtCreateName.HoverState.Parent = this.txtCreateName;
+            this.txtCreateName.Location = new System.Drawing.Point(16, 44);
+            this.txtCreateName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCreateName.Name = "txtCreateName";
+            this.txtCreateName.PasswordChar = '\0';
+            this.txtCreateName.PlaceholderText = "Website";
+            this.txtCreateName.SelectedText = "";
+            this.txtCreateName.ShadowDecoration.Parent = this.txtCreateName;
+            this.txtCreateName.Size = new System.Drawing.Size(453, 44);
+            this.txtCreateName.TabIndex = 1;
+            this.txtCreateName.TextChanged += new System.EventHandler(this.txtCreateName_TextChanged);
+            // 
+            // pnlDelPass
+            // 
+            this.pnlDelPass.Controls.Add(this.btnDelete);
+            this.pnlDelPass.Controls.Add(this.txtDelName);
+            this.pnlDelPass.Controls.Add(this.lblDeltePass);
+            this.pnlDelPass.Location = new System.Drawing.Point(28, 247);
+            this.pnlDelPass.Name = "pnlDelPass";
+            this.pnlDelPass.Size = new System.Drawing.Size(485, 184);
+            this.pnlDelPass.TabIndex = 2;
             // 
             // btnDelete
             // 
@@ -215,6 +187,40 @@
             this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // txtDelName
+            // 
+            this.txtDelName.BorderRadius = 6;
+            this.txtDelName.BorderThickness = 2;
+            this.txtDelName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDelName.DefaultText = "";
+            this.txtDelName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDelName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDelName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDelName.DisabledState.Parent = this.txtDelName;
+            this.txtDelName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDelName.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.txtDelName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDelName.FocusedState.Parent = this.txtDelName;
+            this.txtDelName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDelName.ForeColor = System.Drawing.Color.White;
+            this.txtDelName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDelName.HoverState.Parent = this.txtDelName;
+            this.txtDelName.Location = new System.Drawing.Point(16, 56);
+            this.txtDelName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtDelName.Name = "txtDelName";
+            this.txtDelName.PasswordChar = '\0';
+            this.txtDelName.PlaceholderText = "Website";
+            this.txtDelName.SelectedText = "";
+            this.txtDelName.ShadowDecoration.Parent = this.txtDelName;
+            this.txtDelName.Size = new System.Drawing.Size(453, 44);
+            this.txtDelName.TabIndex = 4;
+            this.txtDelName.TextChanged += new System.EventHandler(this.txtDelName_TextChanged);
+            // 
+            // timerNotify
+            // 
+            this.timerNotify.Interval = 1000;
+            this.timerNotify.Tick += new System.EventHandler(this.timerNotify_Tick);
             // 
             // HomePage
             // 
@@ -248,5 +254,6 @@
         private Guna.UI2.WinForms.Guna2TextBox txtCreateValue;
         private Guna.UI2.WinForms.Guna2Button btnCreate;
         private Guna.UI2.WinForms.Guna2Button btnDelete;
+        private System.Windows.Forms.Timer timerNotify;
     }
 }
