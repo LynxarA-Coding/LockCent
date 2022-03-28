@@ -8,6 +8,7 @@ using LockCent.Encryption;
 using LockCent.Scripts;
 using System.Media;
 using System.Text;
+using System.Diagnostics;
 
 namespace LockCent
 {
@@ -46,7 +47,7 @@ namespace LockCent
         // When user clicks "Visit Website" button
         private void btnVisit_Click(object sender, EventArgs e)
         {
-            // Code for URL
+            Process.Start("https://lynxdev.000webhostapp.com/useraccounts-master/registration.php");
         }
     }
 }
