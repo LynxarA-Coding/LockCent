@@ -59,7 +59,7 @@
             this.txtNotes.ForeColor = System.Drawing.Color.White;
             this.txtNotes.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNotes.HoverState.Parent = this.txtNotes;
-            this.txtNotes.Location = new System.Drawing.Point(13, 14);
+            this.txtNotes.Location = new System.Drawing.Point(71, 20);
             this.txtNotes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
@@ -85,7 +85,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.HoverState.Parent = this.btnSave;
-            this.btnSave.Location = new System.Drawing.Point(214, 393);
+            this.btnSave.Location = new System.Drawing.Point(272, 399);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.Parent = this.btnSave;
             this.btnSave.Size = new System.Drawing.Size(180, 45);
@@ -103,7 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(620, 450);
+            this.ClientSize = new System.Drawing.Size(730, 469);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtNotes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

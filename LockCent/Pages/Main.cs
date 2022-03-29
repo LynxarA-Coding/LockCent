@@ -310,6 +310,25 @@ namespace LockCent.Pages
             lblHeader.Text = "LockCent | Settings";
         }
 
+        // When Menu Button is clicked
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            if (pnlMenu.Height == 40)
+            {
+                pnlMenu.Visible = false;
+
+                pnlMenu.Height = 436;
+                animMenu1.ShowSync(pnlMenu);
+            }
+            else
+            {
+                pnlMenu.Visible = false;
+
+                pnlMenu.Height = 40;
+                animMenu2.ShowSync(pnlMenu);
+            }
+        }
+
         // When LogOut button is clicked
         private void btnLogOut_Click(object sender, EventArgs e)
         {

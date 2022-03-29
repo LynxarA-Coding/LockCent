@@ -75,7 +75,7 @@
             this.pnlData.Controls.Add(this.btnDB);
             this.pnlData.Controls.Add(this.btnLocal);
             this.pnlData.Controls.Add(this.lblDataText);
-            this.pnlData.Location = new System.Drawing.Point(22, 24);
+            this.pnlData.Location = new System.Drawing.Point(71, 52);
             this.pnlData.Name = "pnlData";
             this.pnlData.Size = new System.Drawing.Size(323, 161);
             this.pnlData.TabIndex = 2;
@@ -136,7 +136,7 @@
             this.pnlNotes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.pnlNotes.Controls.Add(this.cbNotes);
             this.pnlNotes.Controls.Add(this.lblNotes);
-            this.pnlNotes.Location = new System.Drawing.Point(22, 211);
+            this.pnlNotes.Location = new System.Drawing.Point(71, 239);
             this.pnlNotes.Name = "pnlNotes";
             this.pnlNotes.Size = new System.Drawing.Size(323, 161);
             this.pnlNotes.TabIndex = 2;
@@ -180,7 +180,7 @@
             this.pnlErase.Controls.Add(this.btnEraseNotes);
             this.pnlErase.Controls.Add(this.lblErasePasswords);
             this.pnlErase.Controls.Add(this.lblEraseNotes);
-            this.pnlErase.Location = new System.Drawing.Point(366, 24);
+            this.pnlErase.Location = new System.Drawing.Point(415, 52);
             this.pnlErase.Name = "pnlErase";
             this.pnlErase.Size = new System.Drawing.Size(242, 348);
             this.pnlErase.TabIndex = 2;
@@ -268,7 +268,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(620, 450);
+            this.ClientSize = new System.Drawing.Size(730, 469);
             this.Controls.Add(this.pnlErase);
             this.Controls.Add(this.pnlNotes);
             this.Controls.Add(this.pnlData);

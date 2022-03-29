@@ -361,6 +361,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
@@ -382,6 +383,14 @@
   <ItemGroup>
     <Content Include="LockCent_notext.ico" />
     <Content Include="LockCent_w512.ico" />
+    <None Include="Resources\menu_w.png" />
+    <None Include="Resources\down_w.png" />
+    <None Include="Resources\up_w.png" />
+    <None Include="Resources\logout_w.png" />
+    <None Include="Resources\settings_w.png" />
+    <None Include="Resources\notes_w.png" />
+    <None Include="Resources\passwords_w.png" />
+    <None Include="Resources\home_w.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

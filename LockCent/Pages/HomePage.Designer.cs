@@ -77,7 +77,7 @@
             this.pnlNewPass.Controls.Add(this.txtCreateValue);
             this.pnlNewPass.Controls.Add(this.txtCreateName);
             this.pnlNewPass.Controls.Add(this.lblNewPass);
-            this.pnlNewPass.Location = new System.Drawing.Point(28, 12);
+            this.pnlNewPass.Location = new System.Drawing.Point(120, 12);
             this.pnlNewPass.Name = "pnlNewPass";
             this.pnlNewPass.Size = new System.Drawing.Size(485, 215);
             this.pnlNewPass.TabIndex = 1;
@@ -164,7 +164,7 @@
             this.pnlDelPass.Controls.Add(this.btnDelete);
             this.pnlDelPass.Controls.Add(this.txtDelName);
             this.pnlDelPass.Controls.Add(this.lblDeltePass);
-            this.pnlDelPass.Location = new System.Drawing.Point(28, 247);
+            this.pnlDelPass.Location = new System.Drawing.Point(120, 247);
             this.pnlDelPass.Name = "pnlDelPass";
             this.pnlDelPass.Size = new System.Drawing.Size(485, 184);
             this.pnlDelPass.TabIndex = 2;
@@ -227,7 +227,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.ClientSize = new System.Drawing.Size(620, 450);
+            this.ClientSize = new System.Drawing.Size(730, 469);
             this.Controls.Add(this.pnlDelPass);
             this.Controls.Add(this.pnlNewPass);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
