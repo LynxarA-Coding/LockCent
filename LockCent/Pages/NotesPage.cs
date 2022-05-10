@@ -4,6 +4,7 @@ using LockCent.Scripts;
 using LockCent.Properties;
 using LockCent.Encryption;
 using System.Windows.Forms;
+using System.Text;
 
 namespace LockCent.Pages
 {
@@ -69,11 +70,13 @@ namespace LockCent.Pages
                         string encodedResult = "";
 
                         // Copying saved data
+                        StringBuilder bld = new StringBuilder();
                         while (!sr.EndOfStream)
                         {
-                            encodedResult = encodedResult + sr.ReadLine();
+                            bld.Append(sr.ReadLine());
                         }
                         sr.Close();
+                        encodedResult = bld.ToString();
 
                         // Putting data from local directory to the Text Box
                         txtNotes.Text = EFunctions.Decrypt(encodedResult, ekey);

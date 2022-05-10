@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LockCent.Pages
@@ -63,11 +64,13 @@ namespace LockCent.Pages
 
                 // Reading a json file
                 StreamReader sr = new StreamReader(path + "/pass.json");
+                StringBuilder bld = new StringBuilder();
                 while (!sr.EndOfStream)
                 {
-                    jsonfile = jsonfile + sr.ReadLine();
+                    bld.Append(sr.ReadLine());
                 }
                 sr.Close();
+                jsonfile = bld.ToString();
 
                 // Converting result into a Password List<>
                 passwords = JsonConvert.DeserializeObject<List<Passwords>>(EFunctions.Decrypt(jsonfile, ekey));

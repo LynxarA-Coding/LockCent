@@ -10,6 +10,7 @@ using LockCent.Properties;
 using DiscordRPC;
 using DiscordRPC.Logging;
 using LockCent.Scripts;
+using System.Text;
 
 namespace LockCent.Pages
 {
@@ -180,11 +181,13 @@ namespace LockCent.Pages
 
                 // Reading a json file
                 StreamReader sr = new StreamReader(path);
+                StringBuilder bld = new StringBuilder();
                 while (!sr.EndOfStream)
                 {
-                    jsonfile = jsonfile + sr.ReadLine();
+                    bld.Append(sr.ReadLine());
                 }
                 sr.Close();
+                jsonfile = bld.ToString();
 
                 // Converting result into a List<>
                 var result = JsonConvert.DeserializeObject<List<Passwords>>(EFunctions.Decrypt(jsonfile, ekey));

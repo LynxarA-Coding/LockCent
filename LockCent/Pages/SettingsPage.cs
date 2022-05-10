@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using LockCent.Properties;
 using LockCent.Encryption;
 using LockCent.Scripts;
+using System.Text;
 
 namespace LockCent.Pages
 {
@@ -168,12 +169,13 @@ namespace LockCent.Pages
 
                                 fileNotes = "";
                                 // Reading existing data into fileNotes
+                                StringBuilder bld = new StringBuilder();
                                 while (!sr.EndOfStream)
                                 {
-                                    fileNotes = fileNotes + sr.ReadLine();
+                                    bld.Append(sr.ReadLine());
                                 }
-
                                 sr.Close();
+                                fileNotes = bld.ToString();
                             }
 
                             // If passwords exist
@@ -183,12 +185,13 @@ namespace LockCent.Pages
 
                                 filePass = "";
                                 // Reading existing data into filePass
+                                StringBuilder bld = new StringBuilder();
                                 while (!sr1.EndOfStream)
                                 {
-                                    filePass += sr1.ReadLine();
+                                    bld.Append(sr1.ReadLine());
                                 }
-
                                 sr1.Close();
+                                filePass = bld.ToString();
                             }
                         }
 
