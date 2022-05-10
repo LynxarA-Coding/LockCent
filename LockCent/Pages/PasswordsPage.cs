@@ -99,11 +99,69 @@ namespace LockCent.Pages
         // Function that updates How Buttons look and what data they contain
         private void UpdateButtonVisual()
         {
-            // Changing Button Text based on data of the page
             btnFirstPass.Text = BNames[0];
+            
+            // If there is no password at the first place
+            if (BNames[0] == "NO PASS")
+            {
+                // Block first button and make it invisible
+                btnFirstPass.Enabled = false;
+                btnFirstPass.Visible = false;
+            }
+            else
+            {
+                // Unblock first button and make it visible
+                btnFirstPass.Enabled = true;
+                btnFirstPass.Visible = true;
+            }
+
             btnSecondPass.Text = BNames[1];
+
+            // If there is no password at the second place
+            if (BNames[1] == "NO PASS")
+            {
+                // Block second button and make it invisible
+                btnSecondPass.Enabled = false;
+                btnSecondPass.Visible = false;
+            }
+            else
+            {
+                // Unblock second button and make it visible
+                btnSecondPass.Enabled = true;
+                btnSecondPass.Visible = true;
+            }
+
             btnThirdPass.Text = BNames[2];
+
+            // If there is no password at the third place
+            if (BNames[2] == "NO PASS")
+            {
+                // Block third button and make it invisible
+                btnThirdPass.Enabled = false;
+                btnThirdPass.Visible = false;
+            }
+            else
+            {
+                // Unblock third button and make it visible
+                btnThirdPass.Enabled = true;
+                btnThirdPass.Visible = true;
+            }
+
             btnFourthPass.Text = BNames[3];
+
+            // If there is no password at the fourth place
+            if (BNames[3] == "NO PASS")
+            {
+                // Block fourth button and make it invisible
+                btnFourthPass.Enabled = false;
+                btnFourthPass.Visible = false;
+            }
+            else
+            {
+                // Unblock fourth button and make it visible
+                btnFourthPass.Enabled = true;
+                btnFourthPass.Visible = true;
+            }
 
             // If page is not last
             if (PageNum < PageTotal - 1)
