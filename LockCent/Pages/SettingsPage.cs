@@ -260,7 +260,7 @@ namespace LockCent.Pages
         }
 
         // Type of Timer (false - Erase Passwords, true - Erase Notes)
-        bool timerType = false;
+        bool timerType;
         // 5 seconds counter for timer
         int timerCount = 5;
         // Timer State Variable

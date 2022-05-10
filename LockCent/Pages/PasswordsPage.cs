@@ -24,7 +24,7 @@ namespace LockCent.Pages
         private List<string> PassValue = new List<string>();
 
         // Current page number
-        private int PageNum = 0;
+        private int PageNum;
 
         // Total page amount
         private int PageTotal;
