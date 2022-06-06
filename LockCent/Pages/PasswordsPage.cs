@@ -107,7 +107,7 @@ namespace LockCent.Pages
                 Guna2Button button = buttons[bnIndex];
                 button.Text = BNames[bnIndex];
 
-                button.Enabled = button.Visible = BNames[bnIndex] == "NO PASS";
+                button.Enabled = button.Visible = BNames[bnIndex] != "NO PASS";
             }
             
             for (int i = 0; i < 4; i++) fixButton(i);
