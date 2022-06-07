@@ -109,8 +109,11 @@ namespace LockCent.Pages
 
                 button.Enabled = button.Visible = BNames[bnIndex] != "NO PASS";
             }
-            
-            for (int i = 0; i < 4; i++) fixButton(i);
+
+            for (int i = 0; i < 4; i++)
+            {
+                fixButton(i);
+            }
 
             // If page is not last
             if (PageNum < PageTotal - 1)
