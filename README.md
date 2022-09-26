@@ -18,7 +18,7 @@
   
   <h1 align="center">LockCent</h1>
 
-  <h3>LockCent is an Application that keeps your personal information safe. It provides data encryption and local or cloud saving.</h3>
+  <h3>LockCent is an Application that keeps your personal information safe. It provides data encryption and local or cloud saving. The Repository is archived due to a fact that the project has ended</h3>
 
   <p>The application is locked by user authentication through login with username and password stored in the MySQL database. After authentication, the user receives an access to his/her stored data divided by different categories such as: personal data, account credentials or any other secured information. 
 Application encrypts data locally, the user can store data in the database or web server (the decision is up to user)
